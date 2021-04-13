@@ -1,14 +1,13 @@
-package com.worth.prod.model.binding;
+package com.worth.prod.model.service;
 
 import com.worth.prod.model.entity.enums.ArtistName;
 import com.worth.prod.model.entity.enums.GenreName;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class AlbumAddBindingModel {
+public class ProductServiceModel {
+    private String id;
     private String name;
     private String imageUrl;
     private String description;
@@ -19,12 +18,14 @@ public class AlbumAddBindingModel {
     private GenreName genre;
     private ArtistName artist;
 
-    public AlbumAddBindingModel() {
-
+    public String getId() {
+        return id;
     }
 
-    @NotBlank(message = "Cannot be empty")
-    @Size(min = 3, max = 20, message = "Name length must be between 3 and 20 characters long")
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -33,7 +34,6 @@ public class AlbumAddBindingModel {
         this.name = name;
     }
 
-    @Size(min = 5, message = "Description length must be min 5 characters long")
     public String getDescription() {
         return description;
     }
@@ -42,17 +42,6 @@ public class AlbumAddBindingModel {
         this.description = description;
     }
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @PastOrPresent(message = "The date cannot be in the future")
-    public LocalDate getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(LocalDate neededBefore) {
-        this.releaseDate = neededBefore;
-    }
-
-    @DecimalMin(value = "0", message = "Price must be positive")
     public BigDecimal getPrice() {
         return price;
     }
@@ -61,7 +50,6 @@ public class AlbumAddBindingModel {
         this.price = price;
     }
 
-    @NotNull(message = "You have to select one of the artists")
     public ArtistName getArtist() {
         return artist;
     }
@@ -70,7 +58,6 @@ public class AlbumAddBindingModel {
         this.artist = artist;
     }
 
-    @Size(min = 5, message = "Image Url length must be minimum 5 characters")
     public String getImageUrl() {
         return imageUrl;
     }
@@ -79,13 +66,20 @@ public class AlbumAddBindingModel {
         this.imageUrl = imageUrl;
     }
 
-    @Min(value = 10, message = "Must be more than 10")
     public int getCopies() {
         return copies;
     }
 
     public void setCopies(int copies) {
         this.copies = copies;
+    }
+
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public String getProducer() {
@@ -96,7 +90,6 @@ public class AlbumAddBindingModel {
         this.producer = producer;
     }
 
-    @NotNull(message = "You have to select one of the genres")
     public GenreName getGenre() {
         return genre;
     }

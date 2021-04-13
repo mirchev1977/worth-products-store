@@ -1,13 +1,14 @@
-package com.worth.prod.model.service;
+package com.worth.prod.model.entity;
 
-import com.worth.prod.model.entity.enums.ArtistName;
 import com.worth.prod.model.entity.enums.GenreName;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class AlbumServiceModel {
-    private String id;
+@Entity
+@Table(name = "products")
+public class ProductEntity extends BaseEntity {
     private String name;
     private String imageUrl;
     private String description;
@@ -16,16 +17,13 @@ public class AlbumServiceModel {
     private LocalDate releaseDate;
     private String producer;
     private GenreName genre;
-    private ArtistName artist;
+    private ArtistEntity artistEntity;
+    private UserEntity addedFrom;
 
-    public String getId() {
-        return id;
+    public ProductEntity() {
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    @Column(name = "name", nullable = false, unique = true)
     public String getName() {
         return name;
     }
@@ -34,6 +32,7 @@ public class AlbumServiceModel {
         this.name = name;
     }
 
+    @Column(name = "description", columnDefinition = "TEXT", nullable = false)
     public String getDescription() {
         return description;
     }
@@ -42,6 +41,7 @@ public class AlbumServiceModel {
         this.description = description;
     }
 
+    @Column(name = "price", nullable = false)
     public BigDecimal getPrice() {
         return price;
     }
@@ -50,14 +50,7 @@ public class AlbumServiceModel {
         this.price = price;
     }
 
-    public ArtistName getArtist() {
-        return artist;
-    }
-
-    public void setArtist(ArtistName artist) {
-        this.artist = artist;
-    }
-
+    @Column(name = "image_url", nullable = false)
     public String getImageUrl() {
         return imageUrl;
     }
@@ -66,6 +59,7 @@ public class AlbumServiceModel {
         this.imageUrl = imageUrl;
     }
 
+    @Column(name = "copies", nullable = false)
     public int getCopies() {
         return copies;
     }
@@ -74,6 +68,7 @@ public class AlbumServiceModel {
         this.copies = copies;
     }
 
+    @Column(name = "release_date", nullable = false)
     public LocalDate getReleaseDate() {
         return releaseDate;
     }
@@ -82,6 +77,7 @@ public class AlbumServiceModel {
         this.releaseDate = releaseDate;
     }
 
+    @Column(name = "producer")
     public String getProducer() {
         return producer;
     }
@@ -90,11 +86,30 @@ public class AlbumServiceModel {
         this.producer = producer;
     }
 
+    @Enumerated(EnumType.ORDINAL)
     public GenreName getGenre() {
         return genre;
     }
 
     public void setGenre(GenreName genre) {
         this.genre = genre;
+    }
+
+    @OneToOne
+    public ArtistEntity getArtistEntity() {
+        return artistEntity;
+    }
+
+    public void setArtistEntity(ArtistEntity artistEntity) {
+        this.artistEntity = artistEntity;
+    }
+
+    @ManyToOne
+    public UserEntity getAddedFrom() {
+        return addedFrom;
+    }
+
+    public void setAddedFrom(UserEntity addedFrom) {
+        this.addedFrom = addedFrom;
     }
 }

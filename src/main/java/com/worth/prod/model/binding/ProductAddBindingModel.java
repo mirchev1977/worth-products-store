@@ -1,14 +1,14 @@
-package com.worth.prod.model.entity;
+package com.worth.prod.model.binding;
 
+import com.worth.prod.model.entity.enums.ArtistName;
 import com.worth.prod.model.entity.enums.GenreName;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "albums")
-public class AlbumEntity extends BaseEntity {
+public class ProductAddBindingModel {
     private String name;
     private String imageUrl;
     private String description;
@@ -17,13 +17,14 @@ public class AlbumEntity extends BaseEntity {
     private LocalDate releaseDate;
     private String producer;
     private GenreName genre;
-    private ArtistEntity artistEntity;
-    private UserEntity addedFrom;
+    private ArtistName artist;
 
-    public AlbumEntity() {
+    public ProductAddBindingModel() {
+
     }
 
-    @Column(name = "name", nullable = false, unique = true)
+    @NotBlank(message = "Cannot be empty")
+    @Size(min = 3, max = 20, message = "Name length must be between 3 and 20 characters long")
     public String getName() {
         return name;
     }
@@ -32,7 +33,7 @@ public class AlbumEntity extends BaseEntity {
         this.name = name;
     }
 
-    @Column(name = "description", columnDefinition = "TEXT", nullable = false)
+    @Size(min = 5, message = "Description length must be min 5 characters long")
     public String getDescription() {
         return description;
     }
@@ -41,7 +42,17 @@ public class AlbumEntity extends BaseEntity {
         this.description = description;
     }
 
-    @Column(name = "price", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @PastOrPresent(message = "The date cannot be in the future")
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(LocalDate neededBefore) {
+        this.releaseDate = neededBefore;
+    }
+
+    @DecimalMin(value = "0", message = "Price must be positive")
     public BigDecimal getPrice() {
         return price;
     }
@@ -50,7 +61,16 @@ public class AlbumEntity extends BaseEntity {
         this.price = price;
     }
 
-    @Column(name = "image_url", nullable = false)
+    @NotNull(message = "You have to select one of the artists")
+    public ArtistName getArtist() {
+        return artist;
+    }
+
+    public void setArtist(ArtistName artist) {
+        this.artist = artist;
+    }
+
+    @Size(min = 5, message = "Image Url length must be minimum 5 characters")
     public String getImageUrl() {
         return imageUrl;
     }
@@ -59,7 +79,7 @@ public class AlbumEntity extends BaseEntity {
         this.imageUrl = imageUrl;
     }
 
-    @Column(name = "copies", nullable = false)
+    @Min(value = 10, message = "Must be more than 10")
     public int getCopies() {
         return copies;
     }
@@ -68,16 +88,6 @@ public class AlbumEntity extends BaseEntity {
         this.copies = copies;
     }
 
-    @Column(name = "release_date", nullable = false)
-    public LocalDate getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(LocalDate releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    @Column(name = "producer")
     public String getProducer() {
         return producer;
     }
@@ -86,30 +96,12 @@ public class AlbumEntity extends BaseEntity {
         this.producer = producer;
     }
 
-    @Enumerated(EnumType.ORDINAL)
+    @NotNull(message = "You have to select one of the genres")
     public GenreName getGenre() {
         return genre;
     }
 
     public void setGenre(GenreName genre) {
         this.genre = genre;
-    }
-
-    @OneToOne
-    public ArtistEntity getArtistEntity() {
-        return artistEntity;
-    }
-
-    public void setArtistEntity(ArtistEntity artistEntity) {
-        this.artistEntity = artistEntity;
-    }
-
-    @ManyToOne
-    public UserEntity getAddedFrom() {
-        return addedFrom;
-    }
-
-    public void setAddedFrom(UserEntity addedFrom) {
-        this.addedFrom = addedFrom;
     }
 }

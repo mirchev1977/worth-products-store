@@ -7,7 +7,7 @@ import com.worth.prod.model.entity.enums.GenreName;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class AlbumViewModel {
+public class ProductViewModel {
     private String id;
     private String name;
     private String imageUrl;
@@ -20,7 +20,7 @@ public class AlbumViewModel {
     private ArtistEntity artistEntity;
     private UserEntity addedFrom;
 
-    public AlbumViewModel() {
+    public ProductViewModel() {
     }
 
     public String getId() {

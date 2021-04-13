@@ -1,8 +1,8 @@
 package com.worth.prod.web;
 
-import com.worth.prod.model.binding.AlbumAddBindingModel;
-import com.worth.prod.model.service.AlbumServiceModel;
-import com.worth.prod.service.AlbumService;
+import com.worth.prod.model.binding.ProductAddBindingModel;
+import com.worth.prod.model.service.ProductServiceModel;
+import com.worth.prod.service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +17,13 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/albums")
-public class AlbumController {
-    private final AlbumService albumService;
+@RequestMapping("/products")
+public class ProductController {
+    private final ProductService productService;
     private final ModelMapper modelMapper;
 
-    public AlbumController(AlbumService albumService, ModelMapper modelMapper) {
-        this.albumService = albumService;
+    public ProductController(ProductService productService, ModelMapper modelMapper) {
+        this.productService = productService;
         this.modelMapper = modelMapper;
     }
 
@@ -33,34 +33,34 @@ public class AlbumController {
             return "redirect:/users/login";
         }
 
-        if (!model.containsAttribute("albumAddBindingModel")) {
-            model.addAttribute("albumAddBindingModel", new AlbumAddBindingModel());
+        if (!model.containsAttribute("productAddBindingModel")) {
+            model.addAttribute("productAddBindingModel", new ProductAddBindingModel());
         }
-        return "add-album";
+        return "add-product";
     }
 
     @PostMapping("/add")
     public String addConfirm(
-            @Valid AlbumAddBindingModel albumAddBindingModel,
+            @Valid ProductAddBindingModel productAddBindingModel,
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes
     ) {
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("albumAddBindingModel", albumAddBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.albumAddBindingModel", bindingResult);
+            redirectAttributes.addFlashAttribute("productAddBindingModel", productAddBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.productAddBindingModel", bindingResult);
 
             return "redirect:add";
         }
 
-        albumService
-                .add(modelMapper.map(albumAddBindingModel, AlbumServiceModel.class));
+        productService
+                .add(modelMapper.map(productAddBindingModel, ProductServiceModel.class));
 
         return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
     public String delete (@PathVariable String id) {
-        albumService.deleteById(id);
+        productService.deleteById(id);
         return "redirect:/";
     }
 }

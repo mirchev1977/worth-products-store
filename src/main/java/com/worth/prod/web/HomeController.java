@@ -1,9 +1,9 @@
 package com.worth.prod.web;
 
 import com.worth.prod.model.entity.UserEntity;
-import com.worth.prod.model.view.AlbumViewModel;
-import com.worth.prod.repository.AlbumRepository;
-import com.worth.prod.service.AlbumService;
+import com.worth.prod.model.view.ProductViewModel;
+import com.worth.prod.repository.ProductRepository;
+import com.worth.prod.service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,14 +14,14 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    private final AlbumService albumService;
+    private final ProductService productService;
     private final ModelMapper modelMapper;
-    private final AlbumRepository albumRepository;
+    private final ProductRepository productRepository;
 
-    public HomeController(AlbumService albumService, ModelMapper modelMapper, AlbumRepository albumRepository) {
-        this.albumService = albumService;
+    public HomeController(ProductService productService, ModelMapper modelMapper, ProductRepository productRepository) {
+        this.productService = productService;
         this.modelMapper = modelMapper;
-        this.albumRepository = albumRepository;
+        this.productRepository = productRepository;
     }
 
     @GetMapping("/")
@@ -30,18 +30,18 @@ public class HomeController {
             return "index";
         }
 
-        if (albumRepository.count() == 0) {
+        if (productRepository.count() == 0) {
             return "index";
         }
 
         UserEntity user = modelMapper.map(httpSession.getAttribute("user"),
                 UserEntity.class);
 
-        List<AlbumViewModel> albumViewModels = albumService.getAllByUser(user);
-        int totalAlbumsSold = albumService.getTotalAlbumsSold(user);
+        List<ProductViewModel> productViewModels = productService.getAllByUser(user);
+        int totalProductsSold = productService.getTotalProductsSold(user);
 
-        model.addAttribute("albumViewModels", albumViewModels);
-        model.addAttribute("totalAlbumsSold", totalAlbumsSold);
+        model.addAttribute("productViewModels", productViewModels);
+        model.addAttribute("totalProductsSold", totalProductsSold);
 
 
         return "home";
