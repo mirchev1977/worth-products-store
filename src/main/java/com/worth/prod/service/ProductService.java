@@ -1,7 +1,7 @@
 package com.worth.prod.service;
 
 import com.worth.prod.model.entity.UserEntity;
-import com.worth.prod.model.entity.enums.ArtistName;
+import com.worth.prod.model.entity.enums.CategoryName;
 import com.worth.prod.model.service.ProductServiceModel;
 import com.worth.prod.model.view.ProductViewModel;
 
@@ -13,7 +13,7 @@ public interface ProductService {
 
     BigDecimal getTotalSum();
 
-    List<ProductViewModel> findAllProductsByArtistName(ArtistName artistName);
+    List<ProductViewModel> findAllProductsByCategoryName(CategoryName categoryName);
 
     void buyById(String id);
 

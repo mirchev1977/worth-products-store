@@ -1,5 +1,5 @@
 package com.worth.prod.model.entity.enums;
 
-public enum ArtistName {
+public enum CategoryName {
     QUEEN, METALLICA, MADONNA
 }

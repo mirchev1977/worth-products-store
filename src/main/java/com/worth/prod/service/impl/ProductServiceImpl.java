@@ -2,12 +2,12 @@ package com.worth.prod.service.impl;
 
 import com.worth.prod.model.entity.ProductEntity;
 import com.worth.prod.model.entity.UserEntity;
-import com.worth.prod.model.entity.enums.ArtistName;
+import com.worth.prod.model.entity.enums.CategoryName;
 import com.worth.prod.model.service.ProductServiceModel;
 import com.worth.prod.model.view.ProductViewModel;
 import com.worth.prod.repository.ProductRepository;
 import com.worth.prod.service.ProductService;
-import com.worth.prod.service.ArtistService;
+import com.worth.prod.service.CategoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +19,13 @@ import java.util.stream.Collectors;
 @Service
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
-    private final ArtistService artistService;
+    private final CategoryService categoryService;
     private final ModelMapper modelMapper;
     private final HttpSession httpSession;
 
-    public ProductServiceImpl(ProductRepository productRepository, ArtistService artistService, ModelMapper modelMapper, HttpSession httpSession) {
+    public ProductServiceImpl(ProductRepository productRepository, CategoryService categoryService, ModelMapper modelMapper, HttpSession httpSession) {
         this.productRepository = productRepository;
-        this.artistService = artistService;
+        this.categoryService = categoryService;
         this.modelMapper = modelMapper;
         this.httpSession = httpSession;
     }
@@ -33,7 +33,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void add(ProductServiceModel productServiceModel) {
         ProductEntity productEntity = modelMapper.map(productServiceModel, ProductEntity.class);
-        productEntity.setArtistEntity(artistService.findByName(productServiceModel.getArtist()));
+        productEntity.setCategoryEntity(categoryService.findByName(productServiceModel.getCategory()));
         productEntity.setAddedFrom(modelMapper.map(httpSession.getAttribute("user"),
                 UserEntity.class
                 ));
@@ -48,8 +48,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductViewModel> findAllProductsByArtistName(ArtistName artistName) {
-//        return productRepository.findAllByArtist_Name(artistName)
+    public List<ProductViewModel> findAllProductsByCategoryName(CategoryName categoryName) {
+//        return productRepository.findAllByCategory_Name(categoryName)
 //                .stream().map(productEntity -> modelMapper.map(productEntity, ProductViewModel.class))
 //                .collect(Collectors.toList());
         return null;

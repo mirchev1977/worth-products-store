@@ -1,6 +1,6 @@
 package com.worth.prod.model.binding;
 
-import com.worth.prod.model.entity.enums.ArtistName;
+import com.worth.prod.model.entity.enums.CategoryName;
 import com.worth.prod.model.entity.enums.GenreName;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,7 +17,7 @@ public class ProductAddBindingModel {
     private LocalDate releaseDate;
     private String producer;
     private GenreName genre;
-    private ArtistName artist;
+    private CategoryName category;
 
     public ProductAddBindingModel() {
 
@@ -61,13 +61,13 @@ public class ProductAddBindingModel {
         this.price = price;
     }
 
-    @NotNull(message = "You have to select one of the artists")
-    public ArtistName getArtist() {
-        return artist;
+    @NotNull(message = "You have to select one of the categories")
+    public CategoryName getArtist() {
+        return category;
     }
 
-    public void setArtist(ArtistName artist) {
-        this.artist = artist;
+    public void setArtist(CategoryName category) {
+        this.category = category;
     }
 
     @Size(min = 5, message = "Image Url length must be minimum 5 characters")

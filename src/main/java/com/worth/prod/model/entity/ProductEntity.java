@@ -17,7 +17,7 @@ public class ProductEntity extends BaseEntity {
     private LocalDate releaseDate;
     private String producer;
     private GenreName genre;
-    private ArtistEntity artistEntity;
+    private CategoryEntity categoryEntity;
     private UserEntity addedFrom;
 
     public ProductEntity() {
@@ -96,12 +96,12 @@ public class ProductEntity extends BaseEntity {
     }
 
     @OneToOne
-    public ArtistEntity getArtistEntity() {
-        return artistEntity;
+    public CategoryEntity getCategoryEntity() {
+        return categoryEntity;
     }
 
-    public void setArtistEntity(ArtistEntity artistEntity) {
-        this.artistEntity = artistEntity;
+    public void setCategoryEntity(CategoryEntity categoryEntity) {
+        this.categoryEntity = categoryEntity;
     }
 
     @ManyToOne

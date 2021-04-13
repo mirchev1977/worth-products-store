@@ -13,7 +13,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, String> 
 //    @Query("SELECT SUM(p.price) FROM ProductEntity p")
 //    BigDecimal findTotalProductsSum();
 
-//    List<ProductEntity> findAllByArtist_Name(ArtistName artistName);
+//    List<ProductEntity> findAllByArtist_Name(CategoryName categoryName);
     List<ProductEntity> findAllByAddedFromOrderByCopiesDesc(UserEntity userEntity);
 
     @Query("SELECT SUM(a.copies) from ProductEntity a")

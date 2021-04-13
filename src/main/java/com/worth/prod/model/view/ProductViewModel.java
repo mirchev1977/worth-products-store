@@ -1,6 +1,6 @@
 package com.worth.prod.model.view;
 
-import com.worth.prod.model.entity.ArtistEntity;
+import com.worth.prod.model.entity.CategoryEntity;
 import com.worth.prod.model.entity.UserEntity;
 import com.worth.prod.model.entity.enums.GenreName;
 
@@ -17,7 +17,7 @@ public class ProductViewModel {
     private LocalDate releaseDate;
     private String producer;
     private GenreName genre;
-    private ArtistEntity artistEntity;
+    private CategoryEntity categoryEntity;
     private UserEntity addedFrom;
 
     public ProductViewModel() {
@@ -95,12 +95,12 @@ public class ProductViewModel {
         this.genre = genre;
     }
 
-    public ArtistEntity getArtistEntity() {
-        return artistEntity;
+    public CategoryEntity getArtistEntity() {
+        return categoryEntity;
     }
 
-    public void setArtistEntity(ArtistEntity artistEntity) {
-        this.artistEntity = artistEntity;
+    public void setArtistEntity(CategoryEntity categoryEntity) {
+        this.categoryEntity = categoryEntity;
     }
 
     public UserEntity getAddedFrom() {

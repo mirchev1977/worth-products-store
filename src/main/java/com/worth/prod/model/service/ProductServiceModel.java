@@ -1,6 +1,6 @@
 package com.worth.prod.model.service;
 
-import com.worth.prod.model.entity.enums.ArtistName;
+import com.worth.prod.model.entity.enums.CategoryName;
 import com.worth.prod.model.entity.enums.GenreName;
 
 import java.math.BigDecimal;
@@ -16,7 +16,7 @@ public class ProductServiceModel {
     private LocalDate releaseDate;
     private String producer;
     private GenreName genre;
-    private ArtistName artist;
+    private CategoryName category;
 
     public String getId() {
         return id;
@@ -50,12 +50,12 @@ public class ProductServiceModel {
         this.price = price;
     }
 
-    public ArtistName getArtist() {
-        return artist;
+    public CategoryName getCategory() {
+        return category;
     }
 
-    public void setArtist(ArtistName artist) {
-        this.artist = artist;
+    public void setCategory(CategoryName category) {
+        this.category = category;
     }
 
     public String getImageUrl() {

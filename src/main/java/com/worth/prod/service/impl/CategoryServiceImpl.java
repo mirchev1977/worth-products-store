@@ -1,21 +1,21 @@
 package com.worth.prod.service.impl;
 
-import com.worth.prod.model.entity.ArtistEntity;
-import com.worth.prod.model.entity.enums.ArtistName;
-import com.worth.prod.repository.ArtistRepository;
-import com.worth.prod.service.ArtistService;
+import com.worth.prod.model.entity.CategoryEntity;
+import com.worth.prod.model.entity.enums.CategoryName;
+import com.worth.prod.repository.CategoryRepository;
+import com.worth.prod.service.CategoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashMap;
 
 @Service
-public class ArtistServiceImpl implements ArtistService {
-    private final ArtistRepository artistRepository;
+public class CategoryServiceImpl implements CategoryService {
+    private final CategoryRepository categoryRepository;
     private HashMap<String, String> careerInfo;
 
-    public ArtistServiceImpl(ArtistRepository artistRepository) {
-        this.artistRepository = artistRepository;
+    public CategoryServiceImpl(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
 
         careerInfo = new HashMap<>();
 //        option between (Queen, Metallica, Madonna)
@@ -26,22 +26,22 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Override
-    public void initArtists() {
-        if (artistRepository.count() == 0) {
-            Arrays.stream(ArtistName.values())
-                    .forEach(artistName -> {
-                        ArtistEntity artistEntity = new ArtistEntity(
-                                artistName,
-                                this.careerInfo.get(artistName.name())
+    public void initCategories() {
+        if (categoryRepository.count() == 0) {
+            Arrays.stream(CategoryName.values())
+                    .forEach(categoryName -> {
+                        CategoryEntity categoryEntity = new CategoryEntity(
+                                categoryName,
+                                this.careerInfo.get(categoryName.name())
                         );
 
-                        artistRepository.save(artistEntity);
+                        categoryRepository.save(categoryEntity);
                     });
         }
     }
 
     @Override
-    public ArtistEntity findByName(ArtistName artistName) {
-        return artistRepository.findByName(artistName).orElse(null);
+    public CategoryEntity findByName(CategoryName categoryName) {
+        return categoryRepository.findByName(categoryName).orElse(null);
     }
 }
