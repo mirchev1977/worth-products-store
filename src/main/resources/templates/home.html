@@ -3,29 +3,29 @@
 <head th:replace="fragments/main-layout :: head"></head>
 <body>
 <header th:replace="fragments/main-layout :: header"></header>
+<h2 th:text="|Total sold copies of all products: ${totalProductsSold}|" class="text-light border-bottom bg-blur">Total sold copies of all products: 10000</h2>
 <main class="p-5 align-content-center bg-blur my-main d-flex justify-content-center">
-    <h2 th:text="|Total sold copies of all products: ${totalProductsSold}|" class="text-light border-bottom">Total sold copies of all products: 10000</h2>
     <div class="row">
-        <div th:each="alb : ${productViewModels}" class="col-md-3">
+        <div th:each="prod : ${productViewModels}" class="col-md-3">
             <div class="card mb-4 box-shadow">
-                <img src="/image/metallica.jpg" th:src="${alb.imageUrl}" class="card-img-top" alt="Thumbnail [100%x225]"
+                <img src="/image/metallica.jpg" th:src="${prod.imageUrl}" class="card-img-top" alt="Thumbnail [100%x225]"
                      data-holder-rendered="true"
                      style="height: 225px; width: 100%; display: block;">
                 <div class="card-body">
                     <div class="text-center">
-                        <p th:text="|Name: ${alb.name}|" class="card-text border-bottom ">Name: Name of product</p>
-                        <p th:text="|Artist: ${alb.categoryEntity.name}|" class="card-text border-bottom ">Artist: Metallica</p>
-                        <p th:text="|Genre: ${alb.genre.name()}|" class="card-text border-bottom ">Genre: Metal</p>
-                        <p th:text="|Price: ${alb.price}|" class="card-text border-bottom ">Price: 19.99</p>
-                        <p th:text="|Release Date: ${alb.releaseDate}|" class="card-text border-bottom">Release Date: </p>
+                        <p th:text="|Name: ${prod.name}|" class="card-text border-bottom ">Name: Name of product</p>
+                        <p th:text="|Artist: ${prod.categoryEntity.name}|" class="card-text border-bottom ">Artist: Metallica</p>
+                        <p th:text="|Genre: ${prod.genre.name()}|" class="card-text border-bottom ">Genre: Metal</p>
+                        <p th:text="|Price: ${prod.price}|" class="card-text border-bottom ">Price: 19.99</p>
+                        <p th:text="|Release Date: ${prod.releaseDate}|" class="card-text border-bottom">Release Date: </p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                             <a
-                                th:href="@{/products/delete/{id}(id = *{alb.id})}"
+                                th:href="@{/products/delete/{id}(id = *{prod.id})}"
                                 type="button" class="btn btn-sm btn-outline-secondary">Delete</a>
                         </div>
-                        <small th:text="|${alb.copies} copies|" class="text-muted">1000 copies</small>
+                        <small th:text="|${prod.copies} copies|" class="text-muted">1000 copies</small>
                     </div>
                 </div>
             </div>

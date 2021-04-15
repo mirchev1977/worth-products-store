@@ -95,11 +95,11 @@ public class ProductViewModel {
         this.genre = genre;
     }
 
-    public CategoryEntity getArtistEntity() {
+    public CategoryEntity getCategoryEntity() {
         return categoryEntity;
     }
 
-    public void setArtistEntity(CategoryEntity categoryEntity) {
+    public void setCategoryEntity(CategoryEntity categoryEntity) {
         this.categoryEntity = categoryEntity;
     }
 

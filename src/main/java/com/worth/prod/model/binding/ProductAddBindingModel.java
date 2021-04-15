@@ -62,11 +62,11 @@ public class ProductAddBindingModel {
     }
 
     @NotNull(message = "You have to select one of the categories")
-    public CategoryName getArtist() {
+    public CategoryName getCategory() {
         return category;
     }
 
-    public void setArtist(CategoryName category) {
+    public void setCategory(CategoryName category) {
         this.category = category;
     }
 
