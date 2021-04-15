@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/main-layout :: head"></head>
 <body>
-<nav th:replace="fragments/main-layout :: nav"></nav>
+<header th:replace="fragments/main-layout :: header"></header>
+<h1 class="text-light border-bottom bg-blur">Add Product</h1>
 <main class="p-5 bg-blur text-center my-main">
-    <h1 class="text-light border-bottom">Add Product</h1>
     <div class="d-flex justify-content-center">
         <form th:object="${productAddBindingModel}" action="/products/add" method="POST"
               class="text-light">
