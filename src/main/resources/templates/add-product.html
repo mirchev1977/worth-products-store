@@ -51,8 +51,8 @@
                 <div class="col">
                     <label for="category">Category</label>
                     <select th:field="*{category}" th:errorclass="bg-danger" name="category" id="category" class="custom-select">
-                        <option value="" selected>Select Artist</option>
-                        <option th:each="c : ${T(com.worth.prod.model.entity.enums.CategoryName).values()}" th:value="${c}" th:text="${c}">Select Artist</option>
+                        <option value="" selected>Select Category</option>
+                        <option th:each="c : ${T(com.worth.prod.model.entity.enums.CategoryName).values()}" th:value="${c}" th:text="${c}">Select Category</option>
                     </select>
                     <small th:if="${#fields.hasErrors('category')}" th:errors="*{category}" id="categoryError" class="form-text bg-danger rounded">You must select category</small>
                 </div>

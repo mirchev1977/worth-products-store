@@ -13,8 +13,8 @@
                      style="height: 225px; width: 100%; display: block;">
                 <div class="card-body">
                     <div class="text-center">
-                        <p th:text="|Name: ${prod.name}|" class="card-text border-bottom ">Name: Name of product</p>
-                        <p th:text="|Artist: ${prod.categoryEntity.name}|" class="card-text border-bottom ">Artist: Metallica</p>
+                        <p th:text="|Product: ${prod.name}|" class="card-text border-bottom ">Name: Name of product</p>
+                        <p th:text="|Category: ${prod.categoryEntity.name}|" class="card-text border-bottom ">Artist: Metallica</p>
                         <p th:text="|Genre: ${prod.genre.name()}|" class="card-text border-bottom ">Genre: Metal</p>
                         <p th:text="|Price: ${prod.price}|" class="card-text border-bottom ">Price: 19.99</p>
                         <p th:text="|Release Date: ${prod.releaseDate}|" class="card-text border-bottom">Release Date: </p>
