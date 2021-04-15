@@ -12,7 +12,7 @@ public class ProductAddBindingModel {
     private String name;
     private String imageUrl;
     private String description;
-    private int copies;
+    private int quantity;
     private BigDecimal price;
     private LocalDate releaseDate;
     private String producer;
@@ -80,12 +80,12 @@ public class ProductAddBindingModel {
     }
 
     @Min(value = 10, message = "Must be more than 10")
-    public int getCopies() {
-        return copies;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setCopies(int copies) {
-        this.copies = copies;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getProducer() {

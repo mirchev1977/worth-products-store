@@ -11,7 +11,7 @@ public class ProductServiceModel {
     private String name;
     private String imageUrl;
     private String description;
-    private int copies;
+    private int quantity;
     private BigDecimal price;
     private LocalDate releaseDate;
     private String producer;
@@ -66,12 +66,12 @@ public class ProductServiceModel {
         this.imageUrl = imageUrl;
     }
 
-    public int getCopies() {
-        return copies;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setCopies(int copies) {
-        this.copies = copies;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public LocalDate getReleaseDate() {

@@ -33,9 +33,9 @@
                     <small th:if="${#fields.hasErrors('price')}" th:errors="*{price}" id="priceError" class="form-text bg-danger rounded">Price must be positive</small>
                 </div>
                 <div class="col">
-                    <label for="copies">Copies</label>
-                    <input th:field="*{copies}" th:errorclass="bg-danger" name="copies" id="copies" type="number" class="form-control" placeholder="Copies">
-                    <small th:if="${#fields.hasErrors('copies')}" th:errors="*{copies}" id="copiesError" class="form-text bg-danger rounded">Copies must be positive</small>
+                    <label for="quantity">Quantity</label>
+                    <input th:field="*{quantity}" th:errorclass="bg-danger" name="quantity" id="quantity" type="number" class="form-control" placeholder="Quantity">
+                    <small th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" id="quantityError" class="form-text bg-danger rounded">Quantity must be positive</small>
                 </div>
             </div>
             <div class="form-row m-5">

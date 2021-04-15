@@ -67,7 +67,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductViewModel> getAllByUser(UserEntity user) {
-        return productRepository.findAllByAddedFromOrderByCopiesDesc(user).stream().map(productEntity ->
+        return productRepository.findAllByAddedFromOrderByQuantityDesc(user).stream().map(productEntity ->
                 modelMapper.map(productEntity, ProductViewModel.class)).collect(Collectors.toList());
     }
 
