@@ -1,5 +1,5 @@
 package com.worth.prod.model.entity.enums;
 
 public enum CategoryName {
-    QUEEN, METALLICA, MADONNA
+    OFFICE_SUPPLIES, FURNITURE, BREAKROOM, SNACKS
 }
