@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/main-layout :: head"></head>
-<title th:fragment="title">Register</title>
+<head th:replace="fragments/main-layout :: head_top"></head>
+<head>
+    <title>Register</title>
+</head>
+<head th:replace="fragments/main-layout :: head_bottom"></head>
 
 <body>
 <header th:replace="fragments/main-layout :: header"></header>
