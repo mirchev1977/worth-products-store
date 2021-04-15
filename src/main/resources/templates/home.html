@@ -8,7 +8,8 @@
 
 <body>
 <header th:replace="fragments/main-layout :: header"></header>
-<h2 th:text="|Total sold copies of all products: ${totalProductsSold}|" class="text-light border-bottom bg-blur">Total sold copies of all products: 10000</h2>
+<h1 class="text-light border-left pl-2 bg-blur">Products For Sale Added By Me</h1>
+<h2 th:text="|Total quantity of all added products: ${totalProductsSold}|" class="text-light border-bottom bg-blur">Total added instances of all products: 10000</h2>
 <main class="p-5 align-content-center bg-blur my-main d-flex justify-content-center">
     <div class="row">
         <div th:each="prod : ${productViewModels}" class="col-md-3">
@@ -30,7 +31,7 @@
                                 th:href="@{/products/delete/{id}(id = *{prod.id})}"
                                 type="button" class="btn btn-sm btn-outline-secondary">Delete</a>
                         </div>
-                        <small th:text="|${prod.copies} copies|" class="text-muted">1000 copies</small>
+                        <small th:text="|Quantity: ${prod.copies}|" class="text-muted">Quantity: 1000</small>
                     </div>
                 </div>
             </div>
