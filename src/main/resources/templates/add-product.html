@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/main-layout :: head_top"></head>
+<head th:replace="fragments/main-layout :: headtop"></head>
 <head>
     <title>Add Product</title>
 </head>
-<head th:replace="fragments/main-layout :: head_bottom"></head>
+<head th:replace="fragments/main-layout :: headbottom"></head>
 <body>
 <header th:replace="fragments/main-layout :: header"></header>
 <h1 class="text-light border-bottom bg-blur">Add Product</h1>
@@ -56,7 +56,7 @@
                     <label for="category">Category</label>
                     <select th:field="*{category}" th:errorclass="bg-danger" name="category" id="category" class="custom-select">
                         <option value="" selected>Select Category</option>
-                        <option th:each="c : ${T(com.worth.prod.model.entity.enums.CategoryName).values()}" th:value="${c}" th:text="${c}">Select Category</option>
+                        <option th:each="c : ${T(com.w.prod.model.entity.enums.CategoryName).values()}" th:value="${c}" th:text="${c}">Select Category</option>
                     </select>
                     <small th:if="${#fields.hasErrors('category')}" th:errors="*{category}" id="categoryError" class="form-text bg-danger rounded">You must select category</small>
                 </div>
@@ -64,7 +64,7 @@
                     <label for="genre">Genre</label>
                     <select th:field="*{genre}" th:errorclass="bg-danger" name="genre" id="genre" class="custom-select">
                         <option value="" selected>Select genre</option>
-                        <option th:each="g : ${T(com.worth.prod.model.entity.enums.GenreName).values()}" th:value="${g}" th:text="${g}">Select genre</option>
+                        <option th:each="g : ${T(com.w.prod.model.entity.enums.GenreName).values()}" th:value="${g}" th:text="${g}">Select genre</option>
                     </select>
                     <small th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}" id="genreError" class="form-text bg-danger rounded">You must select genre</small>
                 </div>
