@@ -28,7 +28,7 @@ public class ProjectRestController {
         this.userService = userService;
     }
 
-    @GetMapping("/api")
+    @GetMapping("/api/all")
     public ResponseEntity<List<ProjectBasicViewModel>> findAll() {
         return ResponseEntity
                 .ok()

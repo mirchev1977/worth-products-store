@@ -4,7 +4,8 @@ const allBtn = document.getElementById('all');
 const myProjectBtn = document.getElementById('own');
 const collabsBtn = document.getElementById('collabs');
 const allProjects = [];
-fetch("http://localhost:8080/manageProjects/api")
+
+fetch("http://localhost:9000/manageProjects/api/all")
     .then(response => response.json())
     .then(data => {
         for (let d of data) {
@@ -13,7 +14,7 @@ fetch("http://localhost:8080/manageProjects/api")
     });
 
 const myProjects = [];
-fetch("http://localhost:8080/manageProjects/own")
+fetch("http://localhost:9000/manageProjects/own")
     .then(response => response.json())
     .then(data => {
         for (let d of data) {
@@ -22,7 +23,7 @@ fetch("http://localhost:8080/manageProjects/own")
     });
 
 const myCollabProjects = [];
-fetch("http://localhost:8080/manageProjects/collaborations")
+fetch("http://localhost:9000/manageProjects/collaborations")
     .then(response => response.json())
     .then(data => {
         for (let d of data) {
