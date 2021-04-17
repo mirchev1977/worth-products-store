@@ -23,11 +23,11 @@ public class DatabaseInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        userRoleService.initUserRoles();
-        userService.initUsers();
-        activityTypeService.seedActivityTypes();
-        equipmentService.seedEquipment();
-        labService.seedLabs();
+//        userRoleService.initUserRoles();
+//        userService.initUsers();
+//        activityTypeService.seedActivityTypes();
+//        equipmentService.seedEquipment();
+//        labService.seedLabs();
 
     }
 
