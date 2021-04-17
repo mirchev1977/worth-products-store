@@ -5,31 +5,61 @@ const myProjectBtn = document.getElementById('own');
 const collabsBtn = document.getElementById('collabs');
 const allProjects = [];
 
-fetch("https://wprod.herokuapp.com/manageProjects/api/all")
-    .then(response => response.json())
-    .then(data => {
-        for (let d of data) {
-            allProjects.push(d);
-        }
-    });
+try {
+    fetch("http://localhost:9000/manageProjects/api/all")
+        .then(response => response.json())
+        .then(data => {
+            for (let d of data) {
+                allProjects.push(d);
+            }
+        });
+} catch (e) {
+    fetch("https://wprod.herokuapp.com/manageProjects/api/all")
+        .then(response => response.json())
+        .then(data => {
+            for (let d of data) {
+                allProjects.push(d);
+            }
+        });
+}
 
 const myProjects = [];
-fetch("https://wprod.herokuapp.com/manageProjects/own")
-    .then(response => response.json())
-    .then(data => {
-        for (let d of data) {
-            myProjects.push(d);
-        }
-    });
+try {
+    fetch("http://localhost:9000/manageProjects/own")
+        .then(response => response.json())
+        .then(data => {
+            for (let d of data) {
+                myProjects.push(d);
+            }
+        });
+} catch (e) {
+    fetch("https://wprod.herokuapp.com/manageProjects/own")
+        .then(response => response.json())
+        .then(data => {
+            for (let d of data) {
+                myProjects.push(d);
+            }
+        });
+}
 
 const myCollabProjects = [];
-fetch("https://wprod.herokuapp.com/manageProjects/collaborations")
-    .then(response => response.json())
-    .then(data => {
-        for (let d of data) {
-            myCollabProjects.push(d);
-        }
-    });
+try {
+    fetch("http://localhost:9000/manageProjects/collaborations")
+        .then(response => response.json())
+        .then(data => {
+            for (let d of data) {
+                myCollabProjects.push(d);
+            }
+        });
+} catch (e) {
+    fetch("https://wprod.herokuapp.com/manageProjects/collaborations")
+        .then(response => response.json())
+        .then(data => {
+            for (let d of data) {
+                myCollabProjects.push(d);
+            }
+        });
+}
 
 // Start of functions
 

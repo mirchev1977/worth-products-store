@@ -23,15 +23,18 @@ import java.util.stream.Collectors;
 public class EquipmentServiceImpl implements EquipmentService {
 
 
+        //private final Resource equipment;
         private final Gson gson;
         private final EquipmentRepository equipmentRepository;
         private final ModelMapper modelMapper;
 
     public EquipmentServiceImpl(
+                //@Value("classpath:init/equipment.json") Resource equipment,
                 Gson gson,
                 EquipmentRepository equipmentRepository,
                 ModelMapper modelMapper
         ) {
+            //this.equipment = equipment;
             this.gson = gson;
             this.equipmentRepository = equipmentRepository;
             this.modelMapper = modelMapper;
@@ -54,6 +57,21 @@ public class EquipmentServiceImpl implements EquipmentService {
                     equipmentRepository.save(act);
                 }
             }
+
+            //if (equipmentRepository.count() == 0) {
+            //    try {
+            //        EquipmentServiceModel[] equipmentServiceModels = gson.fromJson(Files.readString(Path.of(equipment.getURI())), EquipmentServiceModel[].class);
+            //        Arrays.stream(equipmentServiceModels)
+            //                .forEach(e -> {
+            //                    Equipment current = modelMapper.map(e, Equipment.class);
+            //                    equipmentRepository.save(current);
+            //                });
+
+            //    } catch (IOException e) {
+            //        throw new IllegalStateException("Cannot seed equipment");
+            //    }
+
+            //}
         }
 
     @Override

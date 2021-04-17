@@ -22,18 +22,21 @@ import java.util.stream.Collectors;
 
 @Service
 public class LabServiceImpl implements LabService {
+    //private final Resource labs;
     private final Gson gson;
     private final LabRepository labRepository;
     private final EquipmentService equipmentService;
     private final ModelMapper modelMapper;
 
     public LabServiceImpl(
+            //@Value("classpath:init/labs.json") Resource labs,
             Gson gson,
             LabRepository labRepository,
             EquipmentService equipmentService,
             ModelMapper modelMapper
     ) {
 
+        //this.labs = labs;
         this.gson = gson;
         this.labRepository = labRepository;
         this.equipmentService = equipmentService;
@@ -62,6 +65,23 @@ public class LabServiceImpl implements LabService {
                 labRepository.save(lab);
             }
         }
+        //if (labRepository.count() == 0) {
+        //    try {
+        //        LabServiceModel[] labServiceModels = gson.fromJson(Files.readString(Path.of(labs.getURI())), LabServiceModel[].class);
+        //        Arrays.stream(labServiceModels)
+        //                .forEach(m -> {
+        //                    List<Project> emptyList = new ArrayList<>();
+        //                    Lab current = modelMapper.map(m, Lab.class);
+        //                    current.setEquipment(equipmentService.findEquipment(m.getEquipment()));
+        //                    current.setProjects(emptyList);
+        //                    labRepository.save(current);
+        //                });
+
+        //    } catch (IOException e) {
+        //        throw new IllegalStateException("Cannot seed Labs");
+        //    }
+
+        //}
     }
 
     @Override
