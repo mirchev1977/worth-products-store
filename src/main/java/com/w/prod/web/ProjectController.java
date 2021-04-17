@@ -66,7 +66,7 @@ public class ProjectController {
 
     @GetMapping("/all")
     public String showAll(Model model) {
-        return "projects-all1";
+        return "projects-all";
     }
 
     @GetMapping("/owned")
