@@ -3,12 +3,12 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="fragments/commons :: head">
+<head th:replace="fragments/main-layout :: head">
 </head>
 <body>
 
 <!-- Header -->
-<header th:replace="fragments/commons :: navigation">
+<header th:replace="fragments/main-layout :: navigation">
 </header>
 
 <main class="container-fluid flex-fill">
@@ -213,7 +213,7 @@
         </div>
     </div>
     <!-- Footer -->
-    <footer th:replace="fragments/commons :: footer" class="footer bg-blur">
+    <footer th:replace="fragments/main-layout :: footer" class="footer bg-blur">
     </footer>
 </main>
 <script th:src="@{/js/show-text.js}">
