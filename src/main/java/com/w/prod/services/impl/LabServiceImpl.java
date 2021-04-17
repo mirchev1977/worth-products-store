@@ -22,22 +22,18 @@ import java.util.stream.Collectors;
 
 @Service
 public class LabServiceImpl implements LabService {
-
-    private final Resource labs;
     private final Gson gson;
     private final LabRepository labRepository;
     private final EquipmentService equipmentService;
     private final ModelMapper modelMapper;
 
     public LabServiceImpl(
-            @Value("classpath:init/labs.json") Resource labs,
             Gson gson,
             LabRepository labRepository,
             EquipmentService equipmentService,
             ModelMapper modelMapper
     ) {
 
-        this.labs = labs;
         this.gson = gson;
         this.labRepository = labRepository;
         this.equipmentService = equipmentService;
