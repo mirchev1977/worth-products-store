@@ -4,6 +4,7 @@ import com.w.prod.models.binding.ProjectAddBindingModel;
 import com.w.prod.models.binding.ProjectResultBindingModel;
 import com.w.prod.models.service.ProjectResultServiceModel;
 import com.w.prod.models.service.ProjectServiceModel;
+import com.w.prod.models.view.ProjectBasicViewModel;
 import com.w.prod.models.view.ProjectDetailedViewModel;
 import com.w.prod.services.*;
 import org.modelmapper.ModelMapper;
@@ -66,6 +67,10 @@ public class ProjectController {
 
     @GetMapping("/all")
     public String showAll(Model model) {
+        List<ProjectBasicViewModel> projectViewModels =  projectService.getActiveProjectsOrderedbyStartDate();
+
+        model.addAttribute("projectViewModels", projectViewModels);
+
         return "projects-all";
     }
 
