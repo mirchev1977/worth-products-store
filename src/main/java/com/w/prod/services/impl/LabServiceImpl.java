@@ -47,21 +47,24 @@ public class LabServiceImpl implements LabService {
     @Override
     public void seedLabs() {
         if (labRepository.count() == 0) {
-            try {
-                LabServiceModel[] labServiceModels = gson.fromJson(Files.readString(Path.of(labs.getURI())), LabServiceModel[].class);
-                Arrays.stream(labServiceModels)
-                        .forEach(m -> {
-                            List<Project> emptyList = new ArrayList<>();
-                            Lab current = modelMapper.map(m, Lab.class);
-                            current.setEquipment(equipmentService.findEquipment(m.getEquipment()));
-                            current.setProjects(emptyList);
-                            labRepository.save(current);
-                        });
+            String[][] labs = {
+                { "Leonardo", "Wood workshop" },
+                { "Tesla", "Metal workshop" },
+                { "Lumiere", "Digital production workshop" },
+                { "Bell", "Prototyping space" },
+                { "Monnet", "Computers, Multimedia, Printers" },
+                { "Ideation", "Computers, Multimedia, Printers" },
+                { "STEM&Art", "Computers, Multimedia, Printers" },
+                { "Carnegie", "Computers, Multimedia, Printers" }
+            };
 
-            } catch (IOException e) {
-                throw new IllegalStateException("Cannot seed Labs");
+            for (String[] l : labs ) {
+                Lab lab = new Lab();
+                lab.setName(l[0]);
+                lab.setEquipment(equipmentService.findEquipment(l[1]));
+                lab.setProjects(new ArrayList<>());
+                labRepository.save(lab);
             }
-
         }
     }
 

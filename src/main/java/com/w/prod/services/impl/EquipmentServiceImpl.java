@@ -1,5 +1,6 @@
 package com.w.prod.services.impl;
 
+import com.w.prod.models.entity.ActivityType;
 import com.w.prod.models.entity.Equipment;
 import com.w.prod.models.service.EquipmentServiceModel;
 import com.w.prod.repositories.EquipmentRepository;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,19 +23,15 @@ import java.util.stream.Collectors;
 public class EquipmentServiceImpl implements EquipmentService {
 
 
-        private final Resource equipment;
         private final Gson gson;
         private final EquipmentRepository equipmentRepository;
         private final ModelMapper modelMapper;
 
     public EquipmentServiceImpl(
-                @Value("classpath:init/equipment.json") Resource equipment,
                 Gson gson,
                 EquipmentRepository equipmentRepository,
                 ModelMapper modelMapper
         ) {
-
-            this.equipment = equipment;
             this.gson = gson;
             this.equipmentRepository = equipmentRepository;
             this.modelMapper = modelMapper;
@@ -42,18 +40,19 @@ public class EquipmentServiceImpl implements EquipmentService {
         @Override
         public void seedEquipment() {
             if (equipmentRepository.count() == 0) {
-                try {
-                    EquipmentServiceModel[] equipmentServiceModels = gson.fromJson(Files.readString(Path.of(equipment.getURI())), EquipmentServiceModel[].class);
-                    Arrays.stream(equipmentServiceModels)
-                            .forEach(e -> {
-                                Equipment current = modelMapper.map(e, Equipment.class);
-                                equipmentRepository.save(current);
-                            });
+                ArrayList<String> equipment = new ArrayList<>();
 
-                } catch (IOException e) {
-                    throw new IllegalStateException("Cannot seed equipment");
+                equipment.add("Wood workshop");
+                equipment.add("Metal workshop");
+                equipment.add("Digital production workshop");
+                equipment.add("Prototyping space");
+                equipment.add("Computers, Multimedia, Printers");
+
+                for (String eqName : equipment) {
+                    Equipment act = new Equipment();
+                    act.setEquipmentName(eqName);
+                    equipmentRepository.save(act);
                 }
-
             }
         }
 

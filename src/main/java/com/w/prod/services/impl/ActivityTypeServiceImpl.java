@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class ActivityTypeServiceImpl implements ActivityTypeService {
-//    private final Resource activityTypeFile;
     private final Gson gson;
     private final ActivityTypeRepository activityTypeRepository;
     private final ModelMapper modelMapper;
@@ -41,6 +40,11 @@ public class ActivityTypeServiceImpl implements ActivityTypeService {
         if (activityTypeRepository.count() == 0) {
             ArrayList<String> activityTypes = new ArrayList<>();
             activityTypes.add("Business Support");
+            activityTypes.add("Masterclass");
+            activityTypes.add("Networking Session");
+            activityTypes.add("Product Innovation Session");
+            activityTypes.add("Tech Demonstration");
+            activityTypes.add("Training");
 
             for (String activity : activityTypes) {
                 ActivityType act = new ActivityType();

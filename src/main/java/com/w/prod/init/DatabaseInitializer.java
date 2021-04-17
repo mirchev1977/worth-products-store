@@ -26,9 +26,8 @@ public class DatabaseInitializer implements CommandLineRunner {
         userRoleService.initUserRoles();
         userService.initUsers();
         activityTypeService.seedActivityTypes();
-//        equipmentService.seedEquipment();
-//        labService.seedLabs();
-
+        equipmentService.seedEquipment();
+        labService.seedLabs();
     }
 
 
