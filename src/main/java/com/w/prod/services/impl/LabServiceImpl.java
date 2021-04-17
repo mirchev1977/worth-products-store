@@ -59,7 +59,7 @@ public class LabServiceImpl implements LabService {
                         });
 
             } catch (IOException e) {
-//                throw new IllegalStateException("Cannot seed Labs");
+                throw new IllegalStateException("Cannot seed Labs");
             }
 
         }

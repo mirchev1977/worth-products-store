@@ -51,7 +51,7 @@ public class EquipmentServiceImpl implements EquipmentService {
                             });
 
                 } catch (IOException e) {
-//                    throw new IllegalStateException("Cannot seed equipment");
+                    throw new IllegalStateException("Cannot seed equipment");
                 }
 
             }
