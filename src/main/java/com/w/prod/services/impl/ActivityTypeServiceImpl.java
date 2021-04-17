@@ -49,7 +49,7 @@ public class ActivityTypeServiceImpl implements ActivityTypeService {
                         });
 
             } catch (IOException e) {
-                throw new IllegalStateException("Cannot seed Activity Types");
+//                throw new IllegalStateException("Cannot seed Activity Types");
             }
 
         }
