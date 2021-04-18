@@ -30,7 +30,7 @@ public class PremiseServiceImpl implements PremiseService {
             ModelMapper modelMapper
     ) {
 
-        //this.labs = labs;
+        //this.premises = premises;
         this.gson = gson;
         this.premiseRepository = premiseRepository;
         this.equipmentService = equipmentService;
@@ -40,7 +40,7 @@ public class PremiseServiceImpl implements PremiseService {
     @Override
     public void seedPremises() {
         if (premiseRepository.count() == 0) {
-            String[][] labs = {
+            String[][] premises = {
                 { "Leonardo", "Wood workshop" },
                 { "Tesla", "Metal workshop" },
                 { "Lumiere", "Digital production workshop" },
@@ -51,7 +51,7 @@ public class PremiseServiceImpl implements PremiseService {
                 { "Carnegie", "Computers, Multimedia, Printers" }
             };
 
-            for (String[] l : labs ) {
+            for (String[] l : premises ) {
                 Premise premise = new Premise();
                 premise.setName(l[0]);
                 premise.setEquipment(equipmentService.findEquipment(l[1]));

@@ -123,9 +123,9 @@ public class BlueprintController {
     public String acceptBlueprint(@PathVariable String id, Model model) {
         BlueprintServiceModel blueprintServiceModel = blueprintService.extractBlueprintModel(id);
         model.addAttribute("blueprintServiceModel", blueprintServiceModel);
-        model.addAttribute("labs", premiseService.findSuitablePremises(blueprintServiceModel.getNeededEquipment()));
+        model.addAttribute("premises", premiseService.findSuitablePremises(blueprintServiceModel.getNeededEquipment()));
         model.addAttribute("duration", blueprintServiceModel.getDuration());
-        model.addAttribute("labsInfo", premiseService.getSuitablePremisesWithProducts(blueprintServiceModel.getNeededEquipment()));
+        model.addAttribute("premisesInfo", premiseService.getSuitablePremisesWithProducts(blueprintServiceModel.getNeededEquipment()));
 
         return "product-add";
     }

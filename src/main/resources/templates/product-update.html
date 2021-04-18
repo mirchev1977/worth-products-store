@@ -153,7 +153,7 @@
                             th:value="*{premise}"
                             th:errorclass="is-invalid">
                         <!--                        <option value="">Select the Premise</option>-->
-                        <!--                        <option th:each="l : ${labs}"-->
+                        <!--                        <option th:each="l : ${premises}"-->
                         <!--                                th:text="${l}" th:value="${l}" th:selected="${l}==${productAddBindingModel.premise}" >Value-->
                         <!--                        </option>-->
                     </select>
@@ -166,7 +166,7 @@
                 <p></p>
                 <div id="hiddenInfo">
                     <table>
-                        <tr th:each="instance : ${labsInfo}">
+                        <tr th:each="instance : ${premisesInfo}">
                             <td th:text="${instance.key}">Premise</td>
                             <td th:utext="${instance.value}">Products</td>
                         </tr>
