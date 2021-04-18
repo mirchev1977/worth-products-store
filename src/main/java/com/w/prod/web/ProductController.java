@@ -157,7 +157,7 @@ public class ProductController {
         ProductServiceModel currentData = productService.extractProductServiceModel(id);
         long durationInDays = productService.getDurationInDays(currentData);
         model.addAttribute("current", currentData);
-//        model.addAttribute("premises", premiseService.getAllPremises());
+        model.addAttribute("premises", premiseService.getAllPremises());
         model.addAttribute("duration", durationInDays);
         model.addAttribute("premisesInfo", premiseService.getAllPremisesWithProducts());
 

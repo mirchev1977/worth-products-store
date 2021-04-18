@@ -128,9 +128,9 @@
 
                             th:value="${productAddBindingModel.neededEquipment}"
                             th:errorclass="is-invalid">
-                        <!--                        <option value="">Select the equipment provided</option>-->
-                        <!--                        <option th:text="${current.neededEquipment}" th:value="${current.neededEquipment}" >Value-->
-                        <!--                        </option>-->
+                                                <option value="">Select the equipment provided</option>
+                                                <option th:text="${current.neededEquipment}" th:value="${current.neededEquipment}" >Value
+                                                </option>
                     </select>
                     <p class="text-primary"
                        th:text="|Initially reserved equipment: ${current.neededEquipment}|">
@@ -152,10 +152,10 @@
                             name="premise"
                             th:value="*{premise}"
                             th:errorclass="is-invalid">
-                        <!--                        <option value="">Select the Premise</option>-->
-                        <!--                        <option th:each="l : ${premises}"-->
-                        <!--                                th:text="${l}" th:value="${l}" th:selected="${l}==${productAddBindingModel.premise}" >Value-->
-                        <!--                        </option>-->
+                                                <option value="">Select the Premise</option>
+                                                <option th:each="l : ${premises}"
+                                                        th:text="${l}" th:value="${l}" th:selected="${l}==${productAddBindingModel.premise}" >Value
+                                                </option>
                     </select>
                     <p class="text-primary"
                        th:text="|Initially chosen premise: ${current.premise}|"></p>
