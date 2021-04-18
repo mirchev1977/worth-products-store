@@ -5,61 +5,31 @@ const myProductBtn = document.getElementById('own');
 const collabsBtn = document.getElementById('collabs');
 const allProducts = [];
 
-try {
-    fetch("http://localhost:9000/manageProducts/api/all")
-        .then(response => response.json())
-        .then(data => {
-            for (let d of data) {
-                allProducts.push(d);
-            }
-        });
-} catch (e) {
-    fetch("https://wprod.herokuapp.com/manageProducts/api/all")
-        .then(response => response.json())
-        .then(data => {
-            for (let d of data) {
-                allProducts.push(d);
-            }
-        });
-}
+fetch("https://wprod.herokuapp.com/manageProducts/api/all")
+    .then(response => response.json())
+    .then(data => {
+        for (let d of data) {
+            allProducts.push(d);
+        }
+    });
 
 const myProducts = [];
-try {
-    fetch("http://localhost:9000/manageProducts/own")
-        .then(response => response.json())
-        .then(data => {
-            for (let d of data) {
-                myProducts.push(d);
-            }
-        });
-} catch (e) {
-    fetch("https://wprod.herokuapp.com/manageProducts/own")
-        .then(response => response.json())
-        .then(data => {
-            for (let d of data) {
-                myProducts.push(d);
-            }
-        });
-}
+fetch("https://wprod.herokuapp.com/manageProducts/own")
+    .then(response => response.json())
+    .then(data => {
+        for (let d of data) {
+            myProducts.push(d);
+        }
+    });
 
 const myCollabProducts = [];
-try {
-    fetch("http://localhost:9000/manageProducts/collaborations")
-        .then(response => response.json())
-        .then(data => {
-            for (let d of data) {
-                myCollabProducts.push(d);
-            }
-        });
-} catch (e) {
-    fetch("https://wprod.herokuapp.com/manageProducts/collaborations")
-        .then(response => response.json())
-        .then(data => {
-            for (let d of data) {
-                myCollabProducts.push(d);
-            }
-        });
-}
+fetch("https://wprod.herokuapp.com/manageProducts/collaborations")
+    .then(response => response.json())
+    .then(data => {
+        for (let d of data) {
+            myCollabProducts.push(d);
+        }
+    });
 
 // Start of functions
 
