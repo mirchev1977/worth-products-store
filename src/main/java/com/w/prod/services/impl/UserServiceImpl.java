@@ -30,15 +30,15 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
-    private final IncubationUserService incubationUserService;
+    private final WorthProductUserService worthProductUserService;
     private final LogRepository logRepository;
 
-    public UserServiceImpl(UserRoleRepository userRoleRepository, UserRepository userRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, IncubationUserService incubationUserService, LogRepository logRepository) {
+    public UserServiceImpl(UserRoleRepository userRoleRepository, UserRepository userRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, WorthProductUserService worthProductUserService, LogRepository logRepository) {
         this.userRoleRepository = userRoleRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
-        this.incubationUserService = incubationUserService;
+        this.worthProductUserService = worthProductUserService;
         this.logRepository = logRepository;
     }
 
@@ -50,18 +50,18 @@ public class UserServiceImpl implements UserService {
 
             UserEntity admin = new UserEntity()
                     .setUsername("admin")
-                    .setPassword(passwordEncoder.encode("12345"))
-                    .setEmail("admin@admin.bg")
+                    .setPassword(passwordEncoder.encode("admin_pass"))
+                    .setEmail("admin@admin.com")
                     .setFirstName("Admin")
-                    .setLastName("Adminov")
+                    .setLastName("AdminLastName")
                     .setUserType(UserType.University);
             admin.setRoles(List.of(adminRole, userRole));
             UserEntity user = new UserEntity()
                     .setUsername("user")
-                    .setPassword(passwordEncoder.encode("123"))
-                    .setFirstName("Pesho")
-                    .setLastName("Peshov")
-                    .setEmail("pesho@user.bg")
+                    .setPassword(passwordEncoder.encode("user_pass"))
+                    .setFirstName("User")
+                    .setLastName("UserLastName")
+                    .setEmail("user@user.bg")
                     .setUserType(UserType.University);
             user.setRoles(List.of(userRole));
             userRepository.saveAll(List.of(user, admin));
@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
         UserRoleEntity userRole = userRoleRepository.findByRole(UserRole.USER).orElseThrow(() -> new IllegalStateException("User role not found. Please seed the roles."));
         newUser.addRole(userRole);
         newUser = userRepository.save(newUser);
-        UserDetails principal = incubationUserService.loadUserByUsername(newUser.getUsername());
+        UserDetails principal = worthProductUserService.loadUserByUsername(newUser.getUsername());
         Authentication authentication = new UsernamePasswordAuthenticationToken(
                 principal,
                 newUser.getPassword(),

@@ -1,7 +1,7 @@
 package com.w.prod.config;
 
 
-import com.w.prod.services.impl.IncubationUserService;
+import com.w.prod.services.impl.WorthProductUserService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,11 +17,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final IncubationUserService incubationUserService;
+    private final WorthProductUserService worthProductUserService;
     private final PasswordEncoder passwordEncoder;
 
-    public ApplicationSecurityConfig(IncubationUserService incubationUserService, PasswordEncoder passwordEncoder) {
-        this.incubationUserService = incubationUserService;
+    public ApplicationSecurityConfig(WorthProductUserService worthProductUserService, PasswordEncoder passwordEncoder) {
+        this.worthProductUserService = worthProductUserService;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -57,7 +57,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .userDetailsService(incubationUserService)
+                .userDetailsService(worthProductUserService)
                 .passwordEncoder(passwordEncoder);
     }
 }

@@ -1,3 +1,21 @@
+body {
+    /*background-image: url("https://www.pacific-research.com/wp-content/uploads/2020/04/shutterstock_251380513.jpg");*/
+    /*background-image: url("https://www.porticos.net/wp-content/uploads/2020/10/iStock-1067054478-scaled.jpg");*/
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBltkmBbzC6a3-bHfwg64t8Hvtui8ZrqOMHg&usqp=CAU");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+}
+
+body * {
+    color: white;
+}
+
+body form input[type="text"], body form select, body form select option {
+    color: black;
+}
+
 .bg-nav {
     background-color: rgba(0, 0, 0, 0.4);
 }
@@ -52,3 +70,12 @@
 .carousel-caption {
     background-color: rgba(0, 0, 0, 0.6);
 }
+
+article * {
+    color: white;
+}
+
+.col-auto input {
+    background-color: white;
+}
+
