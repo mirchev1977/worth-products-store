@@ -7,6 +7,8 @@ import com.w.prod.services.EquipmentService;
 import com.w.prod.services.PremiseService;
 import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -23,7 +25,7 @@ public class PremiseServiceImpl implements PremiseService {
     private final ModelMapper modelMapper;
 
     public PremiseServiceImpl(
-            //@Value("classpath:init/premises.json") Resource premises,
+            @Value("classpath:init/premises.json") Resource premises,
             Gson gson,
             PremiseRepository premiseRepository,
             EquipmentService equipmentService,
