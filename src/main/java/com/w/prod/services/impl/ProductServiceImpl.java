@@ -31,17 +31,17 @@ public class ProductServiceImpl implements ProductService {
     private final LogRepository logRepository;
     private final UserService userService;
     private final ActivityTypeRepository activityTypeRepository;
-    private final LabService labService;
+    private final PremiseService premiseService;
     private final EquipmentRepository equipmentRepository;
     private Logger LOGGER = LoggerFactory.getLogger(ProductServiceImpl.class);
 
-    public ProductServiceImpl(ProductRepository productRepository, LogRepository logRepository, ModelMapper modelMapper, UserService userService, ActivityTypeRepository activityTypeRepository, LabService labService, EquipmentRepository equipmentRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, LogRepository logRepository, ModelMapper modelMapper, UserService userService, ActivityTypeRepository activityTypeRepository, PremiseService premiseService, EquipmentRepository equipmentRepository) {
         this.productRepository = productRepository;
         this.logRepository = logRepository;
         this.modelMapper = modelMapper;
         this.userService = userService;
         this.activityTypeRepository = activityTypeRepository;
-        this.labService = labService;
+        this.premiseService = premiseService;
         this.equipmentRepository = equipmentRepository;
     }
 
@@ -51,13 +51,13 @@ public class ProductServiceImpl implements ProductService {
         Product product = modelMapper.map(productServiceModel, Product.class);
         product.setPromoter(userService.findByUsername(productServiceModel.getPromoter()))
                 .setActivityType(activityTypeRepository.findByActivityName(productServiceModel.getActivityType()).orElseThrow(NullPointerException::new))
-                .setLab(labService.findLab(productServiceModel.getLab()))
+                .setPremise(premiseService.findPremise(productServiceModel.getPremise()))
                 .setNeededEquipment(equipmentRepository.findByEquipmentName(productServiceModel.getNeededEquipment()).orElseThrow(NullPointerException::new));
 
         productRepository.save(product);
         ProductBasicViewModel viewModel = modelMapper.map(product, ProductBasicViewModel.class);
         viewModel
-                .setLab(product.getLab().getName())
+                .setPremise(product.getPremise().getName())
                 .setStartDate(product.getStartDate().toString());
         return viewModel;
     }
@@ -80,7 +80,7 @@ public class ProductServiceImpl implements ProductService {
         String lastName = userService.findByUsername(product.getPromoter().getUsername()).getLastName();
         productViewModel.setPromoter(String.format("%s %s", firstName, lastName))
                 .setActivityType(product.getActivityType().getActivityName())
-                .setLab(product.getLab().getName())
+                .setPremise(product.getPremise().getName())
                 .setNeededEquipment(product.getNeededEquipment().getEquipmentName());
 
         String duration = String.format("%02d %s %s - %02d %s %s <br />",
@@ -148,7 +148,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = productRepository.getOne(productId);
         ProductServiceModel model = modelMapper.map(product, ProductServiceModel.class);
         model.setPromoter(product.getPromoter().getUsername());
-        model.setLab(product.getLab().getName());
+        model.setPremise(product.getPremise().getName());
         return model;
     }
 
@@ -209,7 +209,7 @@ public class ProductServiceImpl implements ProductService {
         ProductServiceModel productServiceModel = modelMapper.map(product, ProductServiceModel.class)
                 .setPromoter(product.getPromoter().getUsername())
                 .setActivityType(product.getActivityType().getActivityName())
-                .setLab(product.getLab().getName())
+                .setPremise(product.getPremise().getName())
                 .setNeededEquipment(product.getNeededEquipment().getEquipmentName());
 
         return productServiceModel;
@@ -232,8 +232,8 @@ public class ProductServiceImpl implements ProductService {
                 .setEndDate(productServiceModel.getEndDate());
         Equipment currentEquipment = equipmentRepository.findByEquipmentName(productServiceModel.getNeededEquipment()).orElseThrow(NullPointerException::new);
         product.setNeededEquipment(currentEquipment);
-        Lab currentLab = labService.findLab(productServiceModel.getLab());
-        product.setLab(currentLab);
+        Premise currentPremise = premiseService.findPremise(productServiceModel.getPremise());
+        product.setPremise(currentPremise);
         productRepository.save(product);
     }
 
@@ -264,7 +264,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductBasicViewModel mapProduct(Product p) {
         ProductBasicViewModel productViewModel = modelMapper.map(p, ProductBasicViewModel.class);
         productViewModel.setActivityType(p.getActivityType().getActivityName())
-                .setLab(p.getLab().getName());
+                .setPremise(p.getPremise().getName());
 
         String startDate = String.format("%02d %s %s",
                 p.getStartDate().getDayOfMonth(), p.getStartDate().getMonth(),

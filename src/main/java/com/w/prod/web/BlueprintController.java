@@ -27,17 +27,17 @@ public class BlueprintController {
     private final ActivityTypeService activityTypeService;
     private final EquipmentService equipmentService;
     private final ProductService productService;
-    private final LabService labService;
+    private final PremiseService premiseService;
     private final LogService logService;
 
-    public BlueprintController(CarouselService carouselService, ModelMapper modelMapper, BlueprintService blueprintService, ActivityTypeService activityTypeService, EquipmentService equipmentService, ProductService productService, LabService labService, LogService logService) {
+    public BlueprintController(CarouselService carouselService, ModelMapper modelMapper, BlueprintService blueprintService, ActivityTypeService activityTypeService, EquipmentService equipmentService, ProductService productService, PremiseService premiseService, LogService logService) {
         this.carouselService = carouselService;
         this.modelMapper = modelMapper;
         this.blueprintService = blueprintService;
         this.activityTypeService = activityTypeService;
         this.equipmentService = equipmentService;
         this.productService = productService;
-        this.labService = labService;
+        this.premiseService = premiseService;
         this.logService = logService;
     }
 
@@ -123,9 +123,9 @@ public class BlueprintController {
     public String acceptBlueprint(@PathVariable String id, Model model) {
         BlueprintServiceModel blueprintServiceModel = blueprintService.extractBlueprintModel(id);
         model.addAttribute("blueprintServiceModel", blueprintServiceModel);
-        model.addAttribute("labs", labService.findSuitableLabs(blueprintServiceModel.getNeededEquipment()));
+        model.addAttribute("labs", premiseService.findSuitablePremises(blueprintServiceModel.getNeededEquipment()));
         model.addAttribute("duration", blueprintServiceModel.getDuration());
-        model.addAttribute("labsInfo", labService.getSuitableLabsWithProducts(blueprintServiceModel.getNeededEquipment()));
+        model.addAttribute("labsInfo", premiseService.getSuitablePremisesWithProducts(blueprintServiceModel.getNeededEquipment()));
 
         return "product-add";
     }

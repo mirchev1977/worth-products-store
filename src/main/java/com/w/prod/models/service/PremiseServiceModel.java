@@ -2,7 +2,7 @@ package com.w.prod.models.service;
 
 import com.google.gson.annotations.Expose;
 
-public class LabServiceModel {
+public class PremiseServiceModel {
     private String id;
     @Expose
     private String name;
@@ -13,7 +13,7 @@ public class LabServiceModel {
         return id;
     }
 
-    public LabServiceModel setId(String id) {
+    public PremiseServiceModel setId(String id) {
         this.id = id;
         return this;
     }
@@ -22,7 +22,7 @@ public class LabServiceModel {
         return name;
     }
 
-    public LabServiceModel setName(String name) {
+    public PremiseServiceModel setName(String name) {
         this.name = name;
         return this;
     }
@@ -31,7 +31,7 @@ public class LabServiceModel {
         return equipment;
     }
 
-    public LabServiceModel setEquipment(String equipment) {
+    public PremiseServiceModel setEquipment(String equipment) {
         this.equipment = equipment;
         return this;
     }

@@ -89,11 +89,11 @@ public class ProductServiceModel {
         return this;
     }
 
-    public String getLab() {
+    public String getPremise() {
         return lab;
     }
 
-    public ProductServiceModel setLab(String lab) {
+    public ProductServiceModel setPremise(String lab) {
         this.lab = lab;
         return this;
     }

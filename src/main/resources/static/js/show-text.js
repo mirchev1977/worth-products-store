@@ -8,13 +8,13 @@ function textHandler() {
     }
 
     const action = {
-        "Show Lab occupancy": (e, show) => {
+        "Show Premise occupancy": (e, show) => {
             show.style.display = "block";
-            e.target.innerText = "Hide Lab occupancy";
+            e.target.innerText = "Hide Premise occupancy";
         },
-        "Hide Lab occupancy": (e, show) => {
+        "Hide Premise occupancy": (e, show) => {
             show.style.display = "none";
-            e.target.innerText = "Show Lab occupancy";
+            e.target.innerText = "Show Premise occupancy";
         }
 
     }

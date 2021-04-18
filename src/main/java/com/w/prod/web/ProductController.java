@@ -26,16 +26,16 @@ public class ProductController {
     private final ActivityTypeService activityTypeService;
     private final EquipmentService equipmentService;
     private final ProductService productService;
-    private final LabService labService;
+    private final PremiseService premiseService;
     private final UserService userService;
     private final LogService logService;
 
-    public ProductController(ModelMapper modelMapper, ActivityTypeService activityTypeService, EquipmentService equipmentService, ProductService productService, LabService labService, UserService userService, LogService logService) {
+    public ProductController(ModelMapper modelMapper, ActivityTypeService activityTypeService, EquipmentService equipmentService, ProductService productService, PremiseService premiseService, UserService userService, LogService logService) {
         this.modelMapper = modelMapper;
         this.activityTypeService = activityTypeService;
         this.equipmentService = equipmentService;
         this.productService = productService;
-        this.labService = labService;
+        this.premiseService = premiseService;
         this.userService = userService;
         this.logService = logService;
     }
@@ -157,9 +157,9 @@ public class ProductController {
         ProductServiceModel currentData = productService.extractProductServiceModel(id);
         long durationInDays = productService.getDurationInDays(currentData);
         model.addAttribute("current", currentData);
-//        model.addAttribute("labs", labService.getAllLabs());
+//        model.addAttribute("labs", premiseService.getAllPremises());
         model.addAttribute("duration", durationInDays);
-        model.addAttribute("labsInfo", labService.getAllLabsWithProducts());
+        model.addAttribute("labsInfo", premiseService.getAllPremisesWithProducts());
 
         return "product-update";
     }

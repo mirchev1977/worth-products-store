@@ -141,42 +141,42 @@
 
                 <!-- EO: Needed equipment-->
 
-                <!-- Lab -->
+                <!-- Premise -->
                 <div>
                     <div class="col-auto">
-                        <label for="inputLab" class="col-form-label ">Lab</label>
+                        <label for="inputPremise" class="col-form-label ">Premise</label>
                     </div>
                     <select required
                             class="browser-default custom-select"
-                            id="inputLab"
-                            name="lab"
-                            th:value="*{lab}"
+                            id="inputPremise"
+                            name="premise"
+                            th:value="*{premise}"
                             th:errorclass="is-invalid">
-                        <!--                        <option value="">Select the Lab</option>-->
+                        <!--                        <option value="">Select the Premise</option>-->
                         <!--                        <option th:each="l : ${labs}"-->
-                        <!--                                th:text="${l}" th:value="${l}" th:selected="${l}==${productAddBindingModel.lab}" >Value-->
+                        <!--                                th:text="${l}" th:value="${l}" th:selected="${l}==${productAddBindingModel.premise}" >Value-->
                         <!--                        </option>-->
                     </select>
                     <p class="text-primary"
-                       th:text="|Initially chosen lab: ${current.lab}|"></p>
+                       th:text="|Initially chosen premise: ${current.premise}|"></p>
 
                     <small class="invalid-feedback text-light form-text bg-danger rounded">You must
-                        select the Lab</small>
+                        select the Premise</small>
                 </div>
                 <p></p>
                 <div id="hiddenInfo">
                     <table>
                         <tr th:each="instance : ${labsInfo}">
-                            <td th:text="${instance.key}">Lab</td>
+                            <td th:text="${instance.key}">Premise</td>
                             <td th:utext="${instance.value}">Products</td>
                         </tr>
                     </table>
                 </div>
-                <button type="button" id="hide">Show Lab occupancy</button>
+                <button type="button" id="hide">Show Premise occupancy</button>
                 <p class="text-primary"
-                   th:text="|Requested duration in days: ${duration}. Please, schedule the product in the selected lab.|"></p>
+                   th:text="|Requested duration in days: ${duration}. Please, schedule the product in the selected premise.|"></p>
 
-                <!-- EO: Lab-->
+                <!-- EO: Premise-->
                 <!--                 Starting date -->
                 <div>
                     <div class="col-auto">

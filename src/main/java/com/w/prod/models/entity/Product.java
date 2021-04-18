@@ -41,7 +41,7 @@ public class Product extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "lab_id", referencedColumnName = "id")
     @NotNull
-    private Lab lab;
+    private Premise premise;
 
     @Column(name = "active", nullable = false)
     private boolean active = true;
@@ -124,12 +124,12 @@ public class Product extends BaseEntity {
         return this;
     }
 
-    public Lab getLab() {
-        return lab;
+    public Premise getPremise() {
+        return premise;
     }
 
-    public Product setLab(Lab lab) {
-        this.lab = lab;
+    public Product setPremise(Premise premise) {
+        this.premise = premise;
         return this;
     }
 

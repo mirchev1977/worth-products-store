@@ -1,10 +1,10 @@
 package com.w.prod.services.impl;
 
-import com.w.prod.models.entity.Lab;
+import com.w.prod.models.entity.Premise;
 import com.w.prod.models.entity.Product;
-import com.w.prod.repositories.LabRepository;
+import com.w.prod.repositories.PremiseRepository;
 import com.w.prod.services.EquipmentService;
-import com.w.prod.services.LabService;
+import com.w.prod.services.PremiseService;
 import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -15,31 +15,31 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class LabServiceImpl implements LabService {
-    //private final Resource labs;
+public class PremiseServiceImpl implements PremiseService {
+    //private final Resource premises;
     private final Gson gson;
-    private final LabRepository labRepository;
+    private final PremiseRepository premiseRepository;
     private final EquipmentService equipmentService;
     private final ModelMapper modelMapper;
 
-    public LabServiceImpl(
-            //@Value("classpath:init/labs.json") Resource labs,
+    public PremiseServiceImpl(
+            //@Value("classpath:init/premises.json") Resource premises,
             Gson gson,
-            LabRepository labRepository,
+            PremiseRepository premiseRepository,
             EquipmentService equipmentService,
             ModelMapper modelMapper
     ) {
 
         //this.labs = labs;
         this.gson = gson;
-        this.labRepository = labRepository;
+        this.premiseRepository = premiseRepository;
         this.equipmentService = equipmentService;
         this.modelMapper = modelMapper;
     }
 
     @Override
-    public void seedLabs() {
-        if (labRepository.count() == 0) {
+    public void seedPremises() {
+        if (premiseRepository.count() == 0) {
             String[][] labs = {
                 { "Leonardo", "Wood workshop" },
                 { "Tesla", "Metal workshop" },
@@ -52,41 +52,41 @@ public class LabServiceImpl implements LabService {
             };
 
             for (String[] l : labs ) {
-                Lab lab = new Lab();
-                lab.setName(l[0]);
-                lab.setEquipment(equipmentService.findEquipment(l[1]));
-                lab.setProducts(new ArrayList<>());
-                labRepository.save(lab);
+                Premise premise = new Premise();
+                premise.setName(l[0]);
+                premise.setEquipment(equipmentService.findEquipment(l[1]));
+                premise.setProducts(new ArrayList<>());
+                premiseRepository.save(premise);
             }
         }
         //if (labRepository.count() == 0) {
         //    try {
-        //        LabServiceModel[] labServiceModels = gson.fromJson(Files.readString(Path.of(labs.getURI())), LabServiceModel[].class);
+        //        PremiseServiceModel[] labServiceModels = gson.fromJson(Files.readString(Path.of(labs.getURI())), PremiseServiceModel[].class);
         //        Arrays.stream(labServiceModels)
         //                .forEach(m -> {
         //                    List<Product> emptyList = new ArrayList<>();
-        //                    Lab current = modelMapper.map(m, Lab.class);
+        //                    Premise current = modelMapper.map(m, Premise.class);
         //                    current.setEquipment(equipmentService.findEquipment(m.getEquipment()));
         //                    current.setProducts(emptyList);
         //                    labRepository.save(current);
         //                });
 
         //    } catch (IOException e) {
-        //        throw new IllegalStateException("Cannot seed Labs");
+        //        throw new IllegalStateException("Cannot seed Premises");
         //    }
 
         //}
     }
 
     @Override
-    public List<String> getAllLabs() {
-        return labRepository.findAll().stream().map(Lab::getName).collect(Collectors.toList());
+    public List<String> getAllPremises() {
+        return premiseRepository.findAll().stream().map(Premise::getName).collect(Collectors.toList());
     }
 
     @Override
-    public List<String> findSuitableLabs(String providedEquipment) {
+    public List<String> findSuitablePremises(String providedEquipment) {
         return
-                labRepository
+                premiseRepository
                         .findAllByEquipment_EquipmentName(providedEquipment)
                         .stream()
                         .map(l -> l.getName())
@@ -94,40 +94,40 @@ public class LabServiceImpl implements LabService {
     }
 
     @Override
-    public Lab findLab(String labName) {
-        return labRepository.findByName(labName).orElseThrow(IllegalArgumentException::new);
+    public Premise findPremise(String labName) {
+        return premiseRepository.findByName(labName).orElseThrow(IllegalArgumentException::new);
     }
 
     @Override
-    public Map<String, String> getSuitableLabsWithProducts(String neededEquipment) {
+    public Map<String, String> getSuitablePremisesWithProducts(String neededEquipment) {
 
         Map<String, String> info = new TreeMap<>();
-        List<Lab> labs = labRepository
+        List<Premise> premises = premiseRepository
                 .findAllByEquipment_EquipmentName(neededEquipment);
-        labs
+        premises
                 .forEach(l -> {
-                    String infoForLab = getInfoForLab(l);
-                    info.put(l.getName(), infoForLab);
+                    String infoForPremise = getInfoForPremise(l);
+                    info.put(l.getName(), infoForPremise);
                 });
 
         return info;
     }
 
     @Override
-    public Map<String, String> getAllLabsWithProducts() {
+    public Map<String, String> getAllPremisesWithProducts() {
         Map<String, String> info = new TreeMap<>();
-        List<Lab> labs = labRepository
+        List<Premise> premises = premiseRepository
                 .findAll();
-        labs
+        premises
                 .forEach(l -> {
-                    String infoForLab = getInfoForLab(l);
-                    info.put(l.getName(), infoForLab);
+                    String infoForPremise = getInfoForPremise(l);
+                    info.put(l.getName(), infoForPremise);
                 });
 
         return info;
     }
 
-    private String getInfoForLab(Lab l) {
+    private String getInfoForPremise(Premise l) {
         List<Product> products = l.getProducts();
         List<Product> copyOfProducts = new ArrayList<>(products);
         copyOfProducts.sort((p1, p2) -> p1.getStartDate().compareTo(p2.getStartDate()));

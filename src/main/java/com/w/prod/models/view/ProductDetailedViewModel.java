@@ -18,7 +18,7 @@ public class ProductDetailedViewModel {
 
     private String neededEquipment;
 
-    private String lab;
+    private String premise;
 
     private String promoter;
 
@@ -87,12 +87,12 @@ public class ProductDetailedViewModel {
         return this;
     }
 
-    public String getLab() {
-        return lab;
+    public String getPremise() {
+        return premise;
     }
 
-    public ProductDetailedViewModel setLab(String lab) {
-        this.lab = lab;
+    public ProductDetailedViewModel setPremise(String premise) {
+        this.premise = premise;
         return this;
     }
 

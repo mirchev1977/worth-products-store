@@ -6,20 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "labs")
-public class Lab extends BaseEntity {
+@Table(name = "premises")
+public class Premise extends BaseEntity {
 
-    @Column(name = "lab_name", unique=true, nullable = false)
+    @Column(name = "premise_name", unique=true, nullable = false)
     private String name;
 
     @ManyToOne
     @NotNull
     private Equipment equipment;
 
-    @OneToMany(mappedBy = "lab", targetEntity = Product.class)
+    @OneToMany(mappedBy = "premise", targetEntity = Product.class)
     private List<Product> products;
 
-    public Lab() {
+    public Premise() {
         this.products = new ArrayList<>();
     }
 
@@ -27,7 +27,7 @@ public class Lab extends BaseEntity {
         return name;
     }
 
-    public Lab setName(String name) {
+    public Premise setName(String name) {
         this.name = name;
         return this;
     }
@@ -36,7 +36,7 @@ public class Lab extends BaseEntity {
         return equipment;
     }
 
-    public Lab setEquipment(Equipment equipment) {
+    public Premise setEquipment(Equipment equipment) {
         this.equipment = equipment;
         return this;
     }
@@ -45,7 +45,7 @@ public class Lab extends BaseEntity {
         return products;
     }
 
-    public Lab setProducts(List<Product> products) {
+    public Premise setProducts(List<Product> products) {
         this.products = products;
         return this;
     }

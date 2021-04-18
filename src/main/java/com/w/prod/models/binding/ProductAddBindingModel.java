@@ -110,11 +110,11 @@ public class ProductAddBindingModel {
         return this;
     }
 
-    public String getLab() {
+    public String getPremise() {
         return lab;
     }
 
-    public ProductAddBindingModel setLab(String lab) {
+    public ProductAddBindingModel setPremise(String lab) {
         this.lab = lab;
         return this;
     }

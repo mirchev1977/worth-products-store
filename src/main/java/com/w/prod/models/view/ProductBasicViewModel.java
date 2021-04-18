@@ -59,11 +59,11 @@ public class ProductBasicViewModel {
         return this;
     }
 
-    public String getLab() {
+    public String getPremise() {
         return lab;
     }
 
-    public ProductBasicViewModel setLab(String lab) {
+    public ProductBasicViewModel setPremise(String lab) {
         this.lab = lab;
         return this;
     }

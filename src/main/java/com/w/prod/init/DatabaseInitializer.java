@@ -9,14 +9,14 @@ public class DatabaseInitializer implements CommandLineRunner {
     private final ActivityTypeService activityTypeService;
     private final UserRoleService userRoleService;
     private final UserService userService;
-    private final LabService labService;
+    private final PremiseService premiseService;
     private final EquipmentService equipmentService;
 
-    public DatabaseInitializer(ActivityTypeService activityTypeService, UserRoleService userRoleService, UserService userService, LabService labService, EquipmentService equipmentService) {
+    public DatabaseInitializer(ActivityTypeService activityTypeService, UserRoleService userRoleService, UserService userService, PremiseService premiseService, EquipmentService equipmentService) {
         this.activityTypeService = activityTypeService;
         this.userRoleService = userRoleService;
         this.userService = userService;
-        this.labService = labService;
+        this.premiseService = premiseService;
         this.equipmentService = equipmentService;
     }
 
@@ -27,7 +27,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         userService.initUsers();
         activityTypeService.seedActivityTypes();
         equipmentService.seedEquipment();
-        labService.seedLabs();
+        premiseService.seedPremises();
     }
 
 
