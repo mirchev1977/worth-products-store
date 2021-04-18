@@ -1,5 +1,5 @@
 package com.w.prod.models.entity.enums;
 
 public enum Category {
-IT, Arts, Production, Education
+IT, Electronics, White_Technic, Black_Technic, Arts, Production, Education
 }
