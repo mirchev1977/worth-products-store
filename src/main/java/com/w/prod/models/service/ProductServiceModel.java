@@ -1,6 +1,6 @@
 package com.w.prod.models.service;
 
-import com.w.prod.models.entity.enums.Sector;
+import com.w.prod.models.entity.enums.Category;
 
 import java.time.LocalDate;
 
@@ -8,7 +8,7 @@ public class ProductServiceModel {
 
     private String id;
     private String name;
-    private Sector sector;
+    private Category category;
     private String description;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -35,12 +35,12 @@ public class ProductServiceModel {
         return this;
     }
 
-    public Sector getSector() {
-        return sector;
+    public Category getCategory() {
+        return category;
     }
 
-    public ProductServiceModel setSector(Sector sector) {
-        this.sector = sector;
+    public ProductServiceModel setCategory(Category category) {
+        this.category = category;
         return this;
     }
 

@@ -1,13 +1,13 @@
 package com.w.prod.models.service;
 
-import com.w.prod.models.entity.enums.Sector;
+import com.w.prod.models.entity.enums.Category;
 
 public class ProductResultServiceModel {
 
     private String id;
     private String name;
 
-    private Sector sector;
+    private Category category;
 
     private String description;
 
@@ -29,12 +29,12 @@ public class ProductResultServiceModel {
         return this;
     }
 
-    public Sector getSector() {
-        return sector;
+    public Category getCategory() {
+        return category;
     }
 
-    public ProductResultServiceModel setSector(Sector sector) {
-        this.sector = sector;
+    public ProductResultServiceModel setCategory(Category category) {
+        this.category = category;
         return this;
     }
 

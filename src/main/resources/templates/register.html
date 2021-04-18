@@ -124,23 +124,23 @@
                 </div>
                 <!-- EO: Last name -->
 
-                <!-- Sector -->
+                <!-- Category -->
                 <div>
                     <div class="col-auto">
-                        <label for="inputSector" class="col-form-label ">Sector</label>
+                        <label for="inputCategory" class="col-form-label ">Category</label>
                     </div>
                     <select class="browser-default custom-select"
-                            id="inputSector" name="sector"
-                            th:field="*{sector}"
-                            th:value="*{sector}">
-                        <option value="">Select sector</option>
-                        <option th:each="c : ${T(com.w.prod.models.entity.enums.Sector).values()}"
+                            id="inputCategory" name="category"
+                            th:field="*{category}"
+                            th:value="*{category}">
+                        <option value="">Select category</option>
+                        <option th:each="c : ${T(com.w.prod.models.entity.enums.Category).values()}"
                                 th:text="${c}" th:value="${c}">Value
                         </option>
 
                     </select>
                 </div>
-                <!-- EO: Sector-->
+                <!-- EO: Category-->
 
                 <!-- Password -->
                 <div>

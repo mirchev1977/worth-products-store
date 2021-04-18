@@ -73,7 +73,7 @@ searchBar.addEventListener('keyup', (e) => {
     const searchingCharacters = searchBar.value.toLowerCase();
     let filteredProducts = allProducts.filter(p => {
         return p.name.toLowerCase().includes(searchingCharacters)
-            || p.sector.toLowerCase().includes(searchingCharacters);
+            || p.category.toLowerCase().includes(searchingCharacters);
     });
     productList.innerHTML = ""
     displayProducts(filteredProducts);
@@ -94,7 +94,7 @@ function displayProducts(products) {
         .map((p) => {
             return `    <tr>
                 <td >${p.name}</td>
-                <td >${p.sector}</td>
+                <td >${p.category}</td>
                 <td>${p.startDate}</td>
                 <td>
                     <a href="/products/details/${p.id}">

@@ -1,13 +1,13 @@
 package com.w.prod.models.service;
 
-import com.w.prod.models.entity.enums.Sector;
+import com.w.prod.models.entity.enums.Category;
 
 public class BlueprintServiceModel {
     private String id;
 
     private String name;
 
-    private Sector sector;
+    private Category category;
 
     private String description;
 
@@ -37,12 +37,12 @@ public class BlueprintServiceModel {
         return this;
     }
 
-    public Sector getSector() {
-        return sector;
+    public Category getCategory() {
+        return category;
     }
 
-    public BlueprintServiceModel setSector(Sector sector) {
-        this.sector = sector;
+    public BlueprintServiceModel setCategory(Category category) {
+        this.category = category;
         return this;
     }
 

@@ -1,6 +1,6 @@
 package com.w.prod.models.entity;
 
-import com.w.prod.models.entity.enums.Sector;
+import com.w.prod.models.entity.enums.Category;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -14,7 +14,7 @@ public class Blueprint extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @NotNull
-    private Sector sector;
+    private Category category;
 
     @Column(columnDefinition = "Text", nullable = false)
     private String description;
@@ -46,12 +46,12 @@ public class Blueprint extends BaseEntity {
         return this;
     }
 
-    public Sector getSector() {
-        return sector;
+    public Category getCategory() {
+        return category;
     }
 
-    public Blueprint setSector(Sector sector) {
-        this.sector = sector;
+    public Blueprint setCategory(Category category) {
+        this.category = category;
         return this;
     }
 

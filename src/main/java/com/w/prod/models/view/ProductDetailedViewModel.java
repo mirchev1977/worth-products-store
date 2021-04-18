@@ -1,6 +1,6 @@
 package com.w.prod.models.view;
 
-import com.w.prod.models.entity.enums.Sector;
+import com.w.prod.models.entity.enums.Category;
 
 public class ProductDetailedViewModel {
 
@@ -8,7 +8,7 @@ public class ProductDetailedViewModel {
 
     private String name;
 
-    private Sector sector;
+    private Category category;
 
     private String description;
 
@@ -42,12 +42,12 @@ public class ProductDetailedViewModel {
         return this;
     }
 
-    public Sector getSector() {
-        return sector;
+    public Category getCategory() {
+        return category;
     }
 
-    public ProductDetailedViewModel setSector(Sector sector) {
-        this.sector = sector;
+    public ProductDetailedViewModel setCategory(Category category) {
+        this.category = category;
         return this;
     }
 

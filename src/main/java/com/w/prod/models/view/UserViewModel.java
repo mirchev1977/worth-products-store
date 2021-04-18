@@ -8,7 +8,7 @@ public class UserViewModel {
     private String activeProducts;
     private String archivesProducts;
     private String activeCollabs;
-    private String sectorAndType;
+    private String categoryAndType;
     private String roles;
 
     public String getId() {
@@ -65,12 +65,12 @@ public class UserViewModel {
         return this;
     }
 
-    public String getSectorAndType() {
-        return sectorAndType;
+    public String getCategoryAndType() {
+        return categoryAndType;
     }
 
-    public UserViewModel setSectorAndType(String sectorAndType) {
-        this.sectorAndType = sectorAndType;
+    public UserViewModel setCategoryAndType(String categoryAndType) {
+        this.categoryAndType = categoryAndType;
         return this;
     }
 

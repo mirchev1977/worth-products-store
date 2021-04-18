@@ -6,7 +6,7 @@ public class ProductBasicViewModel {
 
     private String name;
 
-    private String sector;
+    private String category;
 
     private String startDate;
 
@@ -32,12 +32,12 @@ public class ProductBasicViewModel {
         return this;
     }
 
-    public String getSector() {
-        return sector;
+    public String getCategory() {
+        return category;
     }
 
-    public ProductBasicViewModel setSector(String sector) {
-        this.sector = sector;
+    public ProductBasicViewModel setCategory(String category) {
+        this.category = category;
         return this;
     }
 

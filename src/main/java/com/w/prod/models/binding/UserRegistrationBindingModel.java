@@ -1,6 +1,6 @@
 package com.w.prod.models.binding;
 
-import com.w.prod.models.entity.enums.Sector;
+import com.w.prod.models.entity.enums.Category;
 import com.w.prod.models.entity.enums.UserType;
 import com.w.prod.models.validator.FieldMatch;
 
@@ -40,7 +40,7 @@ public class UserRegistrationBindingModel {
     @NotNull
     private UserType userType;
 
-    private Sector sector;
+    private Category category;
 
 
 
@@ -98,12 +98,12 @@ public class UserRegistrationBindingModel {
         return this;
     }
 
-    public Sector getSector() {
-        return sector;
+    public Category getCategory() {
+        return category;
     }
 
-    public UserRegistrationBindingModel setSector(Sector sector) {
-        this.sector = sector;
+    public UserRegistrationBindingModel setCategory(Category category) {
+        this.category = category;
         return this;
     }
 

@@ -110,8 +110,8 @@ public class UserServiceImpl implements UserService {
                     UserViewModel userViewModel = modelMapper.map(u, UserViewModel.class);
                     userViewModel.setFullNameAndEmail(
                             String.format("%s %s <br /> %s", u.getFirstName(), u.getLastName(), u.getEmail()));
-                    userViewModel.setSectorAndType(
-                            String.format("%s <br /> %s", u.getSector(), u.getUserType()));
+                    userViewModel.setCategoryAndType(
+                            String.format("%s <br /> %s", u.getCategory(), u.getUserType()));
 
                     StringBuilder sb1 = new StringBuilder();
                     u.getOwnProducts()

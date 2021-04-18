@@ -1,7 +1,7 @@
 package com.w.prod.services.impl;
 
 import com.w.prod.models.entity.*;
-import com.w.prod.models.entity.enums.Sector;
+import com.w.prod.models.entity.enums.Category;
 import com.w.prod.models.service.ProductResultServiceModel;
 import com.w.prod.models.service.ProductServiceModel;
 import com.w.prod.models.view.ProductBasicViewModel;
@@ -227,7 +227,7 @@ public class ProductServiceImpl implements ProductService {
                 .setDescription(productServiceModel.getDescription());
         ActivityType currentActivity = activityTypeRepository.findByActivityName(productServiceModel.getActivityType()).orElseThrow(NullPointerException::new);
         product.setActivityType(currentActivity)
-                .setSector(productServiceModel.getSector())
+                .setCategory(productServiceModel.getCategory())
                 .setStartDate(productServiceModel.getStartDate())
                 .setEndDate(productServiceModel.getEndDate());
         Equipment currentEquipment = equipmentRepository.findByEquipmentName(productServiceModel.getNeededEquipment()).orElseThrow(NullPointerException::new);
@@ -253,8 +253,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductResultViewModel> getResults(String param) {
-        Sector sector = Sector.valueOf(param);
-        return productRepository.findAllResultsBySector(sector)
+        Category category = Category.valueOf(param);
+        return productRepository.findAllResultsByCategory(category)
                 .stream()
                 .map(p -> modelMapper.map(p, ProductResultViewModel.class))
                 .collect(Collectors.toList());

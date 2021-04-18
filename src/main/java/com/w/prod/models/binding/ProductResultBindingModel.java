@@ -6,18 +6,18 @@ import javax.validation.constraints.Size;
 public class ProductResultBindingModel {
 
     @NotEmpty
-    private String sector;
+    private String category;
 
     @NotEmpty
     @Size(min = 50, max = 5000)
     private String description;
 
-    public String getSector() {
-        return sector;
+    public String getCategory() {
+        return category;
     }
 
-    public ProductResultBindingModel setSector(String sector) {
-        this.sector = sector;
+    public ProductResultBindingModel setCategory(String category) {
+        this.category = category;
         return this;
     }
 

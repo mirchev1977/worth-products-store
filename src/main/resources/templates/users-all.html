@@ -29,7 +29,7 @@
                 <th>Active products</th>
                 <th>Archived products</th>
                 <th>Active collaborations</th>
-                <th>Sector/Type</th>
+                <th>Category/Type</th>
                 <th sec:authorize="hasRole('ROLE_ADMIN')">Actions</th>
             </tr>
             </thead>
@@ -41,7 +41,7 @@
                 <td th:utext="*{activeProducts}"></td>
                 <td th:utext="*{archivesProducts}"></td>
                 <td th:utext="*{activeCollabs}"></td>
-                <td th:utext="*{sectorAndType}"></td>
+                <td th:utext="*{categoryAndType}"></td>
                 <td sec:authorize="hasRole('ROLE_ADMIN')">
                     <a th:href="@{/users/delete/{id}(id=*{id})}">
                         <button class="bg-danger" type="button">Delete user</button>

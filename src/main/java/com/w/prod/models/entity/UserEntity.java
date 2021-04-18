@@ -1,6 +1,6 @@
 package com.w.prod.models.entity;
 
-import com.w.prod.models.entity.enums.Sector;
+import com.w.prod.models.entity.enums.Category;
 import com.w.prod.models.entity.enums.UserType;
 
 import javax.persistence.*;
@@ -33,7 +33,7 @@ public class UserEntity extends BaseEntity {
     private UserType userType;
 
     @Enumerated(EnumType.STRING)
-    private Sector sector;
+    private Category category;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
@@ -105,12 +105,12 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
-    public Sector getSector() {
-        return sector;
+    public Category getCategory() {
+        return category;
     }
 
-    public UserEntity setSector(Sector sector) {
-        this.sector = sector;
+    public UserEntity setCategory(Category category) {
+        this.category = category;
         return this;
     }
 

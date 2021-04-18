@@ -1,6 +1,6 @@
 package com.w.prod.models.binding;
 
-import com.w.prod.models.entity.enums.Sector;
+import com.w.prod.models.entity.enums.Category;
 import com.w.prod.models.validator.ValidDates;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,7 +21,7 @@ public class ProductAddBindingModel {
     private String name;
 
     @NotNull
-    private Sector sector;
+    private Category category;
 
     @NotEmpty
     @Size(min=10, max = 1500)
@@ -56,12 +56,12 @@ public class ProductAddBindingModel {
         return this;
     }
 
-    public Sector getSector() {
-        return sector;
+    public Category getCategory() {
+        return category;
     }
 
-    public ProductAddBindingModel setSector(Sector sector) {
-        this.sector = sector;
+    public ProductAddBindingModel setCategory(Category category) {
+        this.category = category;
         return this;
     }
 

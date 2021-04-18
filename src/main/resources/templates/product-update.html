@@ -50,26 +50,26 @@
 
                     </div>
                 </div>
-                <!-- Sector -->
+                <!-- Category -->
                 <div>
                     <div class="col-auto">
-                        <label for="inputSector" class="col-form-label ">Sector</label>
+                        <label for="inputCategory" class="col-form-label ">Category</label>
                     </div>
                     <select required class="browser-default custom-select"
-                            id="inputSector" name="sector"
-                            th:value="${productAddBindingModel.sector}"
+                            id="inputCategory" name="category"
+                            th:value="${productAddBindingModel.category}"
                             th:errorclass="is-invalid">
-                        <option value="">Select sector</option>
-                        <option th:each="c : ${T(com.w.prod.models.entity.enums.Sector).values()}"
-                                th:text="${c}" th:value="${c}" th:selected="${c}==${productAddBindingModel.sector}">
+                        <option value="">Select category</option>
+                        <option th:each="c : ${T(com.w.prod.models.entity.enums.Category).values()}"
+                                th:text="${c}" th:value="${c}" th:selected="${c}==${productAddBindingModel.category}">
                             Value
                         </option>
                     </select>
                     <small class="invalid-feedback text-light form-text bg-danger rounded">You must
-                        select the sector</small>
+                        select the category</small>
                 </div>
 
-                <!-- EO: Sector-->
+                <!-- EO: Category-->
                 <!-- Description -->
                 <div>
                     <div class="col-auto">

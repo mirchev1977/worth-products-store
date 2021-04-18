@@ -1,6 +1,6 @@
 package com.w.prod.models.service;
 
-import com.w.prod.models.entity.enums.Sector;
+import com.w.prod.models.entity.enums.Category;
 import com.w.prod.models.entity.enums.UserType;
 
 public class UserRegistrationServiceModel {
@@ -12,7 +12,7 @@ public class UserRegistrationServiceModel {
     private String email;
     private String password;
     private UserType userType;
-    private Sector sector;
+    private Category category;
 
     public String getId() {
         return id;
@@ -77,12 +77,12 @@ public class UserRegistrationServiceModel {
         return this;
     }
 
-    public Sector getSector() {
-        return sector;
+    public Category getCategory() {
+        return category;
     }
 
-    public UserRegistrationServiceModel setSector(Sector sector) {
-        this.sector = sector;
+    public UserRegistrationServiceModel setCategory(Category category) {
+        this.category = category;
         return this;
     }
 }

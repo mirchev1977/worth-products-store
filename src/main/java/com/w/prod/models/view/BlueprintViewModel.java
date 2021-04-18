@@ -7,7 +7,7 @@ public class BlueprintViewModel {
 
     private String name;
 
-    private String sector;
+    private String category;
 
     private String description;
 
@@ -38,12 +38,12 @@ public class BlueprintViewModel {
         return this;
     }
 
-    public String getSector() {
-        return sector;
+    public String getCategory() {
+        return category;
     }
 
-    public BlueprintViewModel setSector(String sector) {
-        this.sector = sector;
+    public BlueprintViewModel setCategory(String category) {
+        this.category = category;
         return this;
     }
 

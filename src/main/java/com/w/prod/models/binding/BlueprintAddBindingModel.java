@@ -1,6 +1,6 @@
 package com.w.prod.models.binding;
 
-import com.w.prod.models.entity.enums.Sector;
+import com.w.prod.models.entity.enums.Category;
 
 import javax.validation.constraints.*;
 
@@ -11,7 +11,7 @@ public class BlueprintAddBindingModel {
     private String name;
 
     @NotNull
-    private Sector sector;
+    private Category category;
 
     @NotEmpty
     @Size(min=10, max = 1500)
@@ -37,12 +37,12 @@ public class BlueprintAddBindingModel {
         return this;
     }
 
-    public Sector getSector() {
-        return sector;
+    public Category getCategory() {
+        return category;
     }
 
-    public BlueprintAddBindingModel setSector(Sector sector) {
-        this.sector = sector;
+    public BlueprintAddBindingModel setCategory(Category category) {
+        this.category = category;
         return this;
     }
 
