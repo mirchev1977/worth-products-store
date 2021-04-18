@@ -42,12 +42,12 @@ public class ActivityTypeServiceImpl implements ActivityTypeService {
     public void seedActivityTypes() {
         if (activityTypeRepository.count() == 0) {
             ArrayList<String> activityTypes = new ArrayList<>();
-            activityTypes.add("Business Support");
-            activityTypes.add("Masterclass");
-            activityTypes.add("Networking Session");
-            activityTypes.add("Product Innovation Session");
-            activityTypes.add("Tech Demonstration");
-            activityTypes.add("Training");
+            activityTypes.add("Business Review");
+            activityTypes.add("Design");
+            activityTypes.add("Network Meeting");
+            activityTypes.add("Material Supplies");
+            activityTypes.add("Inovative Enhancements");
+            activityTypes.add("Staff Training");
 
             for (String activity : activityTypes) {
                 ActivityType act = new ActivityType();

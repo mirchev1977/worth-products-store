@@ -41,14 +41,14 @@ public class PremiseServiceImpl implements PremiseService {
     public void seedPremises() {
         if (premiseRepository.count() == 0) {
             String[][] premises = {
-                { "Leonardo", "Wood workshop" },
-                { "Tesla", "Metal workshop" },
-                { "Lumiere", "Digital production workshop" },
-                { "Bell", "Prototyping space" },
-                { "Monnet", "Computers, Multimedia, Printers" },
-                { "Blueprinttion", "Computers, Multimedia, Printers" },
-                { "STEM&Art", "Computers, Multimedia, Printers" },
-                { "Carnegie", "Computers, Multimedia, Printers" }
+                { "Sofia_Lab", "Wood workshop" },
+                { "Varna_Factory", "Metal workshop" },
+                { "Partner_Storage", "Digital production workshop" },
+                { "Abroad", "Prototyping space" },
+                { "Local_Laboratory", "Computers, Multimedia, Printers" },
+                { "Quality_Review", "Computers, Multimedia, Printers" },
+                { "Material_Design", "Computers, Multimedia, Printers" },
+                { "Waiting_Room", "Computers, Multimedia, Printers" }
             };
 
             for (String[] l : premises ) {

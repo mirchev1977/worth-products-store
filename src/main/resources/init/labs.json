@@ -1,26 +1,26 @@
 [
   {
-    "name": "Leonardo",
+    "name": "Sofia_Lab",
     "equipment": "Wood workshop"
   },
   {
-    "name": "Tesla",
+    "name": "Varna_Factory",
     "equipment": "Metal workshop"
   },
   {
-    "name": "Lumiere",
+    "name": "Partner_Storage",
     "equipment": "Digital production workshop"
   },
   {
-    "name": "Bell",
+    "name": "Abroad",
     "equipment": "Prototyping space"
   },
   {
-    "name": "Monnet",
+    "name": "Local_Laboratory",
     "equipment": "Computers, Multimedia, Printers"
   },
   {
-    "name": "Blueprinttion",
+    "name": "Quality_Review",
     "equipment": "Computers, Multimedia, Printers"
   },
   {
@@ -28,7 +28,7 @@
     "equipment": "Computers, Multimedia, Printers"
   },
   {
-    "name": "Carnegie",
+    "name": "Waiting_Room",
     "equipment": "Computers, Multimedia, Printers"
   }
 ]

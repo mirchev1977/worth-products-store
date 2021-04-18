@@ -1,9 +1,9 @@
 let premiseFData = {
-    "Wood workshop": ["Leonardo"],
-    "Metal workshop": ["Tesla"],
-    "Digital production workshop": ["Lumiere"],
-    "Prototyping space": ["Bell"],
-    "Computers, Multimedia, Printers": ["Monnet", "Blueprinttion", "STEM&Art", "Carnegie"]
+    "Wood workshop": ["Sofia_Lab"],
+    "Metal workshop": ["Varna_Factory"],
+    "Digital production workshop": ["Partner_Storage"],
+    "Prototyping space": ["Abroad"],
+    "Computers, Multimedia, Printers": ["Local_Laboratory", "Quality_Review", "STEM&Art", "Waiting_Room"]
 }
 
 window.onload = function () {
