@@ -1,15 +1,15 @@
 package com.w.prod.services.impl;
 
-import com.w.prod.models.entity.Idea;
+import com.w.prod.models.entity.Blueprint;
 import com.w.prod.models.entity.LogEntity;
 import com.w.prod.models.entity.Product;
 import com.w.prod.models.entity.UserEntity;
-import com.w.prod.models.service.IdeaLogServiceModel;
+import com.w.prod.models.service.BlueprintLogServiceModel;
 import com.w.prod.models.service.ProductServiceModel;
-import com.w.prod.models.view.AddIdeaLogViewModel;
+import com.w.prod.models.view.AddBlueprintLogViewModel;
 import com.w.prod.models.view.JoinProductLogViewModel;
 import com.w.prod.repositories.LogRepository;
-import com.w.prod.services.IdeaService;
+import com.w.prod.services.BlueprintService;
 import com.w.prod.services.LogService;
 import com.w.prod.services.ProductService;
 import com.w.prod.services.UserService;
@@ -32,16 +32,16 @@ public class LogServiceImpl implements LogService {
     private final LogRepository logRepository;
     private final UserService userService;
     private final ProductService productService;
-    private final IdeaService ideaService;
+    private final BlueprintService blueprintService;
     private final ModelMapper modelMapper;
     private Logger LOGGER = LoggerFactory.getLogger(LogServiceImpl.class);
 
 
-    public LogServiceImpl(LogRepository logRepository, UserService userService, ProductService productService, IdeaService ideaService, ModelMapper modelMapper) {
+    public LogServiceImpl(LogRepository logRepository, UserService userService, ProductService productService, BlueprintService blueprintService, ModelMapper modelMapper) {
         this.logRepository = logRepository;
         this.userService = userService;
         this.productService = productService;
-        this.ideaService = ideaService;
+        this.blueprintService = blueprintService;
         this.modelMapper = modelMapper;
     }
 
@@ -63,15 +63,15 @@ public class LogServiceImpl implements LogService {
 
 
     @Override
-    public void createIdeaAddLog(String action, String ideaName) {
-        IdeaLogServiceModel idea = ideaService.generateIdeaServiceModel(ideaName);
+    public void createBlueprintAddLog(String action, String blueprintName) {
+        BlueprintLogServiceModel blueprint = blueprintService.generateBlueprintServiceModel(blueprintName);
 
-if (idea!=null) {
+if (blueprint!=null) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String username = authentication.getName();
     UserEntity userEntity = userService.findByUsername(username);
     LogEntity logEntity = new LogEntity()
-            .setIdea(modelMapper.map(idea, Idea.class))
+            .setBlueprint(modelMapper.map(blueprint, Blueprint.class))
             .setAction(action)
             .setTime(LocalDateTime.now())
             .setUser(userEntity);
@@ -81,19 +81,19 @@ if (idea!=null) {
     }
 
     @Override
-    public List<AddIdeaLogViewModel> findAllIdeaAddLogs() {
+    public List<AddBlueprintLogViewModel> findAllBlueprintAddLogs() {
         return logRepository
-                .findAllByIdeaNotNullOrderByTimeDesc()
+                .findAllByBlueprintNotNullOrderByTimeDesc()
                 .stream()
                 .map(l -> {
-                    AddIdeaLogViewModel addIdeaLogViewModel = modelMapper.map(l, AddIdeaLogViewModel.class);
-                    addIdeaLogViewModel
-                            .setIdea(l.getIdea().getName())
+                    AddBlueprintLogViewModel addBlueprintLogViewModel = modelMapper.map(l, AddBlueprintLogViewModel.class);
+                    addBlueprintLogViewModel
+                            .setBlueprint(l.getBlueprint().getName())
                             .setUser(l.getUser().getUsername())
                             .setDateTime(String.format("%02d %s %s (%02d:%02d)",
                                     l.getTime().getDayOfMonth(), l.getTime().getMonth(),
                                     l.getTime().getYear(), l.getTime().getHour(), l.getTime().getMinute()));
-                    return addIdeaLogViewModel;
+                    return addBlueprintLogViewModel;
                 })
                 .collect(Collectors.toList());
     }
@@ -134,9 +134,9 @@ if (idea!=null) {
     }
 
 
-    public Map<Integer, Integer> getStatsIdeasCreated() {
+    public Map<Integer, Integer> getStatsBlueprintsCreated() {
         Map<Integer, Integer> activityMap = new HashMap<>();
-        logRepository.findAllByIdeaNotNullOrderByTimeDesc()
+        logRepository.findAllByBlueprintNotNullOrderByTimeDesc()
                 .forEach(l -> {
                     int dayOfWeek = l.getTime().getDayOfWeek().getValue();
                     activityMap.putIfAbsent(dayOfWeek, 0);

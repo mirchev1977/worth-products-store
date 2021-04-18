@@ -6,8 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "ideas")
-public class Idea extends BaseEntity {
+@Table(name = "blueprints")
+public class Blueprint extends BaseEntity {
 
     @Column(nullable = false)
     private String name;
@@ -41,7 +41,7 @@ public class Idea extends BaseEntity {
         return name;
     }
 
-    public Idea setName(String name) {
+    public Blueprint setName(String name) {
         this.name = name;
         return this;
     }
@@ -50,7 +50,7 @@ public class Idea extends BaseEntity {
         return sector;
     }
 
-    public Idea setSector(Sector sector) {
+    public Blueprint setSector(Sector sector) {
         this.sector = sector;
         return this;
     }
@@ -59,7 +59,7 @@ public class Idea extends BaseEntity {
         return description;
     }
 
-    public Idea setDescription(String description) {
+    public Blueprint setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -68,7 +68,7 @@ public class Idea extends BaseEntity {
         return duration;
     }
 
-    public Idea setDuration(int duration) {
+    public Blueprint setDuration(int duration) {
         this.duration = duration;
         return this;
     }
@@ -77,7 +77,7 @@ public class Idea extends BaseEntity {
         return neededEquipment;
     }
 
-    public Idea setNeededEquipment(Equipment neededEquipment) {
+    public Blueprint setNeededEquipment(Equipment neededEquipment) {
         this.neededEquipment = neededEquipment;
         return this;
     }
@@ -86,7 +86,7 @@ public class Idea extends BaseEntity {
         return activityType;
     }
 
-    public Idea setActivityType(ActivityType activityType) {
+    public Blueprint setActivityType(ActivityType activityType) {
         this.activityType = activityType;
         return this;
     }
@@ -95,7 +95,7 @@ public class Idea extends BaseEntity {
         return promoter;
     }
 
-    public Idea setPromoter(UserEntity promoter) {
+    public Blueprint setPromoter(UserEntity promoter) {
         this.promoter = promoter;
         return this;
     }
@@ -104,7 +104,7 @@ public class Idea extends BaseEntity {
         return status;
     }
 
-    public Idea setStatus(String status) {
+    public Blueprint setStatus(String status) {
         this.status = status;
         return this;
     }

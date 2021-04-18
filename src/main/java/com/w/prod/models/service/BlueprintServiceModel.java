@@ -1,13 +1,13 @@
-package com.w.prod.models.view;
+package com.w.prod.models.service;
 
-public class IdeaViewModel {
+import com.w.prod.models.entity.enums.Sector;
 
-
+public class BlueprintServiceModel {
     private String id;
 
     private String name;
 
-    private String sector;
+    private Sector sector;
 
     private String description;
 
@@ -18,31 +18,30 @@ public class IdeaViewModel {
     private String activityType;
 
     private String promoter;
-    private String status;
-
-    public String getName() {
-        return name;
-    }
 
     public String getId() {
         return id;
     }
 
-    public IdeaViewModel setId(String id) {
+    public BlueprintServiceModel setId(String id) {
         this.id = id;
         return this;
     }
 
-    public IdeaViewModel setName(String name) {
+    public String getName() {
+        return name;
+    }
+
+    public BlueprintServiceModel setName(String name) {
         this.name = name;
         return this;
     }
 
-    public String getSector() {
+    public Sector getSector() {
         return sector;
     }
 
-    public IdeaViewModel setSector(String sector) {
+    public BlueprintServiceModel setSector(Sector sector) {
         this.sector = sector;
         return this;
     }
@@ -51,7 +50,7 @@ public class IdeaViewModel {
         return description;
     }
 
-    public IdeaViewModel setDescription(String description) {
+    public BlueprintServiceModel setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -60,7 +59,7 @@ public class IdeaViewModel {
         return duration;
     }
 
-    public IdeaViewModel setDuration(int duration) {
+    public BlueprintServiceModel setDuration(int duration) {
         this.duration = duration;
         return this;
     }
@@ -69,7 +68,7 @@ public class IdeaViewModel {
         return neededEquipment;
     }
 
-    public IdeaViewModel setNeededEquipment(String neededEquipment) {
+    public BlueprintServiceModel setNeededEquipment(String neededEquipment) {
         this.neededEquipment = neededEquipment;
         return this;
     }
@@ -78,7 +77,7 @@ public class IdeaViewModel {
         return activityType;
     }
 
-    public IdeaViewModel setActivityType(String activityType) {
+    public BlueprintServiceModel setActivityType(String activityType) {
         this.activityType = activityType;
         return this;
     }
@@ -87,17 +86,8 @@ public class IdeaViewModel {
         return promoter;
     }
 
-    public IdeaViewModel setPromoter(String promoter) {
+    public BlueprintServiceModel setPromoter(String promoter) {
         this.promoter = promoter;
-        return this;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public IdeaViewModel setStatus(String status) {
-        this.status = status;
         return this;
     }
 }

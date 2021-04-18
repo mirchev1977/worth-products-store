@@ -1,10 +1,10 @@
 package com.w.prod.web;
 
-import com.w.prod.models.binding.IdeaAddBindingModel;
+import com.w.prod.models.binding.BlueprintAddBindingModel;
 import com.w.prod.models.binding.ProductAddBindingModel;
-import com.w.prod.models.service.IdeaServiceModel;
+import com.w.prod.models.service.BlueprintServiceModel;
 import com.w.prod.models.service.ProductServiceModel;
-import com.w.prod.models.view.IdeaViewModel;
+import com.w.prod.models.view.BlueprintViewModel;
 import com.w.prod.services.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,21 +19,21 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/ideas")
-public class IdeaController {
+@RequestMapping("/blueprints")
+public class BlueprintController {
     private final CarouselService carouselService;
     private final ModelMapper modelMapper;
-    private final IdeaService ideaService;
+    private final BlueprintService blueprintService;
     private final ActivityTypeService activityTypeService;
     private final EquipmentService equipmentService;
     private final ProductService productService;
     private final LabService labService;
     private final LogService logService;
 
-    public IdeaController(CarouselService carouselService, ModelMapper modelMapper, IdeaService ideaService, ActivityTypeService activityTypeService, EquipmentService equipmentService, ProductService productService, LabService labService, LogService logService) {
+    public BlueprintController(CarouselService carouselService, ModelMapper modelMapper, BlueprintService blueprintService, ActivityTypeService activityTypeService, EquipmentService equipmentService, ProductService productService, LabService labService, LogService logService) {
         this.carouselService = carouselService;
         this.modelMapper = modelMapper;
-        this.ideaService = ideaService;
+        this.blueprintService = blueprintService;
         this.activityTypeService = activityTypeService;
         this.equipmentService = equipmentService;
         this.productService = productService;
@@ -41,9 +41,9 @@ public class IdeaController {
         this.logService = logService;
     }
 
-    @ModelAttribute("ideaAddBindingModel")
-    public IdeaAddBindingModel createBindingModel() {
-        return new IdeaAddBindingModel();
+    @ModelAttribute("blueprintAddBindingModel")
+    public BlueprintAddBindingModel createBindingModel() {
+        return new BlueprintAddBindingModel();
     }
 
     @ModelAttribute("activityTypes")
@@ -69,100 +69,100 @@ public class IdeaController {
 
     @GetMapping("/all")
     public String showAll(Model model) {
-        model.addAttribute("ideas", ideaService.getAll());
+        model.addAttribute("blueprints", blueprintService.getAll());
 
-        return "ideas-all";
+        return "blueprint-all";
     }
 
     @GetMapping("/add")
-    public String addIdea(Model model) {
+    public String addBlueprint(Model model) {
 
         model.addAttribute("firstImg", carouselService.firstImage());
         model.addAttribute("secondImg", carouselService.secondImage());
         model.addAttribute("thirdImg", carouselService.thirdImage());
 
-        return "idea-add";
+        return "blueprint-add";
     }
 
     @PostMapping("/add")
-    public String postIdea(@Valid IdeaAddBindingModel ideaAddBindingModel,
+    public String postBlueprint(@Valid BlueprintAddBindingModel blueprintAddBindingModel,
                            BindingResult bindingResult,
                            RedirectAttributes redirectAttributes,
                            @AuthenticationPrincipal UserDetails principal) {
         if (principal != null) {
 
             if (bindingResult.hasErrors()) {
-                redirectAttributes.addFlashAttribute("ideaAddBindingModel", ideaAddBindingModel);
-                redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.ideaAddBindingModel", bindingResult);
-                return "redirect:/ideas/add";
+                redirectAttributes.addFlashAttribute("blueprintAddBindingModel", blueprintAddBindingModel);
+                redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.blueprintAddBindingModel", bindingResult);
+                return "redirect:/blueprints/add";
             }
 
-            IdeaServiceModel ideaServiceModel = modelMapper.map(
-                    ideaAddBindingModel,
-                    IdeaServiceModel.class);
+            BlueprintServiceModel blueprintServiceModel = modelMapper.map(
+                    blueprintAddBindingModel,
+                    BlueprintServiceModel.class);
 
-            ideaServiceModel.setPromoter(principal.getUsername());
+            blueprintServiceModel.setPromoter(principal.getUsername());
 
-            ideaService.createIdea(ideaServiceModel);
-            redirectAttributes.addFlashAttribute("message", "Your idea was added");
+            blueprintService.createBlueprint(blueprintServiceModel);
+            redirectAttributes.addFlashAttribute("message", "Your blueprint was added");
         }
-        return "redirect:/ideas/all";
+        return "redirect:/blueprints/all";
     }
 
     @GetMapping("/details/{id}")
     public String showDetails(@PathVariable String id,
                               Model model) {
 
-        IdeaViewModel ideaViewModel = ideaService.getIdeaView(id);
-        model.addAttribute("current", ideaViewModel);
+        BlueprintViewModel blueprintViewModel = blueprintService.getBlueprintView(id);
+        model.addAttribute("current", blueprintViewModel);
 
-        return "idea-details";
+        return "blueprint-details";
     }
 
     @GetMapping("/accept/{id}")
-    public String acceptIdea(@PathVariable String id, Model model) {
-        IdeaServiceModel ideaServiceModel = ideaService.extractIdeaModel(id);
-        model.addAttribute("ideaServiceModel", ideaServiceModel);
-        model.addAttribute("labs", labService.findSuitableLabs(ideaServiceModel.getNeededEquipment()));
-        model.addAttribute("duration", ideaServiceModel.getDuration());
-        model.addAttribute("labsInfo", labService.getSuitableLabsWithProducts(ideaServiceModel.getNeededEquipment()));
+    public String acceptBlueprint(@PathVariable String id, Model model) {
+        BlueprintServiceModel blueprintServiceModel = blueprintService.extractBlueprintModel(id);
+        model.addAttribute("blueprintServiceModel", blueprintServiceModel);
+        model.addAttribute("labs", labService.findSuitableLabs(blueprintServiceModel.getNeededEquipment()));
+        model.addAttribute("duration", blueprintServiceModel.getDuration());
+        model.addAttribute("labsInfo", labService.getSuitableLabsWithProducts(blueprintServiceModel.getNeededEquipment()));
 
         return "product-add";
     }
 
     @PostMapping("/accept/{id}")
-    public String turnIdeaIntoProduct(@PathVariable String id,
+    public String turnBlueprintIntoProduct(@PathVariable String id,
                                       @Valid ProductAddBindingModel productAddBindingModel,
                                       BindingResult bindingResult,
                                       RedirectAttributes redirectAttributes,
                                       Model model) {
-        model.addAttribute("duration", ideaService.getDurationOfIdea(id));
+        model.addAttribute("duration", blueprintService.getDurationOfBlueprint(id));
         model.addAttribute("id", id);
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("productAddBindingModel", productAddBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.productAddBindingModel", bindingResult);
-            return "redirect:/ideas/accept/{id}";
+            return "redirect:/blueprints/accept/{id}";
         }
 
         ProductServiceModel productServiceModel = modelMapper.map(
                 productAddBindingModel, ProductServiceModel.class);
-        productServiceModel.setPromoter(ideaService.extractIdeaModel(id).getPromoter());
+        productServiceModel.setPromoter(blueprintService.extractBlueprintModel(id).getPromoter());
         productService.createProduct(productServiceModel);
 
-        ideaService.markIdeaAsAccepted(id);
+        blueprintService.markBlueprintAsAccepted(id);
         redirectAttributes.addFlashAttribute("message", "You created a product");
 
-        return "redirect:/ideas/all";
+        return "redirect:/blueprints/all";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteIdea(@PathVariable String id,
+    public String deleteBlueprint(@PathVariable String id,
                              RedirectAttributes redirectAttributes
     ) {
-        ideaService.deleteIdea(id);
-        redirectAttributes.addFlashAttribute("message", "You deleted an idea");
+        blueprintService.deleteBlueprint(id);
+        redirectAttributes.addFlashAttribute("message", "You deleted an blueprint");
 
-        return "redirect:/ideas/all";
+        return "redirect:/blueprints/all";
     }
 }

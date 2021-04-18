@@ -3,7 +3,7 @@ let labFData = {
     "Metal workshop": ["Tesla"],
     "Digital production workshop": ["Lumiere"],
     "Prototyping space": ["Bell"],
-    "Computers, Multimedia, Printers": ["Monnet", "Ideation", "STEM&Art", "Carnegie"]
+    "Computers, Multimedia, Printers": ["Monnet", "Blueprinttion", "STEM&Art", "Carnegie"]
 }
 
 window.onload = function () {

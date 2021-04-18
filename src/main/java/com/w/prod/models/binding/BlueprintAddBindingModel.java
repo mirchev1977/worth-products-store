@@ -4,7 +4,7 @@ import com.w.prod.models.entity.enums.Sector;
 
 import javax.validation.constraints.*;
 
-public class IdeaAddBindingModel {
+public class BlueprintAddBindingModel {
 
     @NotEmpty
     @Size(min=3, max = 250)
@@ -32,7 +32,7 @@ public class IdeaAddBindingModel {
         return name;
     }
 
-    public IdeaAddBindingModel setName(String name) {
+    public BlueprintAddBindingModel setName(String name) {
         this.name = name;
         return this;
     }
@@ -41,7 +41,7 @@ public class IdeaAddBindingModel {
         return sector;
     }
 
-    public IdeaAddBindingModel setSector(Sector sector) {
+    public BlueprintAddBindingModel setSector(Sector sector) {
         this.sector = sector;
         return this;
     }
@@ -50,7 +50,7 @@ public class IdeaAddBindingModel {
         return description;
     }
 
-    public IdeaAddBindingModel setDescription(String description) {
+    public BlueprintAddBindingModel setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -59,7 +59,7 @@ public class IdeaAddBindingModel {
         return duration;
     }
 
-    public IdeaAddBindingModel setDuration(int duration) {
+    public BlueprintAddBindingModel setDuration(int duration) {
         this.duration = duration;
         return this;
     }
@@ -68,7 +68,7 @@ public class IdeaAddBindingModel {
         return neededEquipment;
     }
 
-    public IdeaAddBindingModel setNeededEquipment(String neededEquipment) {
+    public BlueprintAddBindingModel setNeededEquipment(String neededEquipment) {
         this.neededEquipment = neededEquipment;
         return this;
     }
@@ -77,7 +77,7 @@ public class IdeaAddBindingModel {
         return activityType;
     }
 
-    public IdeaAddBindingModel setActivityType(String activityType) {
+    public BlueprintAddBindingModel setActivityType(String activityType) {
         this.activityType = activityType;
         return this;
     }

@@ -1,6 +1,6 @@
 package com.w.prod.aop;
 
-import com.w.prod.models.binding.IdeaAddBindingModel;
+import com.w.prod.models.binding.BlueprintAddBindingModel;
 import com.w.prod.services.LogService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -22,8 +22,8 @@ public class LogAspect {
     public void joinPointCut() {
     }
 
-    @Pointcut("execution(* com.w.prod.web.IdeaController.postIdea(..))")
-    public void ideaCreatePointCut() {
+    @Pointcut("execution(* com.w.prod.web.BlueprintController.postBlueprint(..))")
+    public void blueprintCreatePointCut() {
     }
 
     @After("joinPointCut()")
@@ -35,13 +35,13 @@ public class LogAspect {
         logService.createProductJoinLog(action, productId);
     }
 
-    @After("ideaCreatePointCut()")
-    public void ideaCreateAfterAdvice(JoinPoint joinPoint) {
+    @After("blueprintCreatePointCut()")
+    public void blueprintCreateAfterAdvice(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
-        String ideaName = ((IdeaAddBindingModel) args[0]).getName();
+        String blueprintName = ((BlueprintAddBindingModel) args[0]).getName();
         String action = joinPoint.getSignature().getName();
 
-        logService.createIdeaAddLog(action, ideaName);
+        logService.createBlueprintAddLog(action, blueprintName);
     }
 }
 

@@ -1,13 +1,13 @@
-package com.w.prod.models.service;
+package com.w.prod.models.view;
 
-import com.w.prod.models.entity.enums.Sector;
+public class BlueprintViewModel {
 
-public class IdeaLogServiceModel {
+
     private String id;
 
     private String name;
 
-    private Sector sector;
+    private String sector;
 
     private String description;
 
@@ -18,30 +18,31 @@ public class IdeaLogServiceModel {
     private String activityType;
 
     private String promoter;
-
-    public String getId() {
-        return id;
-    }
-
-    public IdeaLogServiceModel setId(String id) {
-        this.id = id;
-        return this;
-    }
+    private String status;
 
     public String getName() {
         return name;
     }
 
-    public IdeaLogServiceModel setName(String name) {
+    public String getId() {
+        return id;
+    }
+
+    public BlueprintViewModel setId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public BlueprintViewModel setName(String name) {
         this.name = name;
         return this;
     }
 
-    public Sector getSector() {
+    public String getSector() {
         return sector;
     }
 
-    public IdeaLogServiceModel setSector(Sector sector) {
+    public BlueprintViewModel setSector(String sector) {
         this.sector = sector;
         return this;
     }
@@ -50,7 +51,7 @@ public class IdeaLogServiceModel {
         return description;
     }
 
-    public IdeaLogServiceModel setDescription(String description) {
+    public BlueprintViewModel setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -59,7 +60,7 @@ public class IdeaLogServiceModel {
         return duration;
     }
 
-    public IdeaLogServiceModel setDuration(int duration) {
+    public BlueprintViewModel setDuration(int duration) {
         this.duration = duration;
         return this;
     }
@@ -68,7 +69,7 @@ public class IdeaLogServiceModel {
         return neededEquipment;
     }
 
-    public IdeaLogServiceModel setNeededEquipment(String neededEquipment) {
+    public BlueprintViewModel setNeededEquipment(String neededEquipment) {
         this.neededEquipment = neededEquipment;
         return this;
     }
@@ -77,7 +78,7 @@ public class IdeaLogServiceModel {
         return activityType;
     }
 
-    public IdeaLogServiceModel setActivityType(String activityType) {
+    public BlueprintViewModel setActivityType(String activityType) {
         this.activityType = activityType;
         return this;
     }
@@ -86,8 +87,17 @@ public class IdeaLogServiceModel {
         return promoter;
     }
 
-    public IdeaLogServiceModel setPromoter(String promoter) {
+    public BlueprintViewModel setPromoter(String promoter) {
         this.promoter = promoter;
+        return this;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public BlueprintViewModel setStatus(String status) {
+        this.status = status;
         return this;
     }
 }

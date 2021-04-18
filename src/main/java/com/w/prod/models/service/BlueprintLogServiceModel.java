@@ -2,7 +2,7 @@ package com.w.prod.models.service;
 
 import com.w.prod.models.entity.enums.Sector;
 
-public class IdeaServiceModel {
+public class BlueprintLogServiceModel {
     private String id;
 
     private String name;
@@ -23,7 +23,7 @@ public class IdeaServiceModel {
         return id;
     }
 
-    public IdeaServiceModel setId(String id) {
+    public BlueprintLogServiceModel setId(String id) {
         this.id = id;
         return this;
     }
@@ -32,7 +32,7 @@ public class IdeaServiceModel {
         return name;
     }
 
-    public IdeaServiceModel setName(String name) {
+    public BlueprintLogServiceModel setName(String name) {
         this.name = name;
         return this;
     }
@@ -41,7 +41,7 @@ public class IdeaServiceModel {
         return sector;
     }
 
-    public IdeaServiceModel setSector(Sector sector) {
+    public BlueprintLogServiceModel setSector(Sector sector) {
         this.sector = sector;
         return this;
     }
@@ -50,7 +50,7 @@ public class IdeaServiceModel {
         return description;
     }
 
-    public IdeaServiceModel setDescription(String description) {
+    public BlueprintLogServiceModel setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -59,7 +59,7 @@ public class IdeaServiceModel {
         return duration;
     }
 
-    public IdeaServiceModel setDuration(int duration) {
+    public BlueprintLogServiceModel setDuration(int duration) {
         this.duration = duration;
         return this;
     }
@@ -68,7 +68,7 @@ public class IdeaServiceModel {
         return neededEquipment;
     }
 
-    public IdeaServiceModel setNeededEquipment(String neededEquipment) {
+    public BlueprintLogServiceModel setNeededEquipment(String neededEquipment) {
         this.neededEquipment = neededEquipment;
         return this;
     }
@@ -77,7 +77,7 @@ public class IdeaServiceModel {
         return activityType;
     }
 
-    public IdeaServiceModel setActivityType(String activityType) {
+    public BlueprintLogServiceModel setActivityType(String activityType) {
         this.activityType = activityType;
         return this;
     }
@@ -86,7 +86,7 @@ public class IdeaServiceModel {
         return promoter;
     }
 
-    public IdeaServiceModel setPromoter(String promoter) {
+    public BlueprintLogServiceModel setPromoter(String promoter) {
         this.promoter = promoter;
         return this;
     }

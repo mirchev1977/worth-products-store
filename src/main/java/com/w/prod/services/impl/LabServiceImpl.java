@@ -46,7 +46,7 @@ public class LabServiceImpl implements LabService {
                 { "Lumiere", "Digital production workshop" },
                 { "Bell", "Prototyping space" },
                 { "Monnet", "Computers, Multimedia, Printers" },
-                { "Ideation", "Computers, Multimedia, Printers" },
+                { "Blueprinttion", "Computers, Multimedia, Printers" },
                 { "STEM&Art", "Computers, Multimedia, Printers" },
                 { "Carnegie", "Computers, Multimedia, Printers" }
             };

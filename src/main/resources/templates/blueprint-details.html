@@ -14,7 +14,7 @@
 
         <!-- Banner -->
         <section id="banner_generic">
-            <h1>Idea Details</h1>
+            <h1>Blueprint Details</h1>
         </section>
     </div>
     <!-- Text -->
@@ -61,12 +61,12 @@
                     <p>
 
                                     <a sec:authorize="hasRole('ROLE_ADMIN')"
-                                          th:href="@{/ideas/accept/{id}(id=*{id})}">
+                                          th:href="@{/blueprints/accept/{id}(id=*{id})}">
                                         <button type="button">Create product</button>
                                     </a>
 
                                     <a sec:authorize="hasRole('ROLE_ADMIN')"
-                                          th:href="@{/ideas/delete/{id}(id=*{id})}">
+                                          th:href="@{/blueprints/delete/{id}(id=*{id})}">
                                         <button id="delete" class="bg-danger" type="button">Delete</button>
                                     </a>
                     </p>

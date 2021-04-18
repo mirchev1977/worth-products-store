@@ -1,6 +1,6 @@
 package com.w.prod.models.view;
 
-public class AddIdeaLogViewModel {
+public class AddBlueprintLogViewModel {
 
     private String id;
 
@@ -8,7 +8,7 @@ public class AddIdeaLogViewModel {
 
     private String action;
 
-    private String idea;
+    private String blueprint;
 
     private String dateTime;
 
@@ -16,7 +16,7 @@ public class AddIdeaLogViewModel {
         return id;
     }
 
-    public AddIdeaLogViewModel setId(String id) {
+    public AddBlueprintLogViewModel setId(String id) {
         this.id = id;
         return this;
     }
@@ -25,7 +25,7 @@ public class AddIdeaLogViewModel {
         return user;
     }
 
-    public AddIdeaLogViewModel setUser(String user) {
+    public AddBlueprintLogViewModel setUser(String user) {
         this.user = user;
         return this;
     }
@@ -34,17 +34,17 @@ public class AddIdeaLogViewModel {
         return action;
     }
 
-    public AddIdeaLogViewModel setAction(String action) {
+    public AddBlueprintLogViewModel setAction(String action) {
         this.action = action;
         return this;
     }
 
-    public String getIdea() {
-        return idea;
+    public String getBlueprint() {
+        return blueprint;
     }
 
-    public AddIdeaLogViewModel setIdea(String idea) {
-        this.idea = idea;
+    public AddBlueprintLogViewModel setBlueprint(String blueprint) {
+        this.blueprint = blueprint;
         return this;
     }
 
@@ -52,7 +52,7 @@ public class AddIdeaLogViewModel {
         return dateTime;
     }
 
-    public AddIdeaLogViewModel setDateTime(String dateTime) {
+    public AddBlueprintLogViewModel setDateTime(String dateTime) {
         this.dateTime = dateTime;
         return this;
     }

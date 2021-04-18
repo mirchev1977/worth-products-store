@@ -2,7 +2,7 @@ package com.w.prod.web;
 
 import com.w.prod.models.binding.UserRegistrationBindingModel;
 import com.w.prod.models.service.UserRegistrationServiceModel;
-import com.w.prod.services.IdeaService;
+import com.w.prod.services.BlueprintService;
 import com.w.prod.services.ProductService;
 import com.w.prod.services.UserService;
 import org.modelmapper.ModelMapper;
@@ -22,13 +22,13 @@ public class UserController {
     private final ModelMapper modelMapper;
     private final UserService userService;
     private final ProductService productService;
-    private final IdeaService ideaService;
+    private final BlueprintService blueprintService;
 
-    public UserController(ModelMapper modelMapper, UserService userService, ProductService productService, IdeaService ideaService) {
+    public UserController(ModelMapper modelMapper, UserService userService, ProductService productService, BlueprintService blueprintService) {
         this.modelMapper = modelMapper;
         this.userService = userService;
         this.productService = productService;
-        this.ideaService = ideaService;
+        this.blueprintService = blueprintService;
     }
 
     @ModelAttribute("userRegistrationBindingModel")
@@ -96,7 +96,7 @@ public class UserController {
 
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable String id) {
-        ideaService.deleteIdeasOfUser(id);
+        blueprintService.deleteBlueprintsOfUser(id);
         productService.deleteProductsOfUser(id);
         userService.deleteUser(id);
         return "redirect:/users/manage";

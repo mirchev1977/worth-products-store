@@ -19,7 +19,7 @@ public class LogEntity extends BaseEntity {
     private Product product;
 
     @ManyToOne
-    private Idea idea;
+    private Blueprint blueprint;
 
 
     @Column(nullable = false)
@@ -64,12 +64,12 @@ public class LogEntity extends BaseEntity {
         return this;
     }
 
-    public Idea getIdea() {
-        return idea;
+    public Blueprint getBlueprint() {
+        return blueprint;
     }
 
-    public LogEntity setIdea(Idea idea) {
-        this.idea = idea;
+    public LogEntity setBlueprint(Blueprint blueprint) {
+        this.blueprint = blueprint;
         return this;
     }
 }

@@ -26,7 +26,7 @@
         <div class="row g-3">
             <form
                     th:object="${productAddBindingModel}"
-                    th:action="@{/ideas/accept/{id}(id=${id})}"
+                    th:action="@{/blueprints/accept/{id}(id=${id})}"
                     method="POST">
                 <!-- Name -->
                 <div>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-auto">
                         <input name="name"
-                               th:field="${ideaServiceModel.name}"
+                               th:field="${blueprintServiceModel.name}"
                                th:value="${productAddBindingModel.name}"
                                th:errorclass="is-invalid"
                                type="text"
@@ -74,7 +74,7 @@
                     </div>
                     <div class="col-auto">
                                         <textarea name="description"
-                                                  th:field="${ideaServiceModel.description}"
+                                                  th:field="${blueprintServiceModel.description}"
                                                   th:value="${productAddBindingModel.description}"
                                                   th:errorclass="is-invalid"
                                                   required minlength="10" maxlength="1500"
@@ -117,11 +117,11 @@
                     <select required class="browser-default custom-select"
                             id="inputNeededEquipment"
                             name="neededEquipment"
-                            th:field="${ideaServiceModel.neededEquipment}"
-                            th:value="${ideaServiceModel.neededEquipment}"
+                            th:field="${blueprintServiceModel.neededEquipment}"
+                            th:value="${blueprintServiceModel.neededEquipment}"
                             th:errorclass="is-invalid">
                         <option value="">Select the equipment provided</option>
-                        <option th:text="${ideaServiceModel.neededEquipment}" th:value="${ideaServiceModel.neededEquipment}">Value
+                        <option th:text="${blueprintServiceModel.neededEquipment}" th:value="${blueprintServiceModel.neededEquipment}">Value
                         </option>
                     </select>
                     <small class="invalid-feedback text-light form-text bg-danger rounded">You must

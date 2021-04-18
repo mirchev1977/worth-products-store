@@ -14,7 +14,7 @@
 
 
     <section id="banner_generic">
-        <h1>Ideas</h1>
+        <h1>Blueprints</h1>
     </section>
 </div>
     <p></p>
@@ -38,14 +38,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="i : ${ideas}" th:object="${i}">
+                    <tr th:each="i : ${blueprints}" th:object="${i}">
                         <td th:text="*{name}"></td>
                         <td th:text="*{sector}"></td>
                         <td th:text="*{activityType}"></td>
                         <td th:text="*{status}"></td>
                         <td sec:authorize="hasRole('ROLE_ADMIN')">
 
-                            <a th:href="@{/ideas/details/{id}(id=*{id})}">
+                            <a th:href="@{/blueprints/details/{id}(id=*{id})}">
                                 <button type="button">Details</button></a>
 
                              </td>

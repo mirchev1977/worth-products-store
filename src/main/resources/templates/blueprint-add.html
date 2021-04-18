@@ -53,15 +53,15 @@
     <!-- Text -->
     <div class="d-flex justify-content-center ">
         <div class="inner">
-            <h3>Propose a product idea</h3>
+            <h3>Propose a product blueprint</h3>
         </div>
     </div>
 
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
-                    th:action="@{/ideas/add}"
-                    th:object="${ideaAddBindingModel}"
+                    th:action="@{/blueprints/add}"
+                    th:object="${blueprintAddBindingModel}"
 
                     method="POST">
                 <!-- Name -->

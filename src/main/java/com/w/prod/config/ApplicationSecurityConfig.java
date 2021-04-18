@@ -30,15 +30,15 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .antMatchers("/", "/users/login", "/users/register",
-                        "/ideas/all", "/results/*").permitAll()
+                        "/blueprints/all", "/results/*").permitAll()
                 .antMatchers("/products/archive/*", "/products/delete/*", "/products/update/*",
-                        "/ideas/accept/*", "/ideas/delete/*", "/users/manage",
+                        "/blueprints/accept/*", "/blueprints/delete/*", "/users/manage",
                         "/users/delete/*", "/activities/add", "/roles/add", "/statistics").hasRole("ADMIN")
-                .antMatchers("/ideas/add", "/ideas/details/*",
+                .antMatchers("/blueprints/add", "/blueprints/details/*",
                         "/products/owned", "/products/all",
                         "/products/details/*", "/products/update/*", "/products/join/*", "/products/leave/*", "/products/publish/*",
                         "/products/own", "/products/api", "/products/collaborations",
-                        "/ideas/accept/*", "/ideas/delete/*", "/users/manage", "/users/delete/*", "/activities/add").hasRole("USER")
+                        "/blueprints/accept/*", "/blueprints/delete/*", "/users/manage", "/users/delete/*", "/activities/add").hasRole("USER")
                 .and()
                 .formLogin()
                 .loginPage("/users/login")
