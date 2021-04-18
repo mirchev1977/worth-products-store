@@ -48,7 +48,7 @@
             <tbody id="productList">
             <tr th:each="p : ${productViewModels}" th:object="${p}">
                 <td th:text="*{name}"></td>
-                <td th:text="*{name}"></td>
+                <td th:text="*{category}"></td>
                 <td th:text="*{startDate}"></td>
                 <td>
                     <a th:href="@{/products/details/{id}(id=*{id})}">
