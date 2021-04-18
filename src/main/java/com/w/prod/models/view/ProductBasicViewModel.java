@@ -1,6 +1,6 @@
 package com.w.prod.models.view;
 
-public class ProjectBasicViewModel {
+public class ProductBasicViewModel {
 
     private String id;
 
@@ -18,7 +18,7 @@ public class ProjectBasicViewModel {
         return id;
     }
 
-    public ProjectBasicViewModel setId(String id) {
+    public ProductBasicViewModel setId(String id) {
         this.id = id;
         return this;
     }
@@ -27,7 +27,7 @@ public class ProjectBasicViewModel {
         return name;
     }
 
-    public ProjectBasicViewModel setName(String name) {
+    public ProductBasicViewModel setName(String name) {
         this.name = name;
         return this;
     }
@@ -36,7 +36,7 @@ public class ProjectBasicViewModel {
         return sector;
     }
 
-    public ProjectBasicViewModel setSector(String sector) {
+    public ProductBasicViewModel setSector(String sector) {
         this.sector = sector;
         return this;
     }
@@ -45,7 +45,7 @@ public class ProjectBasicViewModel {
         return startDate;
     }
 
-    public ProjectBasicViewModel setStartDate(String startDate) {
+    public ProductBasicViewModel setStartDate(String startDate) {
         this.startDate = startDate;
         return this;
     }
@@ -54,7 +54,7 @@ public class ProjectBasicViewModel {
         return activityType;
     }
 
-    public ProjectBasicViewModel setActivityType(String activityType) {
+    public ProductBasicViewModel setActivityType(String activityType) {
         this.activityType = activityType;
         return this;
     }
@@ -63,7 +63,7 @@ public class ProjectBasicViewModel {
         return lab;
     }
 
-    public ProjectBasicViewModel setLab(String lab) {
+    public ProductBasicViewModel setLab(String lab) {
         this.lab = lab;
         return this;
     }

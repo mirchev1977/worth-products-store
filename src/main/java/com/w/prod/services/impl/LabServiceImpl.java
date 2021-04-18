@@ -1,20 +1,14 @@
 package com.w.prod.services.impl;
 
 import com.w.prod.models.entity.Lab;
-import com.w.prod.models.entity.Project;
-import com.w.prod.models.service.LabServiceModel;
+import com.w.prod.models.entity.Product;
 import com.w.prod.repositories.LabRepository;
 import com.w.prod.services.EquipmentService;
 import com.w.prod.services.LabService;
 import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -61,7 +55,7 @@ public class LabServiceImpl implements LabService {
                 Lab lab = new Lab();
                 lab.setName(l[0]);
                 lab.setEquipment(equipmentService.findEquipment(l[1]));
-                lab.setProjects(new ArrayList<>());
+                lab.setProducts(new ArrayList<>());
                 labRepository.save(lab);
             }
         }
@@ -70,10 +64,10 @@ public class LabServiceImpl implements LabService {
         //        LabServiceModel[] labServiceModels = gson.fromJson(Files.readString(Path.of(labs.getURI())), LabServiceModel[].class);
         //        Arrays.stream(labServiceModels)
         //                .forEach(m -> {
-        //                    List<Project> emptyList = new ArrayList<>();
+        //                    List<Product> emptyList = new ArrayList<>();
         //                    Lab current = modelMapper.map(m, Lab.class);
         //                    current.setEquipment(equipmentService.findEquipment(m.getEquipment()));
-        //                    current.setProjects(emptyList);
+        //                    current.setProducts(emptyList);
         //                    labRepository.save(current);
         //                });
 
@@ -105,7 +99,7 @@ public class LabServiceImpl implements LabService {
     }
 
     @Override
-    public Map<String, String> getSuitableLabsWithProjects(String neededEquipment) {
+    public Map<String, String> getSuitableLabsWithProducts(String neededEquipment) {
 
         Map<String, String> info = new TreeMap<>();
         List<Lab> labs = labRepository
@@ -120,7 +114,7 @@ public class LabServiceImpl implements LabService {
     }
 
     @Override
-    public Map<String, String> getAllLabsWithProjects() {
+    public Map<String, String> getAllLabsWithProducts() {
         Map<String, String> info = new TreeMap<>();
         List<Lab> labs = labRepository
                 .findAll();
@@ -134,17 +128,17 @@ public class LabServiceImpl implements LabService {
     }
 
     private String getInfoForLab(Lab l) {
-        List<Project> projects = l.getProjects();
-        List<Project> copyOfProjects = new ArrayList<>(projects);
-        copyOfProjects.sort((p1, p2) -> p1.getStartDate().compareTo(p2.getStartDate()));
+        List<Product> products = l.getProducts();
+        List<Product> copyOfProducts = new ArrayList<>(products);
+        copyOfProducts.sort((p1, p2) -> p1.getStartDate().compareTo(p2.getStartDate()));
         StringBuilder sb = new StringBuilder();
-        copyOfProjects.forEach(p -> {
+        copyOfProducts.forEach(p -> {
             if (p.getEndDate().isAfter(LocalDate.now())) {
-                String currentProject =
+                String currentProduct =
                         String.format("%02d %s %s - %02d %s %s <br />",
                                 p.getStartDate().getDayOfMonth(), p.getStartDate().getMonth(), p.getStartDate().getYear(),
                                 p.getEndDate().getDayOfMonth(), p.getEndDate().getMonth(), p.getEndDate().getYear());
-                sb.append(currentProject);
+                sb.append(currentProduct);
             }
         });
         return sb.toString();

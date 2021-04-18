@@ -9,13 +9,13 @@ import java.util.List;
 @Repository
 public interface LogRepository extends JpaRepository<LogEntity, String> {
 
-    List<LogEntity> findAllByProjectNotNullOrderByTimeDesc();
+    List<LogEntity> findAllByProductNotNullOrderByTimeDesc();
 
     List<LogEntity> findAllByIdeaNotNullOrderByTimeDesc();
 
     List<LogEntity> findByIdea_Id(String id);
 
-    List<LogEntity> findByProject_Id(String id);
+    List<LogEntity> findByProduct_Id(String id);
 
     List<LogEntity> findByUser_Id(String id);
 }

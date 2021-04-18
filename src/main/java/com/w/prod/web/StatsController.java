@@ -17,10 +17,10 @@ public class StatsController {
 
     @GetMapping
     public String stats(Model model) {
-        model.addAttribute("jointProjectLogs", logService.findAllJoinProjectLogs());
+        model.addAttribute("jointProductLogs", logService.findAllJoinProductLogs());
         model.addAttribute("addIdeaLogs", logService.findAllIdeaAddLogs());
         model.addAttribute("activityIdeas", logService.getStatsIdeasCreated());
-        model.addAttribute("activityProjects", logService.getStatsJoinProjectActivity());
+        model.addAttribute("activityProducts", logService.getStatsJoinProductActivity());
 
         return "stats";
     }

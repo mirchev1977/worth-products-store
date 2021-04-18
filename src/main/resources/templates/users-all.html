@@ -26,8 +26,8 @@
                 <th>Username</th>
                 <th>Full name/email</th>
                 <th>Role</th>
-                <th>Active projects</th>
-                <th>Archived projects</th>
+                <th>Active products</th>
+                <th>Archived products</th>
                 <th>Active collaborations</th>
                 <th>Sector/Type</th>
                 <th sec:authorize="hasRole('ROLE_ADMIN')">Actions</th>
@@ -38,8 +38,8 @@
                 <td th:text="*{username}"></td>
                 <td th:utext="*{fullNameAndEmail}"></td>
                 <td th:utext="*{roles}"></td>
-                <td th:utext="*{activeProjects}"></td>
-                <td th:utext="*{archivesProjects}"></td>
+                <td th:utext="*{activeProducts}"></td>
+                <td th:utext="*{archivesProducts}"></td>
                 <td th:utext="*{activeCollabs}"></td>
                 <td th:utext="*{sectorAndType}"></td>
                 <td sec:authorize="hasRole('ROLE_ADMIN')">

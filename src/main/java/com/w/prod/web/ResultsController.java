@@ -1,7 +1,7 @@
 package com.w.prod.web;
 
-import com.w.prod.models.view.ProjectResultViewModel;
-import com.w.prod.services.ProjectService;
+import com.w.prod.models.view.ProductResultViewModel;
+import com.w.prod.services.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,36 +15,36 @@ import java.util.List;
 public class ResultsController {
 
     private final ModelMapper modelMapper;
-    private final ProjectService projectService;
+    private final ProductService productService;
 
-    public ResultsController(ModelMapper modelMapper, ProjectService projectService) {
+    public ResultsController(ModelMapper modelMapper, ProductService productService) {
         this.modelMapper = modelMapper;
-        this.projectService = projectService;
+        this.productService = productService;
     }
 
     @GetMapping("/it")
     public String resultsIT(Model model) {
-        List<ProjectResultViewModel> projectResultViewModels = projectService.getResults("IT");
-        model.addAttribute("results", projectResultViewModels);
+        List<ProductResultViewModel> productResultViewModels = productService.getResults("IT");
+        model.addAttribute("results", productResultViewModels);
         return "results-it";
     }
 
     @GetMapping("/arts")
     public String resultsArts(Model model) {
-        List<ProjectResultViewModel> projectResultViewModels = projectService.getResults("Arts");
-        model.addAttribute("results", projectResultViewModels);
+        List<ProductResultViewModel> productResultViewModels = productService.getResults("Arts");
+        model.addAttribute("results", productResultViewModels);
         return "results-art";
     }
     @GetMapping("/production")
     public String resultsProduction(Model model) {
-        List<ProjectResultViewModel> projectResultViewModels = projectService.getResults("Production");
-        model.addAttribute("results", projectResultViewModels);
+        List<ProductResultViewModel> productResultViewModels = productService.getResults("Production");
+        model.addAttribute("results", productResultViewModels);
         return "results-production";
     }
     @GetMapping("/education")
     public String resultsEducation(Model model) {
-        List<ProjectResultViewModel> projectResultViewModels = projectService.getResults("Education");
-        model.addAttribute("results", projectResultViewModels);
+        List<ProductResultViewModel> productResultViewModels = productService.getResults("Education");
+        model.addAttribute("results", productResultViewModels);
         return "results-edu";
     }
 }

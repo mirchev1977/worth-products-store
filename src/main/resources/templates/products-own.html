@@ -14,7 +14,7 @@
 
     <!-- Banner -->
     <section id="banner_generic">
-        <h1 th:text="|Projects of ${fullName}|">Projects of user</h1>
+        <h1 th:text="|Products of ${fullName}|">Products of user</h1>
     </section>
 </div>
 <!-- Text -->
@@ -33,7 +33,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="p : ${projectsOfUser}" th:object="${p}">
+            <tr th:each="p : ${productsOfUser}" th:object="${p}">
                 <td th:text="*{name}"></td>
                 <td th:text="*{sector}"></td>
                 <td th:text="*{startDate}"></td>
@@ -41,7 +41,7 @@
                 <td th:text="*{activityType}"></td>
                 <td>
 
-                    <a th:href="@{/projects/details/{id}(id=*{id})}">
+                    <a th:href="@{/products/details/{id}(id=*{id})}">
                         <button type="button"> View details</button></a>
                     </td>
             </tr>

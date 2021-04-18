@@ -1,9 +1,9 @@
 package com.w.prod.web;
 
 import com.w.prod.models.binding.IdeaAddBindingModel;
-import com.w.prod.models.binding.ProjectAddBindingModel;
+import com.w.prod.models.binding.ProductAddBindingModel;
 import com.w.prod.models.service.IdeaServiceModel;
-import com.w.prod.models.service.ProjectServiceModel;
+import com.w.prod.models.service.ProductServiceModel;
 import com.w.prod.models.view.IdeaViewModel;
 import com.w.prod.services.*;
 import org.modelmapper.ModelMapper;
@@ -26,17 +26,17 @@ public class IdeaController {
     private final IdeaService ideaService;
     private final ActivityTypeService activityTypeService;
     private final EquipmentService equipmentService;
-    private final ProjectService projectService;
+    private final ProductService productService;
     private final LabService labService;
     private final LogService logService;
 
-    public IdeaController(CarouselService carouselService, ModelMapper modelMapper, IdeaService ideaService, ActivityTypeService activityTypeService, EquipmentService equipmentService, ProjectService projectService, LabService labService, LogService logService) {
+    public IdeaController(CarouselService carouselService, ModelMapper modelMapper, IdeaService ideaService, ActivityTypeService activityTypeService, EquipmentService equipmentService, ProductService productService, LabService labService, LogService logService) {
         this.carouselService = carouselService;
         this.modelMapper = modelMapper;
         this.ideaService = ideaService;
         this.activityTypeService = activityTypeService;
         this.equipmentService = equipmentService;
-        this.projectService = projectService;
+        this.productService = productService;
         this.labService = labService;
         this.logService = logService;
     }
@@ -56,9 +56,9 @@ public class IdeaController {
         return equipmentService.getAllEquipments();
     }
 
-    @ModelAttribute("projectAddBindingModel")
-    public ProjectAddBindingModel projectAddBindingModel() {
-        return new ProjectAddBindingModel();
+    @ModelAttribute("productAddBindingModel")
+    public ProductAddBindingModel productAddBindingModel() {
+        return new ProductAddBindingModel();
     }
 
     @ModelAttribute("message")
@@ -125,14 +125,14 @@ public class IdeaController {
         model.addAttribute("ideaServiceModel", ideaServiceModel);
         model.addAttribute("labs", labService.findSuitableLabs(ideaServiceModel.getNeededEquipment()));
         model.addAttribute("duration", ideaServiceModel.getDuration());
-        model.addAttribute("labsInfo", labService.getSuitableLabsWithProjects(ideaServiceModel.getNeededEquipment()));
+        model.addAttribute("labsInfo", labService.getSuitableLabsWithProducts(ideaServiceModel.getNeededEquipment()));
 
-        return "project-add";
+        return "product-add";
     }
 
     @PostMapping("/accept/{id}")
-    public String turnIdeaIntoProject(@PathVariable String id,
-                                      @Valid ProjectAddBindingModel projectAddBindingModel,
+    public String turnIdeaIntoProduct(@PathVariable String id,
+                                      @Valid ProductAddBindingModel productAddBindingModel,
                                       BindingResult bindingResult,
                                       RedirectAttributes redirectAttributes,
                                       Model model) {
@@ -140,18 +140,18 @@ public class IdeaController {
         model.addAttribute("id", id);
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("projectAddBindingModel", projectAddBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.projectAddBindingModel", bindingResult);
+            redirectAttributes.addFlashAttribute("productAddBindingModel", productAddBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.productAddBindingModel", bindingResult);
             return "redirect:/ideas/accept/{id}";
         }
 
-        ProjectServiceModel projectServiceModel = modelMapper.map(
-                projectAddBindingModel, ProjectServiceModel.class);
-        projectServiceModel.setPromoter(ideaService.extractIdeaModel(id).getPromoter());
-        projectService.createProject(projectServiceModel);
+        ProductServiceModel productServiceModel = modelMapper.map(
+                productAddBindingModel, ProductServiceModel.class);
+        productServiceModel.setPromoter(ideaService.extractIdeaModel(id).getPromoter());
+        productService.createProduct(productServiceModel);
 
         ideaService.markIdeaAsAccepted(id);
-        redirectAttributes.addFlashAttribute("message", "You created a project");
+        redirectAttributes.addFlashAttribute("message", "You created a product");
 
         return "redirect:/ideas/all";
     }

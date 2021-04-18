@@ -1,62 +1,62 @@
-const projectList = document.getElementById('projectList');
+const productList = document.getElementById('productList');
 const searchBar = document.getElementById('searchInput');
 const allBtn = document.getElementById('all');
-const myProjectBtn = document.getElementById('own');
+const myProductBtn = document.getElementById('own');
 const collabsBtn = document.getElementById('collabs');
-const allProjects = [];
+const allProducts = [];
 
 try {
-    fetch("http://localhost:9000/manageProjects/api/all")
+    fetch("http://localhost:9000/manageProducts/api/all")
         .then(response => response.json())
         .then(data => {
             for (let d of data) {
-                allProjects.push(d);
+                allProducts.push(d);
             }
         });
 } catch (e) {
-    fetch("https://wprod.herokuapp.com/manageProjects/api/all")
+    fetch("https://wprod.herokuapp.com/manageProducts/api/all")
         .then(response => response.json())
         .then(data => {
             for (let d of data) {
-                allProjects.push(d);
+                allProducts.push(d);
             }
         });
 }
 
-const myProjects = [];
+const myProducts = [];
 try {
-    fetch("http://localhost:9000/manageProjects/own")
+    fetch("http://localhost:9000/manageProducts/own")
         .then(response => response.json())
         .then(data => {
             for (let d of data) {
-                myProjects.push(d);
+                myProducts.push(d);
             }
         });
 } catch (e) {
-    fetch("https://wprod.herokuapp.com/manageProjects/own")
+    fetch("https://wprod.herokuapp.com/manageProducts/own")
         .then(response => response.json())
         .then(data => {
             for (let d of data) {
-                myProjects.push(d);
+                myProducts.push(d);
             }
         });
 }
 
-const myCollabProjects = [];
+const myCollabProducts = [];
 try {
-    fetch("http://localhost:9000/manageProjects/collaborations")
+    fetch("http://localhost:9000/manageProducts/collaborations")
         .then(response => response.json())
         .then(data => {
             for (let d of data) {
-                myCollabProjects.push(d);
+                myCollabProducts.push(d);
             }
         });
 } catch (e) {
-    fetch("https://wprod.herokuapp.com/manageProjects/collaborations")
+    fetch("https://wprod.herokuapp.com/manageProducts/collaborations")
         .then(response => response.json())
         .then(data => {
             for (let d of data) {
-                myCollabProjects.push(d);
+                myCollabProducts.push(d);
             }
         });
 }
@@ -64,40 +64,40 @@ try {
 // Start of functions
 
 allBtn.addEventListener('click', (e) => {
-    projectList.innerHTML = ""
-    displayProjects(allProjects);
+    productList.innerHTML = ""
+    displayProducts(allProducts);
 
 })
 
 searchBar.addEventListener('keyup', (e) => {
     const searchingCharacters = searchBar.value.toLowerCase();
-    let filteredProjects = allProjects.filter(p => {
+    let filteredProducts = allProducts.filter(p => {
         return p.name.toLowerCase().includes(searchingCharacters)
             || p.sector.toLowerCase().includes(searchingCharacters);
     });
-    projectList.innerHTML = ""
-    displayProjects(filteredProjects);
+    productList.innerHTML = ""
+    displayProducts(filteredProducts);
 })
 
-myProjectBtn.addEventListener('click', (e) => {
-    projectList.innerHTML = ""
-    displayProjects(myProjects);
+myProductBtn.addEventListener('click', (e) => {
+    productList.innerHTML = ""
+    displayProducts(myProducts);
 })
 
 collabsBtn.addEventListener('click', (e) => {
-    projectList.innerHTML = ""
-    displayProjects(myCollabProjects);
+    productList.innerHTML = ""
+    displayProducts(myCollabProducts);
 })
 
-function displayProjects(projects) {
-    projectList.innerHTML = projects
+function displayProducts(products) {
+    productList.innerHTML = products
         .map((p) => {
             return `    <tr>
                 <td >${p.name}</td>
                 <td >${p.sector}</td>
                 <td>${p.startDate}</td>
                 <td>
-                    <a href="/projects/details/${p.id}">
+                    <a href="/products/details/${p.id}">
                         <button type="button">Details</button></a>
              
                 </td>

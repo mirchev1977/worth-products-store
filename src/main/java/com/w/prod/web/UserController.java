@@ -3,7 +3,7 @@ package com.w.prod.web;
 import com.w.prod.models.binding.UserRegistrationBindingModel;
 import com.w.prod.models.service.UserRegistrationServiceModel;
 import com.w.prod.services.IdeaService;
-import com.w.prod.services.ProjectService;
+import com.w.prod.services.ProductService;
 import com.w.prod.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -21,13 +21,13 @@ import javax.validation.Valid;
 public class UserController {
     private final ModelMapper modelMapper;
     private final UserService userService;
-    private final ProjectService projectService;
+    private final ProductService productService;
     private final IdeaService ideaService;
 
-    public UserController(ModelMapper modelMapper, UserService userService, ProjectService projectService, IdeaService ideaService) {
+    public UserController(ModelMapper modelMapper, UserService userService, ProductService productService, IdeaService ideaService) {
         this.modelMapper = modelMapper;
         this.userService = userService;
-        this.projectService = projectService;
+        this.productService = productService;
         this.ideaService = ideaService;
     }
 
@@ -97,7 +97,7 @@ public class UserController {
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable String id) {
         ideaService.deleteIdeasOfUser(id);
-        projectService.deleteProjectsOfUser(id);
+        productService.deleteProductsOfUser(id);
         userService.deleteUser(id);
         return "redirect:/users/manage";
     }

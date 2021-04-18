@@ -1,7 +1,7 @@
 package com.w.prod.web;
 
-import com.w.prod.models.view.ProjectBasicViewModel;
-import com.w.prod.services.ProjectService;
+import com.w.prod.models.view.ProductBasicViewModel;
+import com.w.prod.services.ProductService;
 import com.w.prod.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
@@ -13,43 +13,43 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping("/manageProjects")
+@RequestMapping("/manageProducts")
 @RestController
-public class ProjectRestController {
+public class ProductRestController {
 
-    private final ProjectService projectService;
+    private final ProductService productService;
     private final ModelMapper modelMapper;
     private final UserService userService;
 
-    public ProjectRestController(ProjectService projectService, ModelMapper modelMapper, UserService userService) {
-        this.projectService = projectService;
+    public ProductRestController(ProductService productService, ModelMapper modelMapper, UserService userService) {
+        this.productService = productService;
 
         this.modelMapper = modelMapper;
         this.userService = userService;
     }
 
     @GetMapping("/api/all")
-    public ResponseEntity<List<ProjectBasicViewModel>> findAll() {
+    public ResponseEntity<List<ProductBasicViewModel>> findAll() {
         return ResponseEntity
                 .ok()
-                .body(projectService.getActiveProjectsOrderedbyStartDate());
+                .body(productService.getActiveProductsOrderedbyStartDate());
     }
 
     @GetMapping("/own")
-    public ResponseEntity<List<ProjectBasicViewModel>> showMyOwnProjects(@AuthenticationPrincipal UserDetails principal) {
+    public ResponseEntity<List<ProductBasicViewModel>> showMyOwnProducts(@AuthenticationPrincipal UserDetails principal) {
         String userName = principal.getUsername();
         return ResponseEntity
                 .ok()
                 .body(
-                        projectService.getUserProjectsOrderedByStartDate(userName));
+                        productService.getUserProductsOrderedByStartDate(userName));
     }
 
     @GetMapping("/collaborations")
-    public ResponseEntity<List<ProjectBasicViewModel>> showMyCollaborations(@AuthenticationPrincipal UserDetails principal) {
+    public ResponseEntity<List<ProductBasicViewModel>> showMyCollaborations(@AuthenticationPrincipal UserDetails principal) {
         String userName = principal.getUsername();
         return ResponseEntity
                 .ok()
                 .body(
-                        projectService.getUserCollaborationsOrderedByStartDate(userName));
+                        productService.getUserCollaborationsOrderedByStartDate(userName));
     }
 }

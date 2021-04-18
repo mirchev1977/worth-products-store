@@ -14,7 +14,7 @@
 
     <!-- Banner -->
     <section id="banner_generic">
-        <h1>Projects</h1>
+        <h1>Products</h1>
     </section>
 </div>
 <!-- Text -->
@@ -23,11 +23,11 @@
 <p></p>
         <div class="mt-5 col-sm-12 my-auto align-self-center">
             <button id="all" type="button">Show all</button>
-            <button id="own" type="button">Show my projects</button>
+            <button id="own" type="button">Show my products</button>
             <button id="collabs" type="button">Show my collaborations</button>
             <p></p>
             <input id="searchInput" class="form-control mr-sm-2 w-50 btn-secondary"  type="search"
-               placeholder="Enter search term for project name or sector" aria-label="Search">
+               placeholder="Enter search term for product name or sector" aria-label="Search">
 
 
         </div>
@@ -45,17 +45,17 @@
                 <th>Action</th>
             </tr>
             </thead>
-            <tbody id="projectList">
-            <tr th:each="p : ${projectViewModels}" th:object="${p}">
+            <tbody id="productList">
+            <tr th:each="p : ${productViewModels}" th:object="${p}">
                 <td th:text="*{name}"></td>
                 <td th:text="*{name}"></td>
                 <td th:text="*{startDate}"></td>
                 <td>
-                    <a th:href="@{/projects/details/{id}(id=*{id})}">
+                    <a th:href="@{/products/details/{id}(id=*{id})}">
                         <button type="button">Details</button></a>
-                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="text-danger" th:href="@{/projects/archive/{id}(id=*{id})}">
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="text-danger" th:href="@{/products/archive/{id}(id=*{id})}">
                         <button type="button">Archive</button></a>
-                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="text-danger" th:href="@{/projects/delete/{id}(id=*{id})}">
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="text-danger" th:href="@{/products/delete/{id}(id=*{id})}">
                         <button class="bg-danger" type="button">Delete</button></a>
                 </td>
             </tr>

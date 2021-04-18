@@ -162,7 +162,7 @@ fi
 CLASSWORLDS_LAUNCHER=org.codehaus.plexus.classworlds.launcher.Launcher
 
 # traverses directory structure from process work directory to filesystem root
-# first directory with .mvn subdirectory is considered project base directory
+# first directory with .mvn subdirectory is considered product base directory
 find_maven_basedir() {
 
   if [ -z "$1" ]
@@ -201,7 +201,7 @@ fi
 
 ##########################################################################################
 # Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
-# This allows using the maven wrapper in projects that prohibit checking in binary data.
+# This allows using the maven wrapper in products that prohibit checking in binary data.
 ##########################################################################################
 if [ -r "$BASE_DIR/.mvn/wrapper/maven-wrapper.jar" ]; then
     if [ "$MVNW_VERBOSE" = true ]; then
@@ -306,5 +306,5 @@ WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
 exec "$JAVACMD" \
   $MAVEN_OPTS \
   -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
-  "-Dmaven.home=${M2_HOME}" "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
+  "-Dmaven.home=${M2_HOME}" "-Dmaven.multiModuleProductDirectory=${MAVEN_PROJECTBASEDIR}" \
   ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"

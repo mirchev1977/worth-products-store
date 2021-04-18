@@ -9,8 +9,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "projects")
-public class Project extends BaseEntity {
+@Table(name = "products")
+public class Product extends BaseEntity {
 
     @Column(nullable = false)
     private String name;
@@ -53,19 +53,19 @@ public class Project extends BaseEntity {
     private UserEntity  promoter;
 
     @ManyToMany
-    @JoinTable(name = "projects_users",
-            joinColumns = @JoinColumn(name="project_id", referencedColumnName = "id"),
+    @JoinTable(name = "products_users",
+            joinColumns = @JoinColumn(name="product_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name="user_id", referencedColumnName="id"))
     private Set<UserEntity> collaborators = new HashSet<>();
 
-    public Project() {
+    public Product() {
     }
 
     public String getName() {
         return name;
     }
 
-    public Project setName(String name) {
+    public Product setName(String name) {
         this.name = name;
         return this;
     }
@@ -74,7 +74,7 @@ public class Project extends BaseEntity {
         return sector;
     }
 
-    public Project setSector(Sector sector) {
+    public Product setSector(Sector sector) {
         this.sector = sector;
         return this;
     }
@@ -83,7 +83,7 @@ public class Project extends BaseEntity {
         return description;
     }
 
-    public Project setDescription(String description) {
+    public Product setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -92,7 +92,7 @@ public class Project extends BaseEntity {
         return startDate;
     }
 
-    public Project setStartDate(LocalDate startDate) {
+    public Product setStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
     }
@@ -101,7 +101,7 @@ public class Project extends BaseEntity {
         return endDate;
     }
 
-    public Project setEndDate(LocalDate endDate) {
+    public Product setEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
     }
@@ -110,7 +110,7 @@ public class Project extends BaseEntity {
         return activityType;
     }
 
-    public Project setActivityType(ActivityType activityType) {
+    public Product setActivityType(ActivityType activityType) {
         this.activityType = activityType;
         return this;
     }
@@ -119,7 +119,7 @@ public class Project extends BaseEntity {
         return neededEquipment;
     }
 
-    public Project setNeededEquipment(Equipment neededEquipment) {
+    public Product setNeededEquipment(Equipment neededEquipment) {
         this.neededEquipment = neededEquipment;
         return this;
     }
@@ -128,7 +128,7 @@ public class Project extends BaseEntity {
         return lab;
     }
 
-    public Project setLab(Lab lab) {
+    public Product setLab(Lab lab) {
         this.lab = lab;
         return this;
     }
@@ -137,7 +137,7 @@ public class Project extends BaseEntity {
         return active;
     }
 
-    public Project setActive(boolean active) {
+    public Product setActive(boolean active) {
         this.active = active;
         return this;
     }
@@ -146,7 +146,7 @@ public class Project extends BaseEntity {
         return promoter;
     }
 
-    public Project setPromoter(UserEntity promoter) {
+    public Product setPromoter(UserEntity promoter) {
         this.promoter = promoter;
         return this;
     }
@@ -155,7 +155,7 @@ public class Project extends BaseEntity {
         return collaborators;
     }
 
-    public Project setCollaborators(Set<UserEntity> collaborators) {
+    public Product setCollaborators(Set<UserEntity> collaborators) {
         this.collaborators = collaborators;
         return this;
     }
@@ -164,7 +164,7 @@ public class Project extends BaseEntity {
         return result;
     }
 
-    public Project setResult(String result) {
+    public Product setResult(String result) {
         this.result = result;
         return this;
     }

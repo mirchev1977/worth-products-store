@@ -16,7 +16,7 @@
 
         <!-- Banner -->
         <section id="banner_generic">
-            <h1>Publish project results</h1>
+            <h1>Publish product results</h1>
         </section>
     </div>
 
@@ -25,8 +25,8 @@
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
-                    th:object="${projectResultBindingModel}"
-                    th:action="@{/projects/publish/{id}(id=${id})}"
+                    th:object="${productResultBindingModel}"
+                    th:action="@{/products/publish/{id}(id=${id})}"
                     method="POST">
                 <!-- Name -->
                 <div>

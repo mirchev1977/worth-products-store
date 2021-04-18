@@ -5,8 +5,8 @@ public class UserViewModel {
     private String id;
     private String username;
     private String fullNameAndEmail;
-    private String activeProjects;
-    private String archivesProjects;
+    private String activeProducts;
+    private String archivesProducts;
     private String activeCollabs;
     private String sectorAndType;
     private String roles;
@@ -38,21 +38,21 @@ public class UserViewModel {
         return this;
     }
 
-    public String getActiveProjects() {
-        return activeProjects;
+    public String getActiveProducts() {
+        return activeProducts;
     }
 
-    public UserViewModel setActiveProjects(String activeProjects) {
-        this.activeProjects = activeProjects;
+    public UserViewModel setActiveProducts(String activeProducts) {
+        this.activeProducts = activeProducts;
         return this;
     }
 
-    public String getArchivesProjects() {
-        return archivesProjects;
+    public String getArchivesProducts() {
+        return archivesProducts;
     }
 
-    public UserViewModel setArchivesProjects(String archivesProjects) {
-        this.archivesProjects = archivesProjects;
+    public UserViewModel setArchivesProducts(String archivesProducts) {
+        this.archivesProducts = archivesProducts;
         return this;
     }
 

@@ -1,6 +1,6 @@
 package com.w.prod.models.view;
 
-public class ProjectResultViewModel {
+public class ProductResultViewModel {
 
 
     private String name;
@@ -11,7 +11,7 @@ public class ProjectResultViewModel {
         return name;
     }
 
-    public ProjectResultViewModel setName(String name) {
+    public ProductResultViewModel setName(String name) {
         this.name = name;
         return this;
     }
@@ -20,7 +20,7 @@ public class ProjectResultViewModel {
         return result;
     }
 
-    public ProjectResultViewModel setResult(String result) {
+    public ProductResultViewModel setResult(String result) {
         this.result = result;
         return this;
     }

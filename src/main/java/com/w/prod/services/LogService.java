@@ -1,16 +1,16 @@
 package com.w.prod.services;
 
 import com.w.prod.models.view.AddIdeaLogViewModel;
-import com.w.prod.models.view.JoinProjectLogViewModel;
+import com.w.prod.models.view.JoinProductLogViewModel;
 
 import java.util.List;
 import java.util.Map;
 
 public interface LogService {
 
-    void createProjectJoinLog(String action, String projectId);
+    void createProductJoinLog(String action, String productId);
 
-    List<JoinProjectLogViewModel> findAllJoinProjectLogs();
+    List<JoinProductLogViewModel> findAllJoinProductLogs();
 
     void createIdeaAddLog(String action, String ideaId);
 
@@ -18,7 +18,7 @@ public interface LogService {
 
     Map<Integer, Integer> getStatsIdeasCreated();
 
-    Map<Integer, Integer> getStatsJoinProjectActivity();
+    Map<Integer, Integer> getStatsJoinProductActivity();
 
 
 }

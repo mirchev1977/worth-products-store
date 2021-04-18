@@ -2,7 +2,7 @@ package com.w.prod.models.service;
 
 import com.w.prod.models.entity.enums.Sector;
 
-public class ProjectResultServiceModel {
+public class ProductResultServiceModel {
 
     private String id;
     private String name;
@@ -15,7 +15,7 @@ public class ProjectResultServiceModel {
         return id;
     }
 
-    public ProjectResultServiceModel setId(String id) {
+    public ProductResultServiceModel setId(String id) {
         this.id = id;
         return this;
     }
@@ -24,7 +24,7 @@ public class ProjectResultServiceModel {
         return name;
     }
 
-    public ProjectResultServiceModel setName(String name) {
+    public ProductResultServiceModel setName(String name) {
         this.name = name;
         return this;
     }
@@ -33,7 +33,7 @@ public class ProjectResultServiceModel {
         return sector;
     }
 
-    public ProjectResultServiceModel setSector(Sector sector) {
+    public ProductResultServiceModel setSector(Sector sector) {
         this.sector = sector;
         return this;
     }
@@ -42,7 +42,7 @@ public class ProjectResultServiceModel {
         return description;
     }
 
-    public ProjectResultServiceModel setDescription(String description) {
+    public ProductResultServiceModel setDescription(String description) {
         this.description = description;
         return this;
     }

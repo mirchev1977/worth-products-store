@@ -114,23 +114,23 @@ public class UserServiceImpl implements UserService {
                             String.format("%s <br /> %s", u.getSector(), u.getUserType()));
 
                     StringBuilder sb1 = new StringBuilder();
-                    u.getOwnProjects()
+                    u.getOwnProducts()
                             .stream()
                             .filter(p -> p.isActive())
                             .forEach(p -> sb1.append(String.format("%s <br />", p.getName())));
 
-                    userViewModel.setActiveProjects(sb1.toString());
+                    userViewModel.setActiveProducts(sb1.toString());
 
                     StringBuilder sb2 = new StringBuilder();
-                    u.getOwnProjects()
+                    u.getOwnProducts()
                             .stream()
                             .filter(p -> !p.isActive())
                             .forEach(p -> sb2.append(String.format("%s <br />", p.getName())));
 
-                    userViewModel.setArchivesProjects(sb2.toString());
+                    userViewModel.setArchivesProducts(sb2.toString());
 
                     StringBuilder sb3 = new StringBuilder();
-                    u.getProjects()
+                    u.getProducts()
                             .stream()
                             .filter(p -> p.isActive())
                             .forEach(p -> sb3.append(String.format("%s <br />", p.getName())));
@@ -152,7 +152,7 @@ public class UserServiceImpl implements UserService {
     public List<LogEntity> deleteUser(String id) {
 
         UserEntity user = userRepository.getOne(id);
-        user.getProjects().stream().forEach(p -> p.getCollaborators().remove(user));
+        user.getProducts().stream().forEach(p -> p.getCollaborators().remove(user));
         List<LogEntity> logs = logRepository.findByUser_Id(id);
         if (!logs.isEmpty()) {
             logs.forEach(l -> logRepository.delete(l));
@@ -162,11 +162,11 @@ public class UserServiceImpl implements UserService {
 }
 
     @Override
-    public Set<Project> getProjectsByUser(String username) {
+    public Set<Product> getProductsByUser(String username) {
         if (userRepository.findByUsername(username).isPresent()) {
             UserEntity user = userRepository.findByUsername(username).get();
-            Set<Project> projects = user.getProjects();
-            return user.getProjects();
+            Set<Product> products = user.getProducts();
+            return user.getProducts();
         } else {
             throw new IllegalArgumentException("No user with such username");
         }

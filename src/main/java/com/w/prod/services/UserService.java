@@ -1,7 +1,7 @@
 package com.w.prod.services;
 
 import com.w.prod.models.entity.LogEntity;
-import com.w.prod.models.entity.Project;
+import com.w.prod.models.entity.Product;
 import com.w.prod.models.entity.UserEntity;
 import com.w.prod.models.entity.UserRoleEntity;
 import com.w.prod.models.service.UserRegistrationServiceModel;
@@ -26,7 +26,7 @@ public interface UserService {
 
     List<LogEntity> deleteUser(String id);
 
-    Set<Project> getProjectsByUser(String username);
+    Set<Product> getProductsByUser(String username);
 
     Set<String> findAllUsernamesExceptCurrent();
 

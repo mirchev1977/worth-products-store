@@ -3,7 +3,7 @@ package com.w.prod.models.binding;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-public class ProjectResultBindingModel {
+public class ProductResultBindingModel {
 
     @NotEmpty
     private String sector;
@@ -16,7 +16,7 @@ public class ProjectResultBindingModel {
         return sector;
     }
 
-    public ProjectResultBindingModel setSector(String sector) {
+    public ProductResultBindingModel setSector(String sector) {
         this.sector = sector;
         return this;
     }
@@ -25,7 +25,7 @@ public class ProjectResultBindingModel {
         return description;
     }
 
-    public ProjectResultBindingModel setDescription(String description) {
+    public ProductResultBindingModel setDescription(String description) {
         this.description = description;
         return this;
     }

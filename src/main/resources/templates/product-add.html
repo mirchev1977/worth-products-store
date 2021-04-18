@@ -16,7 +16,7 @@
 
         <!-- Banner -->
         <section id="banner_generic">
-            <h1>Update the project</h1>
+            <h1>Create a product</h1>
         </section>
     </div>
 
@@ -25,8 +25,8 @@
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
-                    th:object="${projectAddBindingModel}"
-                    th:action="@{/projects/update/{id}(id=${id})}"
+                    th:object="${productAddBindingModel}"
+                    th:action="@{/ideas/accept/{id}(id=${id})}"
                     method="POST">
                 <!-- Name -->
                 <div>
@@ -34,17 +34,15 @@
                         <label for="inputName" class="col-form-label ">Name</label>
                     </div>
                     <div class="col-auto">
-                        <input
-                                name="name"
-                                required minlength="3" maxlength="250"
-                                th:value="${projectAddBindingModel.name}"
-                                th:errorclass="is-invalid"
-                                type="text"
-                                id="inputName"
-                                class="form-control"
-                                aria-describedby="nameHelpInline">
-                        <p class="text-primary" >Previous name:
-                        <br class="text-primary" th:text="${current.name}"></p>
+                        <input name="name"
+                               th:field="${ideaServiceModel.name}"
+                               th:value="${productAddBindingModel.name}"
+                               th:errorclass="is-invalid"
+                               type="text"
+                               required minlength="3" maxlength="250"
+                               id="inputName"
+                               class="form-control"
+                               aria-describedby="nameHelpInline">
                         <small id="nameError" class="invalid-feedback text-light form-text bg-danger rounded">The name
                             must be at least 3 characters long and not longer than 250 characters</small>
 
@@ -57,12 +55,11 @@
                     </div>
                     <select required class="browser-default custom-select"
                             id="inputSector" name="sector"
-                            th:value="${projectAddBindingModel.sector}"
+                            th:value="${productAddBindingModel.sector}"
                             th:errorclass="is-invalid">
                         <option value="">Select sector</option>
                         <option th:each="c : ${T(com.w.prod.models.entity.enums.Sector).values()}"
-                                th:text="${c}" th:value="${c}" th:selected="${c}==${projectAddBindingModel.sector}">
-                            Value
+                                th:text="${c}" th:value="${c}" th:selected="${c}==${productAddBindingModel.sector}">Value
                         </option>
                     </select>
                     <small class="invalid-feedback text-light form-text bg-danger rounded">You must
@@ -77,16 +74,14 @@
                     </div>
                     <div class="col-auto">
                                         <textarea name="description"
-                                                  th:field="*{description}"
-                                                  th:value="*{description}"
+                                                  th:field="${ideaServiceModel.description}"
+                                                  th:value="${productAddBindingModel.description}"
                                                   th:errorclass="is-invalid"
                                                   required minlength="10" maxlength="1500"
                                                   id="inputDescription"
                                                   class="form-control"
                                                   aria-describedby="descriptionInline">
                                         </textarea>
-                        <p class="text-primary">Previous description:
-                        <br th:text="${current.description}"></p>
                         <small id="descriptionError"
                                class="invalid-feedback text-light form-text bg-danger rounded">The description must be
                             at least 10 characters long and not longer than 1500 characters</small>
@@ -100,13 +95,11 @@
                     </div>
                     <select required class="browser-default custom-select"
                             id="inputActivityType" name="activityType"
-                            th:filed="${current.activityType}"
-                            th:value="${projectAddBindingModel.activityType}"
+                            th:value="${productAddBindingModel.activityType}"
                             th:errorclass="is-invalid">
                         <option value="">Select activity type</option>
                         <option th:each="a : ${activityTypes}"
-                                th:text="${a}" th:value="${a}"
-                                th:selected="${a}==${projectAddBindingModel.activityType}">Value
+                                th:text="${a}" th:value="${a}" th:selected="${a}==${productAddBindingModel.activityType}">Value
                         </option>
 
                     </select>
@@ -114,8 +107,7 @@
                         select the activity type</small>
                 </div>
                 <!--         EO: Activity Type &ndash;&gt;-->
-                <p></p>
-                <p></p>
+
 
                 <!-- Needed equipment -->
                 <div>
@@ -125,16 +117,13 @@
                     <select required class="browser-default custom-select"
                             id="inputNeededEquipment"
                             name="neededEquipment"
-
-                            th:value="${projectAddBindingModel.neededEquipment}"
+                            th:field="${ideaServiceModel.neededEquipment}"
+                            th:value="${ideaServiceModel.neededEquipment}"
                             th:errorclass="is-invalid">
-                        <!--                        <option value="">Select the equipment provided</option>-->
-                        <!--                        <option th:text="${current.neededEquipment}" th:value="${current.neededEquipment}" >Value-->
-                        <!--                        </option>-->
+                        <option value="">Select the equipment provided</option>
+                        <option th:text="${ideaServiceModel.neededEquipment}" th:value="${ideaServiceModel.neededEquipment}">Value
+                        </option>
                     </select>
-                    <p class="text-primary"
-                       th:text="|Initially reserved equipment: ${current.neededEquipment}|">
-                    </p>
                     <small class="invalid-feedback text-light form-text bg-danger rounded">You must
                         select the equipment provided</small>
                 </div>
@@ -146,20 +135,17 @@
                     <div class="col-auto">
                         <label for="inputLab" class="col-form-label ">Lab</label>
                     </div>
-                    <select required
-                            class="browser-default custom-select"
+                    <select required class="browser-default custom-select"
                             id="inputLab"
                             name="lab"
+                            th:field="*{lab}"
                             th:value="*{lab}"
                             th:errorclass="is-invalid">
-                        <!--                        <option value="">Select the Lab</option>-->
-                        <!--                        <option th:each="l : ${labs}"-->
-                        <!--                                th:text="${l}" th:value="${l}" th:selected="${l}==${projectAddBindingModel.lab}" >Value-->
-                        <!--                        </option>-->
+                        <option value="">Select the Lab</option>
+                        <option th:each="l : ${labs}"
+                                th:text="${l}" th:value="${l}">Value
+                        </option>
                     </select>
-                    <p class="text-primary"
-                       th:text="|Initially chosen lab: ${current.lab}|"></p>
-
                     <small class="invalid-feedback text-light form-text bg-danger rounded">You must
                         select the Lab</small>
                 </div>
@@ -168,13 +154,14 @@
                     <table>
                         <tr th:each="instance : ${labsInfo}">
                             <td th:text="${instance.key}">Lab</td>
-                            <td th:utext="${instance.value}">Projects</td>
+                            <td th:utext="${instance.value}">Products</td>
                         </tr>
                     </table>
                 </div>
                 <button type="button" id="hide">Show Lab occupancy</button>
                 <p class="text-primary"
-                   th:text="|Requested duration in days: ${duration}. Please, schedule the project in the selected lab.|"></p>
+                   th:text="|Requested duration in days: ${duration}. Please, schedule the product in the selected lab.|"></p>
+                </p>
 
                 <!-- EO: Lab-->
                 <!--                 Starting date -->
@@ -190,7 +177,6 @@
                                id="inputStartDate"
                                class="form-control"
                                aria-describedby="startDateHelpInline">
-                        <p class="text-primary" th:text="|Previously set starting date: ${current.startDate}|"></p>
                         <small id="startDateError"
                                class="invalid-feedback text-light form-text bg-danger rounded">The starting date cannot
                             be in the past</small>
@@ -211,7 +197,6 @@
                                id="inputEndDate"
                                class="form-control"
                                aria-describedby="endDateHelpInline">
-                        <p class="text-primary" th:text="|Previously set end date: ${current.endDate}|"></p>
                         <small id="endDateError"
                                class="invalid-feedback text-light form-text bg-danger rounded">The end date must be
                             after the starting date and both must be in the future</small>
@@ -231,13 +216,11 @@
     <footer th:replace="fragments/main-layout :: footer" class="footer bg-blur">
     </footer>
 </main>
-
-<script src="/js/show-text.js">
+<script th:src="@{/js/show-text.js}">
 </script>
+
 <script>
     window.onload = textHandler();
-</script>
-<script src="/js/drop-down.js">
 </script>
 </body>
 </html>

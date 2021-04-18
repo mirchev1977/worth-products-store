@@ -1,34 +1,27 @@
-package com.w.prod.models.view;
+package com.w.prod.models.service;
 
 import com.w.prod.models.entity.enums.Sector;
 
-public class ProjectDetailedViewModel {
+import java.time.LocalDate;
+
+public class ProductServiceModel {
 
     private String id;
-
     private String name;
-
     private Sector sector;
-
     private String description;
-
-    private String duration;
-
+    private LocalDate startDate;
+    private LocalDate endDate;
     private String activityType;
-
     private String neededEquipment;
-
     private String lab;
-
     private String promoter;
-
-   private String collaborators;
 
     public String getId() {
         return id;
     }
 
-    public ProjectDetailedViewModel setId(String id) {
+    public ProductServiceModel setId(String id) {
         this.id = id;
         return this;
     }
@@ -37,7 +30,7 @@ public class ProjectDetailedViewModel {
         return name;
     }
 
-    public ProjectDetailedViewModel setName(String name) {
+    public ProductServiceModel setName(String name) {
         this.name = name;
         return this;
     }
@@ -46,7 +39,7 @@ public class ProjectDetailedViewModel {
         return sector;
     }
 
-    public ProjectDetailedViewModel setSector(Sector sector) {
+    public ProductServiceModel setSector(Sector sector) {
         this.sector = sector;
         return this;
     }
@@ -55,17 +48,26 @@ public class ProjectDetailedViewModel {
         return description;
     }
 
-    public ProjectDetailedViewModel setDescription(String description) {
+    public ProductServiceModel setDescription(String description) {
         this.description = description;
         return this;
     }
 
-    public String getDuration() {
-        return duration;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public ProjectDetailedViewModel setDuration(String duration) {
-        this.duration = duration;
+    public ProductServiceModel setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+        return this;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public ProductServiceModel setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
         return this;
     }
 
@@ -73,7 +75,7 @@ public class ProjectDetailedViewModel {
         return activityType;
     }
 
-    public ProjectDetailedViewModel setActivityType(String activityType) {
+    public ProductServiceModel setActivityType(String activityType) {
         this.activityType = activityType;
         return this;
     }
@@ -82,7 +84,7 @@ public class ProjectDetailedViewModel {
         return neededEquipment;
     }
 
-    public ProjectDetailedViewModel setNeededEquipment(String neededEquipment) {
+    public ProductServiceModel setNeededEquipment(String neededEquipment) {
         this.neededEquipment = neededEquipment;
         return this;
     }
@@ -91,7 +93,7 @@ public class ProjectDetailedViewModel {
         return lab;
     }
 
-    public ProjectDetailedViewModel setLab(String lab) {
+    public ProductServiceModel setLab(String lab) {
         this.lab = lab;
         return this;
     }
@@ -100,17 +102,8 @@ public class ProjectDetailedViewModel {
         return promoter;
     }
 
-    public ProjectDetailedViewModel setPromoter(String promoter) {
+    public ProductServiceModel setPromoter(String promoter) {
         this.promoter = promoter;
-        return this;
-    }
-
-    public String getCollaborators() {
-        return collaborators;
-    }
-
-    public ProjectDetailedViewModel setCollaborators(String collaborators) {
-        this.collaborators = collaborators;
         return this;
     }
 }

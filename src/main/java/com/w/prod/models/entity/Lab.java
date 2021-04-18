@@ -16,11 +16,11 @@ public class Lab extends BaseEntity {
     @NotNull
     private Equipment equipment;
 
-    @OneToMany(mappedBy = "lab", targetEntity = Project.class)
-    private List<Project> projects;
+    @OneToMany(mappedBy = "lab", targetEntity = Product.class)
+    private List<Product> products;
 
     public Lab() {
-        this.projects = new ArrayList<>();
+        this.products = new ArrayList<>();
     }
 
     public String getName() {
@@ -41,12 +41,12 @@ public class Lab extends BaseEntity {
         return this;
     }
 
-    public List<Project> getProjects() {
-        return projects;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public Lab setProjects(List<Project> projects) {
-        this.projects = projects;
+    public Lab setProducts(List<Product> products) {
+        this.products = products;
         return this;
     }
 }

@@ -18,7 +18,7 @@ public class LogAspect {
         this.logService = logService;
     }
 
-    @Pointcut("execution(* com.w.prod.web.ProjectController.joinProject(..))")
+    @Pointcut("execution(* com.w.prod.web.ProductController.joinProduct(..))")
     public void joinPointCut() {
     }
 
@@ -27,12 +27,12 @@ public class LogAspect {
     }
 
     @After("joinPointCut()")
-    public void joinProjectAfterAdvice(JoinPoint joinPoint) {
+    public void joinProductAfterAdvice(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
-        String projectId = (String) args[0];
+        String productId = (String) args[0];
         String action = joinPoint.getSignature().getName();
 
-        logService.createProjectJoinLog(action, projectId);
+        logService.createProductJoinLog(action, productId);
     }
 
     @After("ideaCreatePointCut()")

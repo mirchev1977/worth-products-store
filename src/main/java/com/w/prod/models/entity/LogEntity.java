@@ -16,7 +16,7 @@ public class LogEntity extends BaseEntity {
     private String action;
 
     @ManyToOne
-    private Project project;
+    private Product product;
 
     @ManyToOne
     private Idea idea;
@@ -46,12 +46,12 @@ public class LogEntity extends BaseEntity {
         return this;
     }
 
-    public Project getProject() {
-        return project;
+    public Product getProduct() {
+        return product;
     }
 
-    public LogEntity setProject(Project project) {
-        this.project = project;
+    public LogEntity setProduct(Product product) {
+        this.product = product;
         return this;
     }
 

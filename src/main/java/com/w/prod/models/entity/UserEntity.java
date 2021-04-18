@@ -41,12 +41,12 @@ public class UserEntity extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<UserRoleEntity> roles = new ArrayList<>();
 
-    @OneToMany(mappedBy = "promoter", targetEntity = Project.class, cascade = CascadeType.ALL)
-    private Set<Project> ownProjects = new HashSet<>();
+    @OneToMany(mappedBy = "promoter", targetEntity = Product.class, cascade = CascadeType.ALL)
+    private Set<Product> ownProducts = new HashSet<>();
 
 
-    @ManyToMany(mappedBy = "collaborators", targetEntity = Project.class)
-    private Set<Project> projects = new HashSet<>();
+    @ManyToMany(mappedBy = "collaborators", targetEntity = Product.class)
+    private Set<Product> products = new HashSet<>();
 
     public UserEntity() {
     }
@@ -123,21 +123,21 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
-    public Set<Project> getOwnProjects() {
-        return ownProjects;
+    public Set<Product> getOwnProducts() {
+        return ownProducts;
     }
 
-    public UserEntity setOwnProjects(Set<Project> ownProjects) {
-        this.ownProjects = ownProjects;
+    public UserEntity setOwnProducts(Set<Product> ownProducts) {
+        this.ownProducts = ownProducts;
         return this;
     }
 
-    public Set<Project> getProjects() {
-        return projects;
+    public Set<Product> getProducts() {
+        return products;
     }
 
-    public UserEntity setProjects(Set<Project> projects) {
-        this.projects = projects;
+    public UserEntity setProducts(Set<Product> products) {
+        this.products = products;
         return this;
     }
 
@@ -146,10 +146,10 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
-    public void addProject(Project project) {
-        this.projects.add(project);
+    public void addProduct(Product product) {
+        this.products.add(product);
     }
-    public void removeProject(Project project) {
-        this.projects.remove(project);
+    public void removeProduct(Product product) {
+        this.products.remove(product);
     }
 }

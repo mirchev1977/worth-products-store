@@ -1,6 +1,6 @@
 package com.w.prod.models.view;
 
-public class JoinProjectLogViewModel {
+public class JoinProductLogViewModel {
 
     private String id;
 
@@ -8,7 +8,7 @@ public class JoinProjectLogViewModel {
 
     private String action;
 
-    private String project;
+    private String product;
 
     private String dateTime;
 
@@ -16,7 +16,7 @@ public class JoinProjectLogViewModel {
         return id;
     }
 
-    public JoinProjectLogViewModel setId(String id) {
+    public JoinProductLogViewModel setId(String id) {
         this.id = id;
         return this;
     }
@@ -25,7 +25,7 @@ public class JoinProjectLogViewModel {
         return user;
     }
 
-    public JoinProjectLogViewModel setUser(String user) {
+    public JoinProductLogViewModel setUser(String user) {
         this.user = user;
         return this;
     }
@@ -34,17 +34,17 @@ public class JoinProjectLogViewModel {
         return action;
     }
 
-    public JoinProjectLogViewModel setAction(String action) {
+    public JoinProductLogViewModel setAction(String action) {
         this.action = action;
         return this;
     }
 
-    public String getProject() {
-        return project;
+    public String getProduct() {
+        return product;
     }
 
-    public JoinProjectLogViewModel setProject(String project) {
-        this.project = project;
+    public JoinProductLogViewModel setProduct(String product) {
+        this.product = product;
         return this;
     }
 
@@ -52,7 +52,7 @@ public class JoinProjectLogViewModel {
         return dateTime;
     }
 
-    public JoinProjectLogViewModel setDateTime(String dateTime) {
+    public JoinProductLogViewModel setDateTime(String dateTime) {
         this.dateTime = dateTime;
         return this;
     }

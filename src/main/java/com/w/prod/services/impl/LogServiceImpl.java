@@ -2,16 +2,16 @@ package com.w.prod.services.impl;
 
 import com.w.prod.models.entity.Idea;
 import com.w.prod.models.entity.LogEntity;
-import com.w.prod.models.entity.Project;
+import com.w.prod.models.entity.Product;
 import com.w.prod.models.entity.UserEntity;
 import com.w.prod.models.service.IdeaLogServiceModel;
-import com.w.prod.models.service.ProjectServiceModel;
+import com.w.prod.models.service.ProductServiceModel;
 import com.w.prod.models.view.AddIdeaLogViewModel;
-import com.w.prod.models.view.JoinProjectLogViewModel;
+import com.w.prod.models.view.JoinProductLogViewModel;
 import com.w.prod.repositories.LogRepository;
 import com.w.prod.services.IdeaService;
 import com.w.prod.services.LogService;
-import com.w.prod.services.ProjectService;
+import com.w.prod.services.ProductService;
 import com.w.prod.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -31,30 +31,30 @@ import java.util.stream.Collectors;
 public class LogServiceImpl implements LogService {
     private final LogRepository logRepository;
     private final UserService userService;
-    private final ProjectService projectService;
+    private final ProductService productService;
     private final IdeaService ideaService;
     private final ModelMapper modelMapper;
     private Logger LOGGER = LoggerFactory.getLogger(LogServiceImpl.class);
 
 
-    public LogServiceImpl(LogRepository logRepository, UserService userService, ProjectService projectService, IdeaService ideaService, ModelMapper modelMapper) {
+    public LogServiceImpl(LogRepository logRepository, UserService userService, ProductService productService, IdeaService ideaService, ModelMapper modelMapper) {
         this.logRepository = logRepository;
         this.userService = userService;
-        this.projectService = projectService;
+        this.productService = productService;
         this.ideaService = ideaService;
         this.modelMapper = modelMapper;
     }
 
     @Override
-    public void createProjectJoinLog(String action, String projectId) {
+    public void createProductJoinLog(String action, String productId) {
 
-        ProjectServiceModel project = projectService.findProjectById(projectId);
+        ProductServiceModel product = productService.findProductById(productId);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         UserEntity userEntity = userService.findByUsername(username);
 
         LogEntity logEntity = new LogEntity()
-                .setProject(modelMapper.map(project, Project.class))
+                .setProduct(modelMapper.map(product, Product.class))
                 .setAction(action)
                 .setTime(LocalDateTime.now())
                 .setUser(userEntity);
@@ -99,19 +99,19 @@ if (idea!=null) {
     }
 
     @Override
-    public List<JoinProjectLogViewModel> findAllJoinProjectLogs() {
+    public List<JoinProductLogViewModel> findAllJoinProductLogs() {
         return logRepository
-                .findAllByProjectNotNullOrderByTimeDesc()
+                .findAllByProductNotNullOrderByTimeDesc()
                 .stream()
                 .map(l -> {
-                    JoinProjectLogViewModel joinProjectLogViewModel = modelMapper.map(l, JoinProjectLogViewModel.class);
-                    joinProjectLogViewModel
-                            .setProject(l.getProject().getName())
+                    JoinProductLogViewModel joinProductLogViewModel = modelMapper.map(l, JoinProductLogViewModel.class);
+                    joinProductLogViewModel
+                            .setProduct(l.getProduct().getName())
                             .setUser(l.getUser().getUsername())
                             .setDateTime(String.format("%02d %s %s (%02d:%02d)",
                                     l.getTime().getDayOfMonth(), l.getTime().getMonth(),
                                     l.getTime().getYear(), l.getTime().getHour(), l.getTime().getMinute()));
-                    return joinProjectLogViewModel;
+                    return joinProductLogViewModel;
                 })
                 .collect(Collectors.toList());
     }
@@ -122,9 +122,9 @@ if (idea!=null) {
         logRepository.deleteAll();
     }
 
-    public Map<Integer, Integer> getStatsJoinProjectActivity() {
+    public Map<Integer, Integer> getStatsJoinProductActivity() {
         Map<Integer, Integer> activityMap = new HashMap<>();
-        logRepository.findAllByProjectNotNullOrderByTimeDesc()
+        logRepository.findAllByProductNotNullOrderByTimeDesc()
                 .forEach(l -> {
                     int dayOfWeek = l.getTime().getDayOfWeek().getValue();
                     activityMap.putIfAbsent(dayOfWeek, 0);

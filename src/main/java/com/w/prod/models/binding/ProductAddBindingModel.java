@@ -14,7 +14,7 @@ import java.time.LocalDate;
         first = "startDate",
         second = "endDate"
 )
-public class ProjectAddBindingModel {
+public class ProductAddBindingModel {
 
     @NotEmpty
     @Size(min=3, max = 250)
@@ -51,7 +51,7 @@ public class ProjectAddBindingModel {
         return name;
     }
 
-    public ProjectAddBindingModel setName(String name) {
+    public ProductAddBindingModel setName(String name) {
         this.name = name;
         return this;
     }
@@ -60,7 +60,7 @@ public class ProjectAddBindingModel {
         return sector;
     }
 
-    public ProjectAddBindingModel setSector(Sector sector) {
+    public ProductAddBindingModel setSector(Sector sector) {
         this.sector = sector;
         return this;
     }
@@ -69,7 +69,7 @@ public class ProjectAddBindingModel {
         return description;
     }
 
-    public ProjectAddBindingModel setDescription(String description) {
+    public ProductAddBindingModel setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -78,7 +78,7 @@ public class ProjectAddBindingModel {
         return startDate;
     }
 
-    public ProjectAddBindingModel setStartDate(LocalDate startDate) {
+    public ProductAddBindingModel setStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
     }
@@ -87,7 +87,7 @@ public class ProjectAddBindingModel {
         return endDate;
     }
 
-    public ProjectAddBindingModel setEndDate(LocalDate endDate) {
+    public ProductAddBindingModel setEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
     }
@@ -96,7 +96,7 @@ public class ProjectAddBindingModel {
         return activityType;
     }
 
-    public ProjectAddBindingModel setActivityType(String activityType) {
+    public ProductAddBindingModel setActivityType(String activityType) {
         this.activityType = activityType;
         return this;
     }
@@ -105,7 +105,7 @@ public class ProjectAddBindingModel {
         return neededEquipment;
     }
 
-    public ProjectAddBindingModel setNeededEquipment(String neededEquipment) {
+    public ProductAddBindingModel setNeededEquipment(String neededEquipment) {
         this.neededEquipment = neededEquipment;
         return this;
     }
@@ -114,7 +114,7 @@ public class ProjectAddBindingModel {
         return lab;
     }
 
-    public ProjectAddBindingModel setLab(String lab) {
+    public ProductAddBindingModel setLab(String lab) {
         this.lab = lab;
         return this;
     }
