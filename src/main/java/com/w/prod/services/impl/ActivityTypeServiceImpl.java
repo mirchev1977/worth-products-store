@@ -20,18 +20,18 @@ import java.util.stream.Collectors;
 
 @Service
 public class ActivityTypeServiceImpl implements ActivityTypeService {
-    //private final Resource activityTypeFile;
+    private final Resource activityTypeFile;
     private final Gson gson;
     private final ActivityTypeRepository activityTypeRepository;
     private final ModelMapper modelMapper;
 
     public ActivityTypeServiceImpl(
-            //@Value("classpath:init/activityType.json") Resource activityTypeFile,
+            @Value("classpath:init/activityType.json") Resource activityTypeFile,
             Gson gson,
             ActivityTypeRepository activityTypeRepository,
             ModelMapper modelMapper
     ) {
-        //this.activityTypeFile = activityTypeFile;
+        this.activityTypeFile = activityTypeFile;
         this.gson = gson;
         this.activityTypeRepository = activityTypeRepository;
         this.modelMapper = modelMapper;
@@ -40,35 +40,35 @@ public class ActivityTypeServiceImpl implements ActivityTypeService {
 
     @Override
     public void seedActivityTypes() {
+//        if (activityTypeRepository.count() == 0) {
+//            ArrayList<String> activityTypes = new ArrayList<>();
+//            activityTypes.add("Business Review");
+//            activityTypes.add("Design");
+//            activityTypes.add("Network Meeting");
+//            activityTypes.add("Material Supplies");
+//            activityTypes.add("Inovative Enhancements");
+//            activityTypes.add("Staff Training");
+//
+//            for (String activity : activityTypes) {
+//                ActivityType act = new ActivityType();
+//                act.setActivityName(activity);
+//                activityTypeRepository.save(act);
+//            }
+//        }
         if (activityTypeRepository.count() == 0) {
-            ArrayList<String> activityTypes = new ArrayList<>();
-            activityTypes.add("Business Review");
-            activityTypes.add("Design");
-            activityTypes.add("Network Meeting");
-            activityTypes.add("Material Supplies");
-            activityTypes.add("Inovative Enhancements");
-            activityTypes.add("Staff Training");
+            try {
+                ActivityTypeServiceModel[] activityTypeServiceModels = gson.fromJson(Files.readString(Path.of(activityTypeFile.getURI())), ActivityTypeServiceModel[].class);
+                Arrays.stream(activityTypeServiceModels)
+                        .forEach(m -> {
+                            ActivityType current = modelMapper.map(m, ActivityType.class);
+                            activityTypeRepository.save(current);
+                        });
 
-            for (String activity : activityTypes) {
-                ActivityType act = new ActivityType();
-                act.setActivityName(activity);
-                activityTypeRepository.save(act);
+            } catch (IOException e) {
+                throw new IllegalStateException("Cannot seed Activity Types");
             }
+
         }
-        //if (activityTypeRepository.count() == 0) {
-        //    try {
-        //        ActivityTypeServiceModel[] activityTypeServiceModels = gson.fromJson(Files.readString(Path.of(activityTypeFile.getURI())), ActivityTypeServiceModel[].class);
-        //        Arrays.stream(activityTypeServiceModels)
-        //                .forEach(m -> {
-        //                    ActivityType current = modelMapper.map(m, ActivityType.class);
-        //                    activityTypeRepository.save(current);
-        //                });
-
-        //    } catch (IOException e) {
-        //        throw new IllegalStateException("Cannot seed Activity Types");
-        //    }
-
-        //}
     }
 
     @Override

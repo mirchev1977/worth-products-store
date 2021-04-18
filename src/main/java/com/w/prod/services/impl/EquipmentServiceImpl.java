@@ -23,18 +23,18 @@ import java.util.stream.Collectors;
 public class EquipmentServiceImpl implements EquipmentService {
 
 
-        //private final Resource equipment;
+        private final Resource equipment;
         private final Gson gson;
         private final EquipmentRepository equipmentRepository;
         private final ModelMapper modelMapper;
 
     public EquipmentServiceImpl(
-                //@Value("classpath:init/equipment.json") Resource equipment,
+                @Value("classpath:init/equipment.json") Resource equipment,
                 Gson gson,
                 EquipmentRepository equipmentRepository,
                 ModelMapper modelMapper
         ) {
-            //this.equipment = equipment;
+            this.equipment = equipment;
             this.gson = gson;
             this.equipmentRepository = equipmentRepository;
             this.modelMapper = modelMapper;
@@ -42,36 +42,36 @@ public class EquipmentServiceImpl implements EquipmentService {
 
         @Override
         public void seedEquipment() {
+//            if (equipmentRepository.count() == 0) {
+//                ArrayList<String> equipment = new ArrayList<>();
+//
+//                equipment.add("Wood workshop");
+//                equipment.add("Metal workshop");
+//                equipment.add("Digital production workshop");
+//                equipment.add("Prototyping space");
+//                equipment.add("Computers, Multimedia, Printers");
+//
+//                for (String eqName : equipment) {
+//                    Equipment act = new Equipment();
+//                    act.setEquipmentName(eqName);
+//                    equipmentRepository.save(act);
+//                }
+//            }
+
             if (equipmentRepository.count() == 0) {
-                ArrayList<String> equipment = new ArrayList<>();
+                try {
+                    EquipmentServiceModel[] equipmentServiceModels = gson.fromJson(Files.readString(Path.of(equipment.getURI())), EquipmentServiceModel[].class);
+                    Arrays.stream(equipmentServiceModels)
+                            .forEach(e -> {
+                                Equipment current = modelMapper.map(e, Equipment.class);
+                                equipmentRepository.save(current);
+                            });
 
-                equipment.add("Wood workshop");
-                equipment.add("Metal workshop");
-                equipment.add("Digital production workshop");
-                equipment.add("Prototyping space");
-                equipment.add("Computers, Multimedia, Printers");
-
-                for (String eqName : equipment) {
-                    Equipment act = new Equipment();
-                    act.setEquipmentName(eqName);
-                    equipmentRepository.save(act);
+                } catch (IOException e) {
+                    throw new IllegalStateException("Cannot seed equipment");
                 }
+
             }
-
-            //if (equipmentRepository.count() == 0) {
-            //    try {
-            //        EquipmentServiceModel[] equipmentServiceModels = gson.fromJson(Files.readString(Path.of(equipment.getURI())), EquipmentServiceModel[].class);
-            //        Arrays.stream(equipmentServiceModels)
-            //                .forEach(e -> {
-            //                    Equipment current = modelMapper.map(e, Equipment.class);
-            //                    equipmentRepository.save(current);
-            //                });
-
-            //    } catch (IOException e) {
-            //        throw new IllegalStateException("Cannot seed equipment");
-            //    }
-
-            //}
         }
 
     @Override
